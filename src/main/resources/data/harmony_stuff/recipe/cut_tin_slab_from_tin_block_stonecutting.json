@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "c:storage_blocks/tin"
+  },
+  "result": {
+    "id": "harmony_stuff:cut_tin_slab",
+    "count": 8
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "render_type": "cutout_mipped",
+  "textures": {
+    "bottom": "harmony_stuff:block/tin_door_bottom",
+    "top": "harmony_stuff:block/tin_door_top"
+  }
+}

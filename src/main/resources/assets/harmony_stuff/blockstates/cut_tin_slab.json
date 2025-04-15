@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "harmony_stuff:block/cut_tin_slab"
+    },
+    "type=double": {
+      "model": "harmony_stuff:block/cut_tin"
+    },
+    "type=top": {
+      "model": "harmony_stuff:block/cut_tin_slab_top"
+    }
+  }
+}

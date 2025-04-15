@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "harmony_stuff:item/wooden_knife"
+  }
+}

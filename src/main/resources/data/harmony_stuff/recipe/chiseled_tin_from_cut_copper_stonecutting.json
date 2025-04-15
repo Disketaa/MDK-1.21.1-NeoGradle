@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "harmony_stuff:cut_tin"
+  },
+  "result": {
+    "id": "harmony_stuff:chiseled_tin"
+  }
+}

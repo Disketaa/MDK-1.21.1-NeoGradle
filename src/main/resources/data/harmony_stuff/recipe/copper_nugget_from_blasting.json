@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    {
+      "tag": "c:blastables/copper"
+    }
+  ],
+  "result": {
+    "id": "harmony_stuff:copper_nugget"
+  }
+}
