@@ -14,9 +14,12 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ModBlocks {
@@ -37,16 +40,18 @@ public class ModBlocks {
 			.requiresCorrectToolForDrops()
 			.strength(3.0f, 3.0f);
 
-		static final BlockBehaviour.Properties ORE_RAW = BlockBehaviour.Properties.of()
-			.mapColor(MapColor.RAW_IRON)
-			.requiresCorrectToolForDrops()
-			.strength(5.5f, 6.0f);
 
 		static final BlockBehaviour.Properties ORE_DEEPSLATE = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.DEEPSLATE)
 			.sound(SoundType.DEEPSLATE)
+			.instrument(NoteBlockInstrument.BASEDRUM)
 			.requiresCorrectToolForDrops()
 			.strength(4.5f, 3.0f);
+
+		static final BlockBehaviour.Properties ORE_RAW = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.RAW_IRON)
+			.requiresCorrectToolForDrops()
+			.strength(5.5f, 6.0f);
 	}
 
 	// BLOCKS
@@ -97,6 +102,14 @@ public class ModBlocks {
 		DeferredBlock<T> block = BLOCKS.register(name, blockSupplier);
 		ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
 		return block;
+	}
+
+	public static List<Item> getAllBlockItems() {
+		List<Item> blockItems = new ArrayList<>();
+		for (DeferredHolder<Block, ? extends Block> block : BLOCKS.getEntries()) {
+			blockItems.add(block.get().asItem());
+		}
+		return blockItems;
 	}
 
 	public static void register(IEventBus eventBus) {

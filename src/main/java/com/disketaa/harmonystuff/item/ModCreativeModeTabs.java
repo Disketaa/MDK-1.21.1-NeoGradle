@@ -28,24 +28,17 @@ public class ModCreativeModeTabs {
 
 	public static final Supplier<CreativeModeTab> HARMONY_STUFF_TAB = CREATIVE_MODE_TAB_DEFERRED_REGISTER.register("harmony_stuff_tab",
 		() -> CreativeModeTab.builder()
-			.icon(() -> new ItemStack(getItemById("tin_ingot").get()))
+			.icon(() -> new ItemStack(ModItems.TIN_INGOT.get()))
 			.title(Component.translatable("creativetab.harmony_stuff.harmony_stuff"))
-			.displayItems((itemDisplayParameters, output) -> {
-				// Add blocks first
-				output.accept(ModBlocks.TIN_BLOCK.get());
-				output.accept(ModBlocks.CHISELED_TIN.get());
-				output.accept(ModBlocks.TIN_GRATE.get());
-				output.accept(ModBlocks.CUT_TIN.get());
-				output.accept(ModBlocks.CUT_TIN_STAIRS.get());
-				output.accept(ModBlocks.CUT_TIN_SLAB.get());
-				output.accept(ModBlocks.TIN_DOOR.get());
-				output.accept(ModBlocks.TIN_TRAPDOOR.get());
-				output.accept(ModBlocks.TIN_ORE.get());
-				output.accept(ModBlocks.DEEPSLATE_TIN_ORE.get());
-				output.accept(ModBlocks.RAW_TIN_BLOCK.get());
+			.displayItems((params, output) -> {
+
+				for (Item blockItem : ModBlocks.getAllBlockItems()) {
+					output.accept(blockItem);
+				}
 
 				ModItems.getRegisteredItems().forEach(item -> output.accept(item.get()));
-			}).build());
+			})
+			.build());
 
 	public static void register(IEventBus eventBus) {
 		CREATIVE_MODE_TAB_DEFERRED_REGISTER.register(eventBus);
