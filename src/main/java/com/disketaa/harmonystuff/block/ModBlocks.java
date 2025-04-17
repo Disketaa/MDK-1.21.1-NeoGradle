@@ -40,7 +40,6 @@ public class ModBlocks {
 			.requiresCorrectToolForDrops()
 			.strength(3.0f, 3.0f);
 
-
 		static final BlockBehaviour.Properties ORE_DEEPSLATE = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.DEEPSLATE)
 			.sound(SoundType.DEEPSLATE)
@@ -57,15 +56,15 @@ public class ModBlocks {
 	// BLOCKS
 	public static final DeferredBlock<Block> TIN_BLOCK = registerTinBlock("tin_block");
 	public static final DeferredBlock<Block> CHISELED_TIN = registerTinBlock("chiseled_tin");
-	public static final DeferredBlock<Block> CUT_TIN = registerTinBlock("cut_tin");
-	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
 	public static final DeferredBlock<Block> TIN_GRATE = registerBlock("tin_grate", () -> createGrateBlock(TIN_BLOCK.get()));
+	public static final DeferredBlock<Block> CUT_TIN = registerTinBlock("cut_tin");
 	public static final DeferredBlock<StairBlock> CUT_TIN_STAIRS = registerBlock("cut_tin_stairs", () -> new StairBlock(CUT_TIN.get().defaultBlockState(), Properties.GENERIC_TIN));
 	public static final DeferredBlock<SlabBlock> CUT_TIN_SLAB = registerBlock("cut_tin_slab", () -> new SlabBlock(Properties.GENERIC_TIN));
 	public static final DeferredBlock<DoorBlock> TIN_DOOR = registerBlock("tin_door", () -> new DoorBlock(BlockSetType.COPPER, createDoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(BlockSetType.COPPER, createTrapdoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
+	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
 
 	// METHODS
 	private static DeferredBlock<Block> registerTinBlock(String name) {
