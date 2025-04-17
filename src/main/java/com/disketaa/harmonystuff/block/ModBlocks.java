@@ -2,12 +2,10 @@ package com.disketaa.harmonystuff.block;
 
 import com.disketaa.harmonystuff.HarmonyStuff;
 import com.disketaa.harmonystuff.item.ModItems;
-import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -16,7 +14,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +53,7 @@ public class ModBlocks {
 	// BLOCKS
 	public static final DeferredBlock<Block> TIN_BLOCK = registerTinBlock("tin_block");
 	public static final DeferredBlock<Block> CHISELED_TIN = registerTinBlock("chiseled_tin");
-	public static final DeferredBlock<Block> TIN_GRATE = registerBlock("tin_grate", () -> createGrateBlock(TIN_BLOCK.get()));
+	public static final DeferredBlock<WaterloggedTransparentBlock> TIN_GRATE = registerBlock("tin_grate", ModBlocks::createTinGrate);
 	public static final DeferredBlock<Block> CUT_TIN = registerTinBlock("cut_tin");
 	public static final DeferredBlock<StairBlock> CUT_TIN_STAIRS = registerBlock("cut_tin_stairs", () -> new StairBlock(CUT_TIN.get().defaultBlockState(), Properties.GENERIC_TIN));
 	public static final DeferredBlock<SlabBlock> CUT_TIN_SLAB = registerBlock("cut_tin_slab", () -> new SlabBlock(Properties.GENERIC_TIN));
@@ -71,18 +68,16 @@ public class ModBlocks {
 		return registerBlock(name, () -> new Block(Properties.GENERIC_TIN));
 	}
 
-	private static Block createGrateBlock(Block baseBlock) {
-		return new Block(BlockBehaviour.Properties.ofFullCopy(baseBlock)
-			.sound(SoundType.COPPER_GRATE)
-			.noOcclusion()
-			.isRedstoneConductor((state, level, pos) -> false)
-			.isSuffocating((state, level, pos) -> false)
-			.isViewBlocking((state, level, pos) -> false)) {
-			@Override
-			public boolean skipRendering(@NotNull BlockState state, @NotNull BlockState adjacentState, @NotNull Direction direction) {
-				return adjacentState.is(this) || super.skipRendering(state, adjacentState, direction);
-			}
-		};
+	private static WaterloggedTransparentBlock createTinGrate() {
+		return new WaterloggedTransparentBlock(
+			BlockBehaviour.Properties.ofFullCopy(TIN_BLOCK.get())
+				.sound(SoundType.COPPER_GRATE)
+				.noOcclusion()
+				.isRedstoneConductor((state, level, pos) -> false)
+				.isSuffocating((state, level, pos) -> false)
+				.isViewBlocking((state, level, pos) -> false)
+				.isValidSpawn((state, level, pos, type) -> false)
+		);
 	}
 
 	private static BlockBehaviour.Properties createDoorProperties(Block baseBlock) {
