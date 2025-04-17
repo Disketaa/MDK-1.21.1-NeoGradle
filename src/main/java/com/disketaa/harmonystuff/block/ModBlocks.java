@@ -1,6 +1,7 @@
 package com.disketaa.harmonystuff.block;
 
 import com.disketaa.harmonystuff.HarmonyStuff;
+import com.disketaa.harmonystuff.block.type.TinBulbBlock;
 import com.disketaa.harmonystuff.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
@@ -22,6 +23,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
 	public static final DeferredRegister.Blocks	BLOCKS =
 		DeferredRegister.createBlocks(HarmonyStuff.MOD_ID);
+
 	// PROPERTIES
 	private static final class Properties {
 
@@ -30,6 +32,13 @@ public class ModBlocks {
 			.sound(SoundType.COPPER)
 			.requiresCorrectToolForDrops()
 			.strength(2.0f, 6.0f);
+
+		static final BlockBehaviour.Properties BULB_PROPERTIES = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.TERRACOTTA_WHITE)
+			.sound(SoundType.COPPER_BULB)
+			.isRedstoneConductor((state, level, pos) -> false)
+			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
+			.strength(2f, 6.0f);
 
 		static final BlockBehaviour.Properties ORE_STONE = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.STONE)
@@ -59,6 +68,7 @@ public class ModBlocks {
 	public static final DeferredBlock<SlabBlock> CUT_TIN_SLAB = registerBlock("cut_tin_slab", () -> new SlabBlock(Properties.GENERIC_TIN));
 	public static final DeferredBlock<DoorBlock> TIN_DOOR = registerBlock("tin_door", () -> new DoorBlock(BlockSetType.COPPER, createDoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(BlockSetType.COPPER, createTrapdoorProperties(TIN_BLOCK.get())));
+	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerBlock("tin_bulb", () -> new TinBulbBlock(Properties.BULB_PROPERTIES));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
