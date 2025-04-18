@@ -1,7 +1,7 @@
 package com.disketaa.harmonystuff.block;
 
 import com.disketaa.harmonystuff.HarmonyStuff;
-import com.disketaa.harmonystuff.block.type.TinBulbBlock;
+import com.disketaa.harmonystuff.block.custom.TinBulbBlock;
 import com.disketaa.harmonystuff.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;

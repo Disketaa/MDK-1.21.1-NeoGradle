@@ -1,4 +1,4 @@
-package com.disketaa.harmonystuff.block.type;
+package com.disketaa.harmonystuff.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
