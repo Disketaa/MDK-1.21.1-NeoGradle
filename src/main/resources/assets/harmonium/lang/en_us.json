@@ -1,0 +1,23 @@
+{
+  "block.harmonium.chiseled_tin": "Chiseled Tin",
+  "block.harmonium.cut_tin": "Cut Tin",
+  "block.harmonium.cut_tin_slab": "Cut Tin Slab",
+  "block.harmonium.cut_tin_stairs": "Cut Tin Stairs",
+  "block.harmonium.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.harmonium.raw_tin_block": "Block of Raw Tin",
+  "block.harmonium.tin_block": "Block of Tin",
+  "block.harmonium.tin_bulb": "Tin Bulb",
+  "block.harmonium.tin_door": "Tin Door",
+  "block.harmonium.tin_grate": "Tin Grate",
+  "block.harmonium.tin_ore": "Tin Ore",
+  "block.harmonium.tin_trapdoor": "Tin Trapdoor",
+  "creativetab.harmonium.harmonium": "Harmony Stuff",
+  "item.harmonium.bronze_knife": "Bronze Knife",
+  "item.harmonium.copper_nugget": "Copper Nugget",
+  "item.harmonium.raw_tin": "Raw Tin",
+  "item.harmonium.tin_ingot": "Tin Ingot",
+  "item.harmonium.tin_nugget": "Tin Nugget",
+  "item.harmonium.wooden_knife": "Wooden Knife",
+  "tag.item.harmonium.tin_ores": "Tin Ores",
+  "trim_material.harmonium.tin": "Tin Material"
+}

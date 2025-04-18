@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "harmonium:cut_tin"
+  },
+  "result": {
+    "id": "harmonium:cut_tin_stairs"
+  }
+}

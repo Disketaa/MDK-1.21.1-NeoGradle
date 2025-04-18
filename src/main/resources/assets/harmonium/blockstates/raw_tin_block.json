@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "harmonium:block/raw_tin_block"
+    }
+  }
+}

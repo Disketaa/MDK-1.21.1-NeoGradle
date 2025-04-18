@@ -1,0 +1,12 @@
+{
+  "targets": [
+    "ingredients"
+  ],
+  "additions": [
+    {"items": [
+      "harmonium:copper_nugget",
+      "harmonium:tin_nugget"], "before": true, "predicate": {"type": "items_match", "items": ["minecraft:iron_nugget"]}},
+    {"items": ["harmonium:raw_tin"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:raw_copper"]}},
+    {"items": ["harmonium:tin_ingot"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:copper_ingot"]}}
+  ]
+}

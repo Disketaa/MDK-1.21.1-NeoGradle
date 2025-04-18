@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "harmonium:block/tin_bulb_lit3"
+  }
+}

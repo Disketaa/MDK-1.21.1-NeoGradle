@@ -1,0 +1,8 @@
+{
+	"targets": [
+		"redstone_blocks"
+	],
+	"additions": [
+		{"items": ["harmonium:tin_bulb"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:waxed_oxidized_copper_bulb"]}}
+	]
+}

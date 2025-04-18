@@ -1,0 +1,22 @@
+{
+  "block.harmonium.chiseled_tin": "Точёный оловянный блок",
+  "block.harmonium.cut_tin": "Резной оловянный блок",
+  "block.harmonium.cut_tin_slab": "Резная оловянная плита",
+  "block.harmonium.cut_tin_stairs": "Резные оловянные ступеньки",
+  "block.harmonium.deepslate_tin_ore": "Оловоносный глубинный сланец",
+  "block.harmonium.raw_tin_block": "Блок рудного олова",
+  "block.harmonium.tin_block": "Оловянный блок",
+  "block.harmonium.tin_bulb": "Оловянная лампа",
+  "block.harmonium.tin_door": "Оловянная дверь",
+  "block.harmonium.tin_grate": "Оловянная решётка",
+  "block.harmonium.tin_ore": "Оловянная руда",
+  "block.harmonium.tin_trapdoor": "Оловянный люк",
+  "item.harmonium.bronze_knife": "Бронзовый нож",
+  "item.harmonium.copper_nugget": "Кусочек меди",
+  "item.harmonium.raw_tin": "Рудное олово",
+  "item.harmonium.tin_ingot": "Оловянный слиток",
+  "item.harmonium.tin_nugget": "Кусочек олова",
+  "item.harmonium.wooden_knife": "Деревянный нож",
+  "tag.item.harmonium.tin_ores": "Оловянные руды",
+  "trim_material.harmonium.tin": "Оловянная"
+}

@@ -1,8 +1,0 @@
-{
-	"targets": [
-		"harmony_stuff:harmony_stuff_tab"
-	],
-	"removals": [
-		{"type": "id_match", "namespace": "harmony_stuff"}
-	]
-}

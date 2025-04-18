@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:any"
+  },
+  "features": "harmonium:ore_tin_large",
+  "step": "underground_ores"
+}

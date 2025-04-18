@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "c:storage_blocks/tin"
+    },
+    "/": {
+      "item": "minecraft:blaze_rod"
+    },
+    "~": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#/#",
+    " ~ "
+  ],
+  "result": {
+    "id": "harmonium:tin_bulb",
+    "count": 4
+  }
+}

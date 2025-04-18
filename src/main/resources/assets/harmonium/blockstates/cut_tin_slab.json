@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "harmonium:block/cut_tin_slab"
+    },
+    "type=double": {
+      "model": "harmonium:block/cut_tin"
+    },
+    "type=top": {
+      "model": "harmonium:block/cut_tin_slab_top"
+    }
+  }
+}

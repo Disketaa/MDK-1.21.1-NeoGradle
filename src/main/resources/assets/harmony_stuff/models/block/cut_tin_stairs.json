@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "harmony_stuff:block/cut_tin",
-    "side": "harmony_stuff:block/cut_tin",
-    "top": "harmony_stuff:block/cut_tin"
-  }
-}

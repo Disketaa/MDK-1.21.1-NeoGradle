@@ -1,11 +1,11 @@
 {
   "values": [
     {
-      "id": "harmony_stuff:wooden_knife",
+      "id": "harmonium:wooden_knife",
       "required": false
     },
     {
-      "id": "harmony_stuff:bronze_knife",
+      "id": "harmonium:bronze_knife",
       "required": false
     }
   ],

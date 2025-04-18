@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "c:storage_blocks/tin"
+  },
+  "result": {
+    "id": "harmonium:cut_tin",
+    "count": 4
+  }
+}

@@ -1,13 +1,13 @@
 {
   "values": [
     "#c:storage_blocks/tin",
-    "harmony_stuff:chiseled_tin",
-    "harmony_stuff:tin_grate",
-    "harmony_stuff:cut_tin",
-    "harmony_stuff:cut_tin_stairs",
-    "harmony_stuff:cut_tin_slab",
-    "harmony_stuff:tin_door",
-    "harmony_stuff:tin_trapdoor",
-    "harmony_stuff:tin_bulb"
+    "harmonium:chiseled_tin",
+    "harmonium:tin_grate",
+    "harmonium:cut_tin",
+    "harmonium:cut_tin_stairs",
+    "harmonium:cut_tin_slab",
+    "harmonium:tin_door",
+    "harmonium:tin_trapdoor",
+    "harmonium:tin_bulb"
   ]
 }

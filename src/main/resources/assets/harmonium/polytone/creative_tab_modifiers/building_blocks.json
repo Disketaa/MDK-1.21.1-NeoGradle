@@ -1,0 +1,17 @@
+{
+  "targets": [
+    "building_blocks"
+  ],
+  "additions": [
+    {"items": [
+      "harmonium:tin_block",
+      "harmonium:chiseled_tin",
+      "harmonium:tin_grate",
+      "harmonium:cut_tin",
+      "harmonium:cut_tin_stairs",
+      "harmonium:cut_tin_slab",
+      "harmonium:tin_door",
+      "harmonium:tin_trapdoor",
+      "harmonium:tin_bulb"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:waxed_oxidized_copper_bulb"]}}
+  ]
+}

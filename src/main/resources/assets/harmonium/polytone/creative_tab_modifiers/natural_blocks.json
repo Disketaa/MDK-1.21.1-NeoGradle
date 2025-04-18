@@ -1,0 +1,11 @@
+{
+	"targets": [
+		"natural_blocks"
+	],
+	"additions": [
+		{"items": [
+			"harmonium:tin_ore",
+			"harmonium:deepslate_tin_ore"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:deepslate_copper_ore"]}},
+		{"items": ["harmonium:raw_tin_block"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:raw_copper_block"]}}
+	]
+}

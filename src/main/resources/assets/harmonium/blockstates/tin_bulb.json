@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "light_level=0": { "model": "harmonium:block/tin_bulb" },
+    "light_level=10": { "model": "harmonium:block/tin_bulb_lit1" },
+    "light_level=11": { "model": "harmonium:block/tin_bulb_lit2" },
+    "light_level=12": { "model": "harmonium:block/tin_bulb_lit3" },
+    "light_level=13": { "model": "harmonium:block/tin_bulb_lit4" },
+    "light_level=14": { "model": "harmonium:block/tin_bulb_lit5" },
+    "light_level=15": { "model": "harmonium:block/tin_bulb_lit6" }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "harmony_stuff:block/raw_tin_block"
-  }
-}

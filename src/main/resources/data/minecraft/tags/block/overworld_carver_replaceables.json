@@ -1,7 +1,7 @@
 {
   "values": [
-    "harmony_stuff:deepslate_tin_ore",
-    "harmony_stuff:raw_tin_block",
-    "harmony_stuff:tin_ore"
+    "harmonium:deepslate_tin_ore",
+    "harmonium:raw_tin_block",
+    "harmonium:tin_ore"
   ]
 }
