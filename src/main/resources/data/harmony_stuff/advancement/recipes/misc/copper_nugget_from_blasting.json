@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blastable_copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:blastables/copper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blastable_waxed_copper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:blastables/waxed_copper"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "harmony_stuff:copper_nugget_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blastable_copper",
+      "has_blastable_waxed_copper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "harmony_stuff:copper_nugget_from_blasting",
+      "harmony_stuff:copper_nugget_from_blasting_waxed_copper"
+    ]
+  }
+}
