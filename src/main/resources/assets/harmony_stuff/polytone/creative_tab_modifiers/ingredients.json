@@ -1,12 +1,12 @@
 {
-	"targets": [
-		"ingredients"
-	],
-	"additions": [
-		{"items": [
-			"harmony_stuff:copper_nugget",
-			"harmony_stuff:tin_nugget"], "before": true, "predicate": {"type": "items_match", "items": ["minecraft:iron_nugget"]}},
-		{"items": ["harmony_stuff:raw_tin"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:raw_copper"]}},
-		{"items": ["harmony_stuff:tin_ingot"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:copper_ingot"]}}
-	]
+  "targets": [
+    "ingredients"
+  ],
+  "additions": [
+    {"items": [
+      "harmony_stuff:copper_nugget",
+      "harmony_stuff:tin_nugget"], "before": true, "predicate": {"type": "items_match", "items": ["minecraft:iron_nugget"]}},
+    {"items": ["harmony_stuff:raw_tin"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:raw_copper"]}},
+    {"items": ["harmony_stuff:tin_ingot"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:copper_ingot"]}}
+  ]
 }
