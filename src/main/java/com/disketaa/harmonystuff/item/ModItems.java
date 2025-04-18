@@ -8,6 +8,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.component.Tool;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -17,9 +18,10 @@ import java.util.List;
 public class ModItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(HarmonyStuff.MOD_ID);
 	private static final List<DeferredItem<? extends Item>> REGISTERED_ITEMS = new ArrayList<>();
-
-	public static final DeferredItem<SwordItem> WOODEN_KNIFE = registerSwordItem("wooden_knife", Tiers.WOOD, 1, -2f, SwordItem.createToolProperties());
-	public static final DeferredItem<Item> BRONZE_KNIFE = registerSimpleItem("bronze_knife");
+	// FARMERSDELIGHT
+	public static DeferredItem<SwordItem> WOODEN_KNIFE = null;
+	public static DeferredItem<Item> BRONZE_KNIFE = null;
+	// MINECRAFT
 	public static final DeferredItem<Item> RAW_TIN = registerSimpleItem("raw_tin");
 	public static final DeferredItem<Item> COPPER_NUGGET = registerSimpleItem("copper_nugget");
 	public static final DeferredItem<Item> TIN_NUGGET = registerSimpleItem("tin_nugget");
@@ -49,5 +51,10 @@ public class ModItems {
 
 	public static void register(IEventBus eventBus) {
 		ITEMS.register(eventBus);
+
+		if (ModList.get().isLoaded("farmersdelight")) {
+			WOODEN_KNIFE = registerSwordItem("wooden_knife", Tiers.WOOD, 1, -2f, SwordItem.createToolProperties());
+			BRONZE_KNIFE = registerSimpleItem("bronze_knife");
+		}
 	}
 }

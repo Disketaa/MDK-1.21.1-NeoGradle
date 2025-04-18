@@ -1,5 +1,8 @@
 {
   "values": [
-    "harmony_stuff:wooden_knife"
+    {
+      "id": "harmony_stuff:wooden_knife",
+      "required": false
+    }
   ]
 }
