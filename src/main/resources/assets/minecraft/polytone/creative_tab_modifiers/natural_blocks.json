@@ -1,0 +1,16 @@
+{
+	"targets": [
+		"natural_blocks"
+	],
+	"removals": [
+		{"type": "id_match", "path": "copper_ore"},
+		{"type": "id_match", "path": "deepslate_copper_ore"},
+		{"type": "id_match", "path": "raw_copper_block"}
+	],
+	"additions": [
+		{"items": [
+			"minecraft:copper_ore",
+			"minecraft:deepslate_copper_ore"], "before": true, "predicate": {"type": "items_match", "items": ["minecraft:iron_ore"]}},
+		{"items": ["minecraft:raw_copper_block"], "before": true, "predicate": {"type": "items_match", "items": ["minecraft:raw_iron_block"]}}
+	]
+}

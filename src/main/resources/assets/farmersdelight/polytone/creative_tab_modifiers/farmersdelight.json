@@ -1,0 +1,10 @@
+{
+  "targets": [
+    "farmersdelight:farmersdelight"
+  ],
+  "additions": [
+    {"items": [
+      "harmony_stuff:wooden_knife",
+      "harmony_stuff:bronze_knife"], "before": true, "predicate": {"type": "items_match", "items": ["farmersdelight:iron_knife"]}}
+  ]
+}
