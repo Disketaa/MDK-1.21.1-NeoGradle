@@ -2,6 +2,9 @@
   "require_mods": [
     "farmersdelight"
   ],
+  "removals": [
+    {"type": "id_match", "path": "flint_knife"}
+  ],
   "targets": [
     "farmersdelight:farmersdelight"
   ],

@@ -8,5 +8,11 @@
       "id": "harmony_stuff:bronze_knife",
       "required": false
     }
+  ],
+  "remove": [
+    {
+      "id": "farmersdelight:flint_knife",
+      "required": false
+    }
   ]
 }
