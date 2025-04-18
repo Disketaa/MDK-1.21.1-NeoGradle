@@ -1,4 +1,7 @@
 {
+  "require_mods": [
+    "farmersdelight"
+  ],
   "targets": [
     "farmersdelight:farmersdelight"
   ],
