@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "harmony_stuff:chiseled_tin_slab"
+      "item": "harmony_stuff:cut_tin_slab"
     }
   },
   "pattern": [
