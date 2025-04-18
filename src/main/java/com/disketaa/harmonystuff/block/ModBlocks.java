@@ -38,6 +38,7 @@ public class ModBlocks {
 			.sound(SoundType.COPPER_BULB)
 			.isRedstoneConductor((state, level, pos) -> false)
 			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
+			.requiresCorrectToolForDrops()
 			.strength(2f, 6.0f);
 
 		static final BlockBehaviour.Properties ORE_STONE = BlockBehaviour.Properties.of()
