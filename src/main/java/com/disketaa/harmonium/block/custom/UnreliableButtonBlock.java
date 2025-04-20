@@ -2,7 +2,6 @@ package com.disketaa.harmonium.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
@@ -13,18 +12,17 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class UnreliableButtonBlock extends ButtonBlock {
-	private static final int SHORT_PRESS = 1;
-	private static final int LONG_PRESS = 10;
-	private static final float SHORT_PRESS_CHANCE = 0.25f;
+	private static final int SHORT_PRESS = 0;
+	private static final int LONG_PRESS = 20;
+	private static final float SHORT_PRESS_CHANCE = 0.5f;
 	private boolean isCurrentPressShort = false;
 
 	public UnreliableButtonBlock(BlockSetType blockSetType, BlockBehaviour.Properties properties) {
-		super(blockSetType, 10, properties);
+		super(blockSetType, 20, properties);
 	}
 
 	@Override
@@ -49,9 +47,6 @@ public class UnreliableButtonBlock extends ButtonBlock {
 	@Override
 	protected void tick(BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random) {
 		if (state.getValue(POWERED) || isCurrentPressShort) {
-			if (isCurrentPressShort) {
-				spawnShortPressParticles(level, pos, state);
-			}
 
 			boolean wasPowered = state.getValue(POWERED);
 			level.setBlock(pos, state.setValue(POWERED, false), 3);
@@ -73,16 +68,5 @@ public class UnreliableButtonBlock extends ButtonBlock {
 	private void updateNeighbors(BlockState state, Level level, BlockPos pos) {
 		level.updateNeighborsAt(pos, this);
 		level.updateNeighborsAt(pos.relative(getConnectedDirection(state).getOpposite()), this);
-	}
-
-	private void spawnShortPressParticles(ServerLevel level, BlockPos pos, BlockState state) {
-		Vec3 particlePos = Vec3.atCenterOf(pos).relative(getConnectedDirection(state), 0.2);
-		level.sendParticles(
-			new DustParticleOptions(Vec3.fromRGB24(0xDDDDDD).toVector3f(), 0.5f),
-			particlePos.x, particlePos.y - 0.5f, particlePos.z,
-			8,
-			0.1, 0.1, 0.1,
-			0.05
-		);
 	}
 }
