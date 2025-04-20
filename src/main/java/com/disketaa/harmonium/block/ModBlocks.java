@@ -1,6 +1,7 @@
 package com.disketaa.harmonium.block;
 
 import com.disketaa.harmonium.Harmonium;
+import com.disketaa.harmonium.block.custom.UnreliableButtonBlock;
 import com.disketaa.harmonium.block.custom.TinBulbBlock;
 import com.disketaa.harmonium.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -73,6 +75,7 @@ public class ModBlocks {
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
+	public static DeferredBlock<ButtonBlock> TIN_BUTTON = null;
 
 	// METHODS
 	private static DeferredBlock<Block> registerTinBlock(String name) {
@@ -119,5 +122,17 @@ public class ModBlocks {
 
 	public static void register(IEventBus eventBus) {
 		BLOCKS.register(eventBus);
+
+		if (ModList.get().isLoaded("friendsandfoes")) {
+			TIN_BUTTON = registerBlock("tin_button",
+				() -> new UnreliableButtonBlock(
+					BlockSetType.COPPER,
+					BlockBehaviour.Properties.of()
+						.mapColor(MapColor.TERRACOTTA_WHITE)
+						.sound(SoundType.COPPER)
+						.strength(0.5f, 0.5f)
+						.noCollission()
+				));
+		}
 	}
 }

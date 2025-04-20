@@ -8,6 +8,10 @@
     "harmonium:raw_tin_block",
     "harmonium:tin_block",
     "harmonium:tin_bulb",
+    {
+      "id": "harmonium:tin_button",
+      "required": false
+    },
     "harmonium:tin_door",
     "harmonium:tin_grate",
     "harmonium:tin_ore",

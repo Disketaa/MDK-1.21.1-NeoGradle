@@ -3,6 +3,7 @@
 		"redstone_blocks"
 	],
 	"additions": [
-		{"items": ["harmonium:tin_bulb"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:waxed_oxidized_copper_bulb"]}}
+		{"items": ["harmonium:tin_bulb"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:waxed_oxidized_copper_bulb"]}},
+    {"items": ["harmonium:tin_button"], "before": false, "predicate": {"type": "items_match", "items": ["friendsandfoes:waxed_oxidized_copper_button"]}}
 	]
 }
