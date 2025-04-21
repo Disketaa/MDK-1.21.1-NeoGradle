@@ -1,11 +1,52 @@
 {
   "variants": {
-    "light_level=0": { "model": "harmonium:block/tin_bulb" },
-    "light_level=10": { "model": "harmonium:block/tin_bulb_lit1" },
-    "light_level=11": { "model": "harmonium:block/tin_bulb_lit2" },
-    "light_level=12": { "model": "harmonium:block/tin_bulb_lit3" },
-    "light_level=13": { "model": "harmonium:block/tin_bulb_lit4" },
-    "light_level=14": { "model": "harmonium:block/tin_bulb_lit5" },
-    "light_level=15": { "model": "harmonium:block/tin_bulb_lit6" }
+    "light_level=0": {
+      "model": "harmonium:block/tin_bulb"
+    },
+    "light_level=1": {
+      "model": "harmonium:block/tin_bulb_lit1"
+    },
+    "light_level=2": {
+      "model": "harmonium:block/tin_bulb_lit2"
+    },
+    "light_level=3": {
+      "model": "harmonium:block/tin_bulb_lit3"
+    },
+    "light_level=4": {
+      "model": "harmonium:block/tin_bulb_lit4"
+    },
+    "light_level=5": {
+      "model": "harmonium:block/tin_bulb_lit5"
+    },
+    "light_level=6": {
+      "model": "harmonium:block/tin_bulb_lit6"
+    },
+    "light_level=7": {
+      "model": "harmonium:block/tin_bulb_lit7"
+    },
+    "light_level=8": {
+      "model": "harmonium:block/tin_bulb_lit8"
+    },
+    "light_level=9": {
+      "model": "harmonium:block/tin_bulb_lit9"
+    },
+    "light_level=10": {
+      "model": "harmonium:block/tin_bulb_lit10"
+    },
+    "light_level=11": {
+      "model": "harmonium:block/tin_bulb_lit11"
+    },
+    "light_level=12": {
+      "model": "harmonium:block/tin_bulb_lit12"
+    },
+    "light_level=13": {
+      "model": "harmonium:block/tin_bulb_lit13"
+    },
+    "light_level=14": {
+      "model": "harmonium:block/tin_bulb_lit14"
+    },
+    "light_level=15": {
+      "model": "harmonium:block/tin_bulb_lit15"
+    }
   }
 }

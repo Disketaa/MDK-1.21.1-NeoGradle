@@ -21,7 +21,7 @@ public class ModItems {
 	// FARMERSDELIGHT
 	public static DeferredItem<SwordItem> WOODEN_KNIFE = null;
 	public static DeferredItem<Item> BRONZE_KNIFE = null;
-	// MINECRAFT
+	// HARMONIUM
 	public static final DeferredItem<Item> RAW_TIN = registerSimpleItem("raw_tin");
 	public static final DeferredItem<Item> COPPER_NUGGET = registerSimpleItem("copper_nugget");
 	public static final DeferredItem<Item> TIN_NUGGET = registerSimpleItem("tin_nugget");
