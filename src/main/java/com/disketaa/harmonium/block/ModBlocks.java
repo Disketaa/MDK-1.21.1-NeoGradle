@@ -1,6 +1,7 @@
 package com.disketaa.harmonium.block;
 
 import com.disketaa.harmonium.Harmonium;
+import com.disketaa.harmonium.block.custom.TinSoldierBlock;
 import com.disketaa.harmonium.block.custom.UnreliableButtonBlock;
 import com.disketaa.harmonium.block.custom.TinBulbBlock;
 import com.disketaa.harmonium.item.ModItems;
@@ -35,13 +36,20 @@ public class ModBlocks {
 			.requiresCorrectToolForDrops()
 			.strength(2.0f, 6.0f);
 
-		static final BlockBehaviour.Properties BULB_PROPERTIES = BlockBehaviour.Properties.of()
+		static final BlockBehaviour.Properties TIN_BULB = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.TERRACOTTA_WHITE)
 			.sound(SoundType.COPPER_BULB)
 			.isRedstoneConductor((state, level, pos) -> false)
 			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
 			.requiresCorrectToolForDrops()
 			.strength(2f, 6.0f);
+
+		static final BlockBehaviour.Properties TIN_SOLDIER = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.TERRACOTTA_WHITE)
+			.sound(SoundType.COPPER)
+			.noOcclusion()
+			.strength(0.1f, 0.1f)
+			.pushReaction(PushReaction.DESTROY);
 
 		static final BlockBehaviour.Properties ORE_STONE = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.STONE)
@@ -62,7 +70,6 @@ public class ModBlocks {
 			.strength(5.5f, 6.0f);
 	}
 
-	// BLOCKS
 	public static final DeferredBlock<Block> TIN_BLOCK = registerTinBlock("tin_block");
 	public static final DeferredBlock<Block> CHISELED_TIN = registerTinBlock("chiseled_tin");
 	public static final DeferredBlock<WaterloggedTransparentBlock> TIN_GRATE = registerBlock("tin_grate", ModBlocks::createTinGrate);
@@ -71,13 +78,13 @@ public class ModBlocks {
 	public static final DeferredBlock<SlabBlock> CUT_TIN_SLAB = registerBlock("cut_tin_slab", () -> new SlabBlock(Properties.GENERIC_TIN));
 	public static final DeferredBlock<DoorBlock> TIN_DOOR = registerBlock("tin_door", () -> new DoorBlock(BlockSetType.COPPER, createDoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(BlockSetType.COPPER, createTrapdoorProperties(TIN_BLOCK.get())));
-	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerBlock("tin_bulb", () -> new TinBulbBlock(Properties.BULB_PROPERTIES));
+	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerBlock("tin_bulb", () -> new TinBulbBlock(Properties.TIN_BULB));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
+	public static final DeferredBlock<TinSoldierBlock> TIN_SOLDIER = registerBlock("tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER));
 	public static DeferredBlock<ButtonBlock> TIN_BUTTON = null;
 
-	// METHODS
 	private static DeferredBlock<Block> registerTinBlock(String name) {
 		return registerBlock(name, () -> new Block(Properties.GENERIC_TIN));
 	}

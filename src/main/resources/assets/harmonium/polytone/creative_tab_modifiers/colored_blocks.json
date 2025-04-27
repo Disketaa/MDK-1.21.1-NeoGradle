@@ -1,0 +1,9 @@
+{
+  "targets": [
+    "colored_blocks"
+  ],
+  "additions": [
+    {"items": [
+      "harmonium:tin_soldier"], "before": false, "predicate": {"type": "items_match", "items": ["minecraft:pink_candle"]}}
+  ]
+}
