@@ -4,6 +4,7 @@ about: Create a bug report
 title: ''
 labels: bug
 assignees: Disketaa
+---
 
 ![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_1.png?raw=true) **Information:**
 body:
@@ -16,7 +17,6 @@ body:
     render: bash
   validations:
     required: true
-body:
 - type: dropdown
   id: modloader
   attributes:
@@ -26,7 +26,6 @@ body:
       - Neoforge
   validations:
     required: true
----
 
 ![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_1.png?raw=true) **Describe the bug:**
 > A clear and concise description of what the bug is.
