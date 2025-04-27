@@ -1,43 +1,30 @@
----
-name: Bug
-about: Create a bug report
-title: ''
-labels: bug
-assignees: Disketaa
----
-
-![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_1.png?raw=true) **Information:**
+name: Bug Report
+description: "For reporting bugs and other issues"
+labels:
+  - S-needs-triage
 body:
-- type: textarea
-  id: version
-  attributes:
-    label: Mod version:
-    description: "(e.g: 0.4.1)."
-    value: |
-    render: bash
-  validations:
-    required: true
-- type: dropdown
-  id: modloader
-  attributes:
-    label: Modloader:
-    options:
-      - Fabric
-      - Neoforge
-  validations:
-    required: true
+  - type: markdown
+    attributes:
+      value: >-
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: >-
+        Use this section to describe the issue you are experiencing in as much depth as possible. The description should
+        explain what behavior you were expecting, and why you believe the issue to be a bug. If the issue you are reporting
+        only occurs with specific mods installed, then provide the name and version of each mod.
 
-![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_1.png?raw=true) **Describe the bug:**
-> A clear and concise description of what the bug is.
-
-![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_2.png?raw=true) **To reproduce:**
->Steps to reproduce the behavior:
-
-![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_3.png?raw=true) **Expected behavior:**
->A clear and concise description of what you expected to happen.
-
-![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_4.png?raw=true) **Screenshots:**
->If applicable, add screenshots to help explain your problem.
-
-![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_5.png?raw=true) **Additional context:**
->Add any other context about the problem here.
+        **Hint:** If you have any screenshots, videos, or other information that you feel is necessary to
+        explain the issue, you can attach them here.
+  - type: textarea
+    id: description-reproduction-steps
+    attributes:
+      label: Reproduction Steps
+      description: >-
+        Provide as much information as possible on how to reproduce this bug. Make sure your instructions are as clear and
+        concise as possible, because other people will need to be able to follow your guide in order to re-create the issue.
+        
+        **Hint:**  A common way to fill this section out is to write a step-by-step guide.
+    validations:
+      required: true
