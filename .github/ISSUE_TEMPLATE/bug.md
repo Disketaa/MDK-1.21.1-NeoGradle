@@ -8,8 +8,26 @@ assignees: Disketaa
 ---
 
 ![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_1.png?raw=true) **Information:**
-> Mod version: (e.g: 0.4.1).
-> Launcher: (e.g: neoforge).
+body:
+- type: textarea
+  id: version
+  attributes:
+    label: Mod version:
+    description: "(e.g: 0.4.1)."
+    value: |
+    render: bash
+  validations:
+    required: true
+body:
+- type: dropdown
+  id: modloader
+  attributes:
+    label: Modloader:
+    options:
+      - Fabric
+      - Neoforge
+  validations:
+    required: true
 
 ![](https://github.com/Disketaa/Harmonium/blob/workspace/workspace/assets/icons/icon_number_1.png?raw=true) **Describe the bug:**
 > A clear and concise description of what the bug is.
