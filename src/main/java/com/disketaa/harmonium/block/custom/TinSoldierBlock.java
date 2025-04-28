@@ -2,11 +2,6 @@ package com.disketaa.harmonium.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,7 +17,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -35,7 +29,7 @@ public class TinSoldierBlock extends Block implements SimpleWaterloggedBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	protected static final VoxelShape SHAPE_1_NS = Block.box(6.0, 0.0, 6.0, 10.0, 7.0, 10.0); // Same as NS since it's square
+	protected static final VoxelShape SHAPE_1_NS = Block.box(6.0, 0.0, 6.0, 10.0, 7.0, 10.0);
 	protected static final VoxelShape SHAPE_2_NS = Block.box(6.0, 0.0, 4.0, 10.0, 7.0, 12.0);
 	protected static final VoxelShape SHAPE_3_NS = Block.box(3.0, 0.0, 4.0, 13.0, 7.0, 12.0);
 	protected static final VoxelShape SHAPE_4_NS = Block.box(3.0, 0.0, 4.0, 13.0, 7.0, 12.0);
@@ -128,44 +122,5 @@ public class TinSoldierBlock extends Block implements SimpleWaterloggedBlock {
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public void stepOn(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, Entity entity) {
-		if (!entity.isSteppingCarefully()) {
-			this.destroySoldier(level, state, pos, entity, 100);
-		}
-		super.stepOn(level, pos, state, entity);
-	}
-
-	@Override
-	public void fallOn(@NotNull Level level, @NotNull BlockState state, @NotNull BlockPos pos, @NotNull Entity entity, float fallDistance) {
-		this.destroySoldier(level, state, pos, entity, 3);
-		super.fallOn(level, state, pos, entity, fallDistance);
-	}
-
-	private void destroySoldier(Level level, BlockState state, BlockPos pos, Entity entity, int chance) {
-		if (canDestroySoldier(level, entity)) {
-			if (!level.isClientSide && level.random.nextInt(chance) == 0) {
-				decreaseSoldiers(level, pos, state);
-			}
-		}
-	}
-
-	private void decreaseSoldiers(Level level, BlockPos pos, BlockState state) {
-		level.playSound(null, pos, SoundEvents.COPPER_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.random.nextFloat() * 0.2F);
-		int soldiers = state.getValue(SOLDIERS);
-		if (soldiers <= 1) {
-			level.destroyBlock(pos, false);
-		} else {
-			level.setBlock(pos, state.setValue(SOLDIERS, soldiers - 1), 2);
-			level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
-			level.levelEvent(2001, pos, Block.getId(state));
-		}
-	}
-
-	private boolean canDestroySoldier(Level level, Entity entity) {
-		return entity instanceof LivingEntity && !(entity instanceof Player)
-			|| (entity instanceof Player && net.neoforged.neoforge.event.EventHooks.canEntityGrief(level, entity));
 	}
 }
