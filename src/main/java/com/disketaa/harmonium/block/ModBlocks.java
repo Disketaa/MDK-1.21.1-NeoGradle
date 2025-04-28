@@ -45,7 +45,6 @@ public class ModBlocks {
 			.strength(2f, 6.0f);
 
 		static final BlockBehaviour.Properties TIN_SOLDIER = BlockBehaviour.Properties.of()
-			.mapColor(MapColor.TERRACOTTA_WHITE)
 			.sound(SoundType.COPPER)
 			.noOcclusion()
 			.strength(0.1f, 0.1f)
@@ -82,7 +81,8 @@ public class ModBlocks {
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
-	public static final DeferredBlock<TinSoldierBlock> TIN_SOLDIER = registerBlock("tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER));
+	public static final DeferredBlock<TinSoldierBlock> TIN_SOLDIER = registerBlock("tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.TERRACOTTA_WHITE)));
+	public static final DeferredBlock<TinSoldierBlock> ORANGE_TIN_SOLDIER = registerBlock("orange_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.TERRACOTTA_ORANGE)));
 	public static DeferredBlock<ButtonBlock> TIN_BUTTON = null;
 
 	private static DeferredBlock<Block> registerTinBlock(String name) {

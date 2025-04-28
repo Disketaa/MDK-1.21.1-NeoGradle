@@ -8,6 +8,7 @@
     "harmonium:cut_tin_slab",
     "harmonium:tin_door",
     "harmonium:tin_trapdoor",
-    "harmonium:tin_bulb"
+    "harmonium:tin_bulb",
+    "#harmonium:tin_soldiers"
   ]
 }
