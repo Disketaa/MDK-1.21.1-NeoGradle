@@ -82,7 +82,22 @@ public class ModBlocks {
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
 	public static final DeferredBlock<TinSoldierBlock> TIN_SOLDIER = registerBlock("tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.TERRACOTTA_WHITE)));
-	public static final DeferredBlock<TinSoldierBlock> ORANGE_TIN_SOLDIER = registerBlock("orange_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.TERRACOTTA_ORANGE)));
+	public static final DeferredBlock<TinSoldierBlock> WHITE_TIN_SOLDIER = registerBlock("white_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.SNOW)));
+	public static final DeferredBlock<TinSoldierBlock> LIGHT_GRAY_TIN_SOLDIER = registerBlock("light_gray_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_LIGHT_GRAY)));
+	public static final DeferredBlock<TinSoldierBlock> GRAY_TIN_SOLDIER = registerBlock("gray_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_GRAY)));
+	public static final DeferredBlock<TinSoldierBlock> BLACK_TIN_SOLDIER = registerBlock("black_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_BLACK)));
+	public static final DeferredBlock<TinSoldierBlock> BROWN_TIN_SOLDIER = registerBlock("brown_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_BROWN)));
+	public static final DeferredBlock<TinSoldierBlock> RED_TIN_SOLDIER = registerBlock("red_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_RED)));
+	public static final DeferredBlock<TinSoldierBlock> ORANGE_TIN_SOLDIER = registerBlock("orange_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_ORANGE)));
+	public static final DeferredBlock<TinSoldierBlock> YELLOW_TIN_SOLDIER = registerBlock("yellow_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_YELLOW)));
+	public static final DeferredBlock<TinSoldierBlock> LIME_TIN_SOLDIER = registerBlock("lime_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_LIGHT_GREEN)));
+	public static final DeferredBlock<TinSoldierBlock> GREEN_TIN_SOLDIER = registerBlock("green_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_GREEN)));
+	public static final DeferredBlock<TinSoldierBlock> CYAN_TIN_SOLDIER = registerBlock("cyan_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_CYAN)));
+	public static final DeferredBlock<TinSoldierBlock> LIGHT_BLUE_TIN_SOLDIER = registerBlock("light_blue_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_LIGHT_BLUE)));
+	public static final DeferredBlock<TinSoldierBlock> BLUE_TIN_SOLDIER = registerBlock("blue_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_BLUE)));
+	public static final DeferredBlock<TinSoldierBlock> PURPLE_TIN_SOLDIER = registerBlock("purple_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_PURPLE)));
+	public static final DeferredBlock<TinSoldierBlock> MAGENTA_TIN_SOLDIER = registerBlock("magenta_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_MAGENTA)));
+	public static final DeferredBlock<TinSoldierBlock> PINK_TIN_SOLDIER = registerBlock("pink_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_PINK)));
 	public static DeferredBlock<ButtonBlock> TIN_BUTTON = null;
 
 	private static DeferredBlock<Block> registerTinBlock(String name) {

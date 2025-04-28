@@ -1,6 +1,21 @@
 {
   "values": [
     "harmonium:tin_soldier",
-    "harmonium:orange_tin_soldier"
+    "harmonium:white_tin_soldier",
+    "harmonium:light_gray_tin_soldier",
+    "harmonium:gray_tin_soldier",
+    "harmonium:black_tin_soldier",
+    "harmonium:brown_tin_soldier",
+    "harmonium:red_tin_soldier",
+    "harmonium:orange_tin_soldier",
+    "harmonium:yellow_tin_soldier",
+    "harmonium:lime_tin_soldier",
+    "harmonium:green_tin_soldier",
+    "harmonium:cyan_tin_soldier",
+    "harmonium:light_blue_tin_soldier",
+    "harmonium:blue_tin_soldier",
+    "harmonium:purple_tin_soldier",
+    "harmonium:magenta_tin_soldier",
+    "harmonium:pink_tin_soldier"
   ]
 }

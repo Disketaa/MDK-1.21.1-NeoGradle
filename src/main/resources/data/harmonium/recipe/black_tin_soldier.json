@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dyed_tin_soldier",
+  "ingredients": [
+    {
+      "item": "harmonium:tin_soldier"
+    },
+    {
+      "tag": "c:dyes/black"
+    }
+  ],
+  "result": {
+    "id": "harmonium:black_tin_soldier"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "harmonium:item/gray_tin_soldier"
+  }
+}

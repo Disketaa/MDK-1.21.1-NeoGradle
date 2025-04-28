@@ -1,0 +1,62 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "harmonium:pink_tin_soldier",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "soldiers": "2"
+                  }
+                }
+              ],
+              "count": 2,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "harmonium:pink_tin_soldier",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "soldiers": "3"
+                  }
+                }
+              ],
+              "count": 3,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "harmonium:pink_tin_soldier",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "soldiers": "4"
+                  }
+                }
+              ],
+              "count": 4,
+              "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "harmonium:pink_tin_soldier"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "harmonium:blocks/pink_tin_soldier"
+}

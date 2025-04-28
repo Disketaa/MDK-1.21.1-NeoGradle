@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,soldiers=1": {
+      "model": "harmonium:block/yellow_tin_soldier_one_soldier"
+    },
+    "facing=east,soldiers=1": {
+      "model": "harmonium:block/yellow_tin_soldier_one_soldier",
+      "y": 90
+    },
+    "facing=south,soldiers=1": {
+      "model": "harmonium:block/yellow_tin_soldier_one_soldier",
+      "y": 180
+    },
+    "facing=west,soldiers=1": {
+      "model": "harmonium:block/yellow_tin_soldier_one_soldier",
+      "y": 270
+    },
+    "facing=north,soldiers=2": {
+      "model": "harmonium:block/yellow_tin_soldier_two_soldiers"
+    },
+    "facing=east,soldiers=2": {
+      "model": "harmonium:block/yellow_tin_soldier_two_soldiers",
+      "y": 90
+    },
+    "facing=south,soldiers=2": {
+      "model": "harmonium:block/yellow_tin_soldier_two_soldiers",
+      "y": 180
+    },
+    "facing=west,soldiers=2": {
+      "model": "harmonium:block/yellow_tin_soldier_two_soldiers",
+      "y": 270
+    },
+    "facing=north,soldiers=3": {
+      "model": "harmonium:block/yellow_tin_soldier_three_soldiers"
+    },
+    "facing=east,soldiers=3": {
+      "model": "harmonium:block/yellow_tin_soldier_three_soldiers",
+      "y": 90
+    },
+    "facing=south,soldiers=3": {
+      "model": "harmonium:block/yellow_tin_soldier_three_soldiers",
+      "y": 180
+    },
+    "facing=west,soldiers=3": {
+      "model": "harmonium:block/yellow_tin_soldier_three_soldiers",
+      "y": 270
+    },
+    "facing=north,soldiers=4": {
+      "model": "harmonium:block/yellow_tin_soldier_four_soldiers"
+    },
+    "facing=east,soldiers=4": {
+      "model": "harmonium:block/yellow_tin_soldier_four_soldiers",
+      "y": 90
+    },
+    "facing=south,soldiers=4": {
+      "model": "harmonium:block/yellow_tin_soldier_four_soldiers",
+      "y": 180
+    },
+    "facing=west,soldiers=4": {
+      "model": "harmonium:block/yellow_tin_soldier_four_soldiers",
+      "y": 270
+    }
+  }
+}
