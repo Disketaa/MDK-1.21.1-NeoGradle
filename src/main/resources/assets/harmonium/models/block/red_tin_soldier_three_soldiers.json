@@ -1,0 +1,7 @@
+{
+  "parent": "harmonium:block/template_tin_soldier_three_soldiers",
+  "textures": {
+    "all": "harmonium:block/red_tin_soldier",
+    "particle": "harmonium:block/red_tin_soldier"
+  }
+}
