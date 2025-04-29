@@ -1,10 +1,8 @@
 {
   "block.note_block.cymbal": {
     "sounds": [
-      {
-        "name": "harmonium:note/cymbal",
-        "stream": false
-      }
-    ]
+      "harmonium:note/cymbal"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
   }
 }
