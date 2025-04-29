@@ -27,7 +27,6 @@ public class ModBlocks {
 	public static final DeferredRegister.Blocks	BLOCKS =
 		DeferredRegister.createBlocks(Harmonium.MOD_ID);
 
-	// PROPERTIES
 	private static final class Properties {
 
 		static final BlockBehaviour.Properties GENERIC_TIN = BlockBehaviour.Properties.of()

@@ -1,13 +1,7 @@
 package com.disketaa.harmonium.block.custom;
 
-import com.disketaa.harmonium.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -15,7 +9,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +19,6 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -58,55 +50,9 @@ public class TinSoldierBlock extends Block implements SimpleWaterloggedBlock {
 		return Block.canSupportCenter(level, pos.below(), Direction.UP);
 	}
 
-	private void playSoldierSound(Level level, BlockPos pos, BlockState state) {
-		int soldierCount = state.getValue(SOLDIERS);
-		if (level.isClientSide) {
-			level.addParticle(ParticleTypes.NOTE,
-				pos.getX() + 0.5D,
-				pos.getY() - 0.7D,  // Position near the note block
-				pos.getZ() + 0.5D,
-				soldierCount / 24.0D, 0.0D, 0.0D);
-		} else {
-			SoundEvent sound = switch(soldierCount) {
-				case 2 -> ModSounds.CYMBAL.get();
-				case 3 -> ModSounds.WOODWIND.get();
-				case 4 -> ModSounds.HORN.get();
-				default -> ModSounds.RIM.get();
-			};
-			level.playSound(null, pos.below(), sound, SoundSource.RECORDS, 3.0F, 1.0F);
-		}
-	}
-
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(SOLDIERS, FACING, WATERLOGGED);
-	}
-
-	@Override
-	public void neighborChanged(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Block block, @NotNull BlockPos fromPos, boolean isMoving) {
-		super.neighborChanged(state, level, pos, block, fromPos, isMoving);
-
-		if (fromPos.equals(pos.below())) {
-			BlockState belowState = level.getBlockState(fromPos);
-			if (belowState.getBlock() instanceof NoteBlock && level.hasNeighborSignal(fromPos)) {
-				playSoldierSound(level, pos, state);
-			}
-		}
-	}
-
-	public static void onNoteBlockPlayed(Level level, BlockPos noteBlockPos) {
-		BlockPos abovePos = noteBlockPos.above();
-		BlockState aboveState = level.getBlockState(abovePos);
-
-		if (aboveState.getBlock() instanceof TinSoldierBlock tinSoldier) {
-			tinSoldier.playSoldierSound(level, abovePos, aboveState);
-		}
-	}
-
-	@Override
-	protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull BlockHitResult hit) {
-		playSoldierSound(level, pos, state);
-		return InteractionResult.sidedSuccess(level.isClientSide);
 	}
 
 	@Override
