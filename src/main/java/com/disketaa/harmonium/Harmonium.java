@@ -3,6 +3,7 @@ package com.disketaa.harmonium;
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.item.ModCreativeModeTabs;
 import com.disketaa.harmonium.item.ModItems;
+import com.disketaa.harmonium.sound.ModSounds;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -33,6 +34,7 @@ public class Harmonium
         ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+	    ModSounds.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

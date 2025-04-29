@@ -1,0 +1,10 @@
+{
+  "block.note_block.cymbal": {
+    "sounds": [
+      {
+        "name": "harmonium:note/cymbal",
+        "stream": false
+      }
+    ]
+  }
+}
