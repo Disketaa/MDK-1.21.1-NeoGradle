@@ -4,5 +4,23 @@
       "harmonium:note/cymbal"
     ],
     "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.horn": {
+    "sounds": [
+      "harmonium:note/horn"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.rim": {
+    "sounds": [
+      "harmonium:note/rim"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.woodwind": {
+    "sounds": [
+      "harmonium:note/woodwind"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
   }
 }

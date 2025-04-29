@@ -12,9 +12,9 @@ public class ModSounds {
 		DeferredRegister.create(Registries.SOUND_EVENT, "harmonium");
 
 	public static final DeferredHolder<SoundEvent, SoundEvent> CYMBAL = registerSoundEvent("note.cymbal");
-	public static final DeferredHolder<SoundEvent, SoundEvent> DRUM = registerSoundEvent("note.drum");
-	public static final DeferredHolder<SoundEvent, SoundEvent> FLUTE = registerSoundEvent("note.flute");
 	public static final DeferredHolder<SoundEvent, SoundEvent> HORN = registerSoundEvent("note.horn");
+	public static final DeferredHolder<SoundEvent, SoundEvent> RIM = registerSoundEvent("note.rim");
+	public static final DeferredHolder<SoundEvent, SoundEvent> WOODWIND = registerSoundEvent("note.woodwind");
 
 	private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name) {
 		return SOUND_EVENTS.register(name, () ->
