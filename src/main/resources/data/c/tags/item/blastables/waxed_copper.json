@@ -9,6 +9,8 @@
     "minecraft:waxed_copper_door",
     "minecraft:waxed_copper_trapdoor",
     "minecraft:waxed_copper_bulb",
+    {"id": "friendsandfoes:waxed_lightning_rod", "required": false},
+    {"id": "friendsandfoes:waxed_copper_button", "required": false},
     "minecraft:waxed_exposed_copper",
     "minecraft:waxed_exposed_chiseled_copper",
     "minecraft:waxed_exposed_copper_grate",
@@ -18,6 +20,8 @@
     "minecraft:waxed_exposed_copper_door",
     "minecraft:waxed_exposed_copper_trapdoor",
     "minecraft:waxed_exposed_copper_bulb",
+    {"id": "friendsandfoes:waxed_exposed_lightning_rod", "required": false},
+    {"id": "friendsandfoes:waxed_exposed_copper_button", "required": false},
     "minecraft:waxed_weathered_copper",
     "minecraft:waxed_weathered_chiseled_copper",
     "minecraft:waxed_weathered_copper_grate",
@@ -27,6 +31,8 @@
     "minecraft:waxed_weathered_copper_door",
     "minecraft:waxed_weathered_copper_trapdoor",
     "minecraft:waxed_weathered_copper_bulb",
+    {"id": "friendsandfoes:waxed_weathered_lightning_rod", "required": false},
+    {"id": "friendsandfoes:waxed_weathered_copper_button", "required": false},
     "minecraft:waxed_oxidized_copper",
     "minecraft:waxed_oxidized_chiseled_copper",
     "minecraft:waxed_oxidized_copper_grate",
@@ -35,6 +41,8 @@
     "minecraft:waxed_oxidized_cut_copper_slab",
     "minecraft:waxed_oxidized_copper_door",
     "minecraft:waxed_oxidized_copper_trapdoor",
-    "minecraft:waxed_oxidized_copper_bulb"
+    "minecraft:waxed_oxidized_copper_bulb",
+    {"id": "friendsandfoes:waxed_oxidized_lightning_rod", "required": false},
+    {"id": "friendsandfoes:waxed_oxidized_copper_button", "required": false}
   ]
 }

@@ -9,6 +9,7 @@
     "harmonium:tin_door",
     "harmonium:tin_trapdoor",
     "harmonium:tin_bulb",
+    {"id": "harmonium:tin_button", "required": false},
     "#harmonium:tin_soldiers"
   ]
 }

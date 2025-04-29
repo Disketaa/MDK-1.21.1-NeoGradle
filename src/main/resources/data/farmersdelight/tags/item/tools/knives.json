@@ -1,18 +1,9 @@
 {
   "values": [
-    {
-      "id": "harmonium:wooden_knife",
-      "required": false
-    },
-    {
-      "id": "harmonium:bronze_knife",
-      "required": false
-    }
+    {"id": "harmonium:wooden_knife", "required": false},
+    {"id": "harmonium:bronze_knife", "required": false}
   ],
   "remove": [
-    {
-      "id": "farmersdelight:flint_knife",
-      "required": false
-    }
+    {"id": "farmersdelight:flint_knife", "required": false}
   ]
 }

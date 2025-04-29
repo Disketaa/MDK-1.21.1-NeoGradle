@@ -1,6 +1,6 @@
 {
   "values": [
-    "minecraft:copper_ingot",
+    "#c:ingots/copper",
     "minecraft:spyglass",
     "minecraft:brush"
   ]

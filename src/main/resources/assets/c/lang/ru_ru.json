@@ -1,17 +1,19 @@
 {
   "tag.item.c.blastables.copper": "Выплавляемая медь",
+  "tag.item.c.blastables.gold": "Выплавляемое золото",
+  "tag.item.c.blastables.iron": "Выплавляемое железо",
   "tag.item.c.blastables.tin": "Выплавляемое олово",
   "tag.item.c.blastables.waxed_copper": "Выплавляемая вощёная медь",
-  "tag.item.c.ores.tin": "Оловянные руды",
-  "tag.item.c.smeltables.copper": "Переплавляемое медь",
-  "tag.item.c.smeltables.tin": "Переплавляемое олово",
   "tag.item.c.ingots.tin": "Оловянные слитки",
   "tag.item.c.nuggets.tin": "Кусочки олова",
+  "tag.item.c.ores.tin": "Оловянные руды",
   "tag.item.c.raw_materials.tin": "Рудное олово",
+  "tag.item.c.smeltables.copper": "Переплавляемое медь",
+  "tag.item.c.smeltables.gold": "Переплавляемое золото",
+  "tag.item.c.smeltables.iron": "Переплавляемое железо",
+  "tag.item.c.smeltables.tin": "Переплавляемое олово",
   "tag.item.c.storage_blocks.raw_tin": "Блоки рудного олова",
   "tag.item.c.storage_blocks.tin": "Оловянные блоки",
   "tag.item.c.tools.bronze": "Бронзовые инструменты",
-  "tag.item.c.tools.knife": "Ножи",
-  "tag.item.c.tools.wooden": "Деревянные инструменты"
-
+  "tag.item.c.tools.knife": "Ножи"
 }

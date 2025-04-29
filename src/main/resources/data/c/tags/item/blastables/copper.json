@@ -1,6 +1,6 @@
 {
   "values": [
-    "minecraft:copper_block",
+    "#c:storage_blocks/copper",
     "minecraft:chiseled_copper",
     "minecraft:copper_grate",
     "minecraft:cut_copper",
@@ -10,6 +10,7 @@
     "minecraft:copper_trapdoor",
     "minecraft:copper_bulb",
     "minecraft:lightning_rod",
+    {"id": "friendsandfoes:copper_button", "required": false},
     "minecraft:exposed_copper",
     "minecraft:exposed_chiseled_copper",
     "minecraft:exposed_copper_grate",
@@ -19,6 +20,8 @@
     "minecraft:exposed_copper_door",
     "minecraft:exposed_copper_trapdoor",
     "minecraft:exposed_copper_bulb",
+    {"id": "friendsandfoes:exposed_lightning_rod", "required": false},
+    {"id": "friendsandfoes:exposed_copper_button", "required": false},
     "minecraft:weathered_copper",
     "minecraft:weathered_chiseled_copper",
     "minecraft:weathered_copper_grate",
@@ -28,6 +31,8 @@
     "minecraft:weathered_copper_door",
     "minecraft:weathered_copper_trapdoor",
     "minecraft:weathered_copper_bulb",
+    {"id": "friendsandfoes:weathered_lightning_rod", "required": false},
+    {"id": "friendsandfoes:weathered_copper_button", "required": false},
     "minecraft:oxidized_copper",
     "minecraft:oxidized_chiseled_copper",
     "minecraft:oxidized_copper_grate",
@@ -37,6 +42,8 @@
     "minecraft:oxidized_copper_door",
     "minecraft:oxidized_copper_trapdoor",
     "minecraft:oxidized_copper_bulb",
+    {"id": "friendsandfoes:oxidized_lightning_rod", "required": false},
+    {"id": "friendsandfoes:oxidized_copper_button", "required": false},
     "#c:smeltables/copper"
   ]
 }

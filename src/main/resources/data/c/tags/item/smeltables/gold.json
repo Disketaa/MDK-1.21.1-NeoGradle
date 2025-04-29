@@ -1,0 +1,21 @@
+{
+  "values": [
+    "#c:ingots/gold",
+    "minecraft:golden_helmet",
+    "minecraft:golden_chestplate",
+    "minecraft:golden_leggings",
+    "minecraft:golden_boots",
+    "minecraft:golden_shovel",
+    "minecraft:golden_pickaxe",
+    "minecraft:golden_axe",
+    "minecraft:golden_hoe",
+    "minecraft:golden_sword",
+    {"id": "farmersdelight:golden_knife", "required": false},
+    "minecraft:glistering_melon_slice",
+    "minecraft:golden_carrot",
+    "minecraft:golden_apple",
+    "minecraft:enchanted_golden_apple",
+    "minecraft:clock",
+    "minecraft:golden_horse_armor"
+  ]
+}
