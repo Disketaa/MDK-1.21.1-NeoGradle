@@ -9,7 +9,7 @@ import net.neoforged.neoforge.common.util.DeferredSoundType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class ModSounds {
+public class ModSoundType {
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
 		DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, Harmonium.MOD_ID);
 

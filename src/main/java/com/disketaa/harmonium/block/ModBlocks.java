@@ -5,7 +5,7 @@ import com.disketaa.harmonium.block.custom.TinSoldierBlock;
 import com.disketaa.harmonium.block.custom.UnreliableButtonBlock;
 import com.disketaa.harmonium.block.custom.TinBulbBlock;
 import com.disketaa.harmonium.item.ModItems;
-import com.disketaa.harmonium.sound.ModSounds;
+import com.disketaa.harmonium.sound.ModSoundType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.item.Item;
@@ -32,7 +32,7 @@ public class ModBlocks {
 
 		static final BlockBehaviour.Properties GENERIC_TIN = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.TERRACOTTA_WHITE)
-			.sound(ModSounds.TIN)
+			.sound(ModSoundType.TIN)
 			.requiresCorrectToolForDrops()
 			.strength(2.0f, 6.0f);
 
@@ -45,7 +45,7 @@ public class ModBlocks {
 			.strength(2f, 6.0f);
 
 		static final BlockBehaviour.Properties TIN_SOLDIER = BlockBehaviour.Properties.of()
-			.sound(SoundType.COPPER)
+			.sound(ModSoundType.TIN)
 			.noOcclusion()
 			.strength(0.1f, 0.1f)
 			.pushReaction(PushReaction.DESTROY);
@@ -151,7 +151,7 @@ public class ModBlocks {
 					BlockSetType.COPPER,
 					BlockBehaviour.Properties.of()
 						.mapColor(MapColor.TERRACOTTA_WHITE)
-						.sound(SoundType.COPPER)
+						.sound(ModSoundType.TIN)
 						.strength(0.5f, 0.5f)
 						.noCollission()
 				));
