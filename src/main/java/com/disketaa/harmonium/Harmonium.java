@@ -1,7 +1,8 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.block.ModBlocks;
-import com.disketaa.harmonium.item.ModCreativeModeTabs;
+import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
+import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
 import org.slf4j.Logger;
@@ -26,30 +27,35 @@ public class Harmonium
     public static final String MOD_ID = "harmonium";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public Harmonium(IEventBus modEventBus, ModContainer modContainer)
-    {
-        modEventBus.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.register(this);
+	public Harmonium(IEventBus modEventBus, ModContainer modContainer) {
+		NeoForge.EVENT_BUS.register(this);
+		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        ModCreativeModeTabs.register(modEventBus);
-        ModBlocks.register(modEventBus);
-        ModItems.register(modEventBus);
-	    ModSoundType.register(modEventBus);
+		modEventBus.addListener(this::commonSetup);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
+		if (Config.showHarmoniumCreativeTab) {
+			ModCreativeTabs.register(modEventBus);
+		}
 
-    private void commonSetup(final FMLCommonSetupEvent event){
-    }
+		ModBlocks.register(modEventBus);
+		ModItems.register(modEventBus);
+		ModSoundType.register(modEventBus);
+	}
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-    }
+	private void commonSetup(final FMLCommonSetupEvent event) {
+		if (Config.addToVanillaTabs) {
+			NeoForge.EVENT_BUS.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
+		}
+	}
 
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-        }
-    }
+	@SubscribeEvent
+	public void onServerStarting(ServerStartingEvent event) {
+	}
+
+	@EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+	public static class ClientModEvents {
+		@SubscribeEvent
+		public static void onClientSetup(FMLClientSetupEvent event) {
+		}
+	}
 }

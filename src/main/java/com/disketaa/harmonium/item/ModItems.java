@@ -18,10 +18,8 @@ import java.util.List;
 public class ModItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Harmonium.MOD_ID);
 	private static final List<DeferredItem<? extends Item>> REGISTERED_ITEMS = new ArrayList<>();
-	// FARMERSDELIGHT
 	public static DeferredItem<SwordItem> WOODEN_KNIFE = null;
 	public static DeferredItem<Item> BRONZE_KNIFE = null;
-	// HARMONIUM
 	public static final DeferredItem<Item> RAW_TIN = registerSimpleItem("raw_tin");
 	public static final DeferredItem<Item> COPPER_NUGGET = registerSimpleItem("copper_nugget");
 	public static final DeferredItem<Item> TIN_NUGGET = registerSimpleItem("tin_nugget");

@@ -1,7 +1,8 @@
-package com.disketaa.harmonium.item;
+package com.disketaa.harmonium.gui;
 
 import com.disketaa.harmonium.Harmonium;
 import com.disketaa.harmonium.block.ModBlocks;
+import com.disketaa.harmonium.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,7 +15,7 @@ import java.util.function.Supplier;
 
 import static com.disketaa.harmonium.item.ModItems.ITEMS;
 
-public class ModCreativeModeTabs {
+public class ModCreativeTabs {
 	private static Supplier<Item> getItemById(String id) {
 		return () -> ITEMS.getEntries().stream()
 			.filter(item -> item.getId().getPath().equals(id))
