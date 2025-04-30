@@ -28,16 +28,12 @@ public class Harmonium {
 	public Harmonium(IEventBus modEventBus, ModContainer modContainer) {
 		NeoForge.EVENT_BUS.register(this);
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-		modEventBus.addListener(this::commonSetup);
+		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 		
 		ModCreativeTabs.register(modEventBus);
 		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
 		ModSoundType.register(modEventBus);
-	}
-
-	private void commonSetup(final FMLCommonSetupEvent event) {
-		NeoForge.EVENT_BUS.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 	}
 
 	@SubscribeEvent
