@@ -18,10 +18,34 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_PLACE = registerSoundEvent("block.tin.place");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_HIT = registerSoundEvent("block.tin.hit");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_FALL = registerSoundEvent("block.tin.fall");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_GRATE_BREAK = registerSoundEvent("block.tin_grate.break");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_GRATE_STEP = registerSoundEvent("block.tin_grate.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_GRATE_PLACE = registerSoundEvent("block.tin_grate.place");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_GRATE_HIT = registerSoundEvent("block.tin_grate.hit");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_GRATE_FALL = registerSoundEvent("block.tin_grate.fall");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_BREAK = registerSoundEvent("block.tin_bulb.break");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_STEP = registerSoundEvent("block.tin_bulb.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_PLACE = registerSoundEvent("block.tin_bulb.place");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_HIT = registerSoundEvent("block.tin_bulb.hit");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_FALL = registerSoundEvent("block.tin_bulb.fall");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_DOOR_CLOSE = registerSoundEvent("block.tin_door.close");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_DOOR_OPEN = registerSoundEvent("block.tin_door.open");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_CLOSE = registerSoundEvent("block.tin_trapdoor.close");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_OPEN = registerSoundEvent("block.tin_trapdoor.open");
 
 	public static final DeferredSoundType TIN = new DeferredSoundType(
 		1.0f, 1.0f,
 		TIN_BREAK, TIN_STEP, TIN_PLACE, TIN_HIT, TIN_FALL
+	);
+
+	public static final DeferredSoundType TIN_GRATE = new DeferredSoundType(
+		1.0f, 1.0f,
+		TIN_GRATE_BREAK, TIN_GRATE_STEP, TIN_GRATE_PLACE, TIN_GRATE_HIT, TIN_GRATE_FALL
+	);
+
+	public static final DeferredSoundType TIN_BULB = new DeferredSoundType(
+		1.0f, 1.0f,
+		TIN_BULB_BREAK, TIN_BULB_STEP, TIN_BULB_PLACE, TIN_BULB_HIT, TIN_BULB_FALL
 	);
 
 	private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name) {

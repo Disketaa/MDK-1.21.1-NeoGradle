@@ -5,6 +5,7 @@ import com.disketaa.harmonium.block.custom.TinSoldierBlock;
 import com.disketaa.harmonium.block.custom.UnreliableButtonBlock;
 import com.disketaa.harmonium.block.custom.TinBulbBlock;
 import com.disketaa.harmonium.item.ModItems;
+import com.disketaa.harmonium.sound.ModBlockSetType;
 import com.disketaa.harmonium.sound.ModSoundType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
@@ -38,7 +39,7 @@ public class ModBlocks {
 
 		static final BlockBehaviour.Properties TIN_BULB = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.TERRACOTTA_WHITE)
-			.sound(SoundType.COPPER_BULB)
+			.sound(ModSoundType.TIN_BULB)
 			.isRedstoneConductor((state, level, pos) -> false)
 			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
 			.requiresCorrectToolForDrops()
@@ -75,8 +76,8 @@ public class ModBlocks {
 	public static final DeferredBlock<Block> CUT_TIN = registerTinBlock("cut_tin");
 	public static final DeferredBlock<StairBlock> CUT_TIN_STAIRS = registerBlock("cut_tin_stairs", () -> new StairBlock(CUT_TIN.get().defaultBlockState(), Properties.GENERIC_TIN));
 	public static final DeferredBlock<SlabBlock> CUT_TIN_SLAB = registerBlock("cut_tin_slab", () -> new SlabBlock(Properties.GENERIC_TIN));
-	public static final DeferredBlock<DoorBlock> TIN_DOOR = registerBlock("tin_door", () -> new DoorBlock(BlockSetType.COPPER, createDoorProperties(TIN_BLOCK.get())));
-	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(BlockSetType.COPPER, createTrapdoorProperties(TIN_BLOCK.get())));
+	public static final DeferredBlock<DoorBlock> TIN_DOOR = registerBlock("tin_door", () -> new DoorBlock(ModBlockSetType.TIN, createDoorProperties(TIN_BLOCK.get())));
+	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.TIN, createTrapdoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerBlock("tin_bulb", () -> new TinBulbBlock(Properties.TIN_BULB));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
@@ -107,7 +108,7 @@ public class ModBlocks {
 	private static WaterloggedTransparentBlock createTinGrate() {
 		return new WaterloggedTransparentBlock(
 			BlockBehaviour.Properties.ofFullCopy(TIN_BLOCK.get())
-				.sound(SoundType.COPPER_GRATE)
+				.sound(ModSoundType.TIN_GRATE)
 				.noOcclusion()
 				.isRedstoneConductor((state, level, pos) -> false)
 				.isSuffocating((state, level, pos) -> false)
@@ -148,7 +149,7 @@ public class ModBlocks {
 		if (ModList.get().isLoaded("friendsandfoes")) {
 			TIN_BUTTON = registerBlock("tin_button",
 				() -> new UnreliableButtonBlock(
-					BlockSetType.COPPER,
+					ModBlockSetType.TIN,
 					BlockBehaviour.Properties.of()
 						.mapColor(MapColor.TERRACOTTA_WHITE)
 						.sound(ModSoundType.TIN)
