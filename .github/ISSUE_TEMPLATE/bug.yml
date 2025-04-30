@@ -1,1 +1,67 @@
-
+name: Mod Issue Report
+description: Report an issue with a Minecraft mod (Neoforge/Fabric)
+title: "[Issue]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue! Please fill out this form as completely as possible.
+        
+        **Note**: For mod-specific issues, please contact the mod author directly if this isn't your mod.
+  - type: dropdown
+    id: modloader
+    attributes:
+      label: Modloader Version
+      description: Which modloader are you using?
+      options:
+        - Neoforge
+        - Fabric
+    validations:
+      required: true
+  - type: input
+    id: mod-version
+    attributes:
+      label: Mod Version
+      description: What version of the mod are you using?
+      placeholder: ex. 1.21.1-1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Issue Description
+      description: |
+        Please describe:
+        1. What you were doing when the issue occurred
+        2. What you expected to happen
+        3. What actually happened
+      placeholder: |
+        Example:
+        I was trying to craft the super pickaxe when...
+        Expected: The pickaxe should be crafted successfully
+        Actual: The game crashed when I clicked the craft button
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Please add any relevant screenshots (drag and drop to upload)
+      placeholder: If applicable, add screenshots to help explain your problem
+      render: markdown
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Additional Checks
+      description: Please verify these items before submitting
+      options:
+        - label: I have checked that this issue isn't already reported
+          required: true
+        - label: I'm using the latest version of the mod
+          required: false
+        - label: I've included all relevant information
+          required: true
