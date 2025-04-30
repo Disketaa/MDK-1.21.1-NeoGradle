@@ -1,7 +1,7 @@
-name: Bug Report
+name: Bug issue
 description: Report an issue with a Harmonium mod
-title: "[Issue]: "
-labels: ["bug", "needs-triage"]
+title: "[BUG]: "
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
