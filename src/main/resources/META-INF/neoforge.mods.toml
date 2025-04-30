@@ -25,13 +25,6 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${ mod_id }]]
-modId = "polytone"
-mandatory = true
-versionRange = "[1.21,)"
-ordering = "NONE"
-side = "CLIENT"
-
-[[dependencies.${ mod_id }]]
 modId = "farmersdelight"
 type = "optional"
 versionRange = "[1.2.7,)"

@@ -1,8 +1,0 @@
-{
-	"targets": [
-		"harmonium:harmonium_tab"
-	],
-	"removals": [
-		{"type": "id_match", "namespace": "harmonium"}
-	]
-}
