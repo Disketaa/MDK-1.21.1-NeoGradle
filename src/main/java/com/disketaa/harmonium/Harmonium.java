@@ -6,7 +6,6 @@ import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
 import org.slf4j.Logger;
-
 import com.mojang.logging.LogUtils;
 
 import net.neoforged.api.distmarker.Dist;
@@ -22,30 +21,23 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 @Mod(Harmonium.MOD_ID)
-public class Harmonium
-{
-    public static final String MOD_ID = "harmonium";
-    private static final Logger LOGGER = LogUtils.getLogger();
+public class Harmonium {
+	public static final String MOD_ID = "harmonium";
+	private static final Logger LOGGER = LogUtils.getLogger();
 
 	public Harmonium(IEventBus modEventBus, ModContainer modContainer) {
 		NeoForge.EVENT_BUS.register(this);
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
 		modEventBus.addListener(this::commonSetup);
-
-		if (Config.showHarmoniumCreativeTab) {
-			ModCreativeTabs.register(modEventBus);
-		}
-
+		
+		ModCreativeTabs.register(modEventBus);
 		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
 		ModSoundType.register(modEventBus);
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
-		if (Config.addToVanillaTabs) {
-			NeoForge.EVENT_BUS.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
-		}
+		NeoForge.EVENT_BUS.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 	}
 
 	@SubscribeEvent

@@ -9,14 +9,12 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class Config {
 	private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-	// CreativeTabs
 	private static final ModConfigSpec.BooleanValue SHOW_HARMONIUM_CREATIVE_TAB = BUILDER
 		.define("show_harmonium_creative_tab", true);
 
 	private static final ModConfigSpec.BooleanValue ADD_TO_VANILLA_TABS = BUILDER
 		.define("add_to_vanilla_tabs", true);
 
-	// TinButton
 	private static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION = BUILDER
 		.defineInRange("tin_button.short_press_duration", 2, 0, 20); // Default: 2
 
