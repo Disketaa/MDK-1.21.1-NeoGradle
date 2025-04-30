@@ -5,6 +5,7 @@ import com.disketaa.harmonium.block.custom.TinSoldierBlock;
 import com.disketaa.harmonium.block.custom.UnreliableButtonBlock;
 import com.disketaa.harmonium.block.custom.TinBulbBlock;
 import com.disketaa.harmonium.item.ModItems;
+import com.disketaa.harmonium.sound.ModSounds;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.item.Item;
@@ -31,7 +32,7 @@ public class ModBlocks {
 
 		static final BlockBehaviour.Properties GENERIC_TIN = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.TERRACOTTA_WHITE)
-			.sound(SoundType.COPPER)
+			.sound(ModSounds.TIN)
 			.requiresCorrectToolForDrops()
 			.strength(2.0f, 6.0f);
 
