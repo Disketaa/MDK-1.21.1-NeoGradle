@@ -26,9 +26,9 @@ public class ModCreativeModeTabs {
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB_DEFERRED_REGISTER =
 		DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Harmonium.MOD_ID);
 
-	public static final Supplier<CreativeModeTab> harmonium_TAB = CREATIVE_MODE_TAB_DEFERRED_REGISTER.register("harmonium_tab",
+	public static final Supplier<CreativeModeTab> HARMONIUM_TAB = CREATIVE_MODE_TAB_DEFERRED_REGISTER.register("harmonium_tab",
 		() -> CreativeModeTab.builder()
-			.icon(() -> new ItemStack(ModItems.TIN_INGOT.get()))
+			.icon(() -> new ItemStack(ModBlocks.CHISELED_TIN.get()))
 			.title(Component.translatable("creativetab.harmonium.harmonium"))
 			.displayItems((params, output) -> {
 

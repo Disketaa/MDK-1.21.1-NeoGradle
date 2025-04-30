@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.block.custom;
 
+import com.disketaa.harmonium.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -16,20 +17,17 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class UnreliableButtonBlock extends ButtonBlock {
-	private static final int SHORT_PRESS = 0;
-	private static final int LONG_PRESS = 20;
-	private static final float SHORT_PRESS_CHANCE = 0.5f;
 	private boolean isCurrentPressShort = false;
 
 	public UnreliableButtonBlock(BlockSetType blockSetType, BlockBehaviour.Properties properties) {
-		super(blockSetType, 20, properties);
+		super(blockSetType, Config.tinButtonLongPressDuration, properties);
 	}
 
 	@Override
 	public void press(BlockState state, @NotNull Level level, @NotNull BlockPos pos, @Nullable Player player) {
 		if (!state.getValue(POWERED)) {
-			this.isCurrentPressShort = level.getRandom().nextFloat() < SHORT_PRESS_CHANCE;
-			int pressDuration = isCurrentPressShort ? SHORT_PRESS : LONG_PRESS;
+			this.isCurrentPressShort = level.getRandom().nextInt(100) < Config.tinButtonTriggerChance;
+			int pressDuration = isCurrentPressShort ? Config.tinButtonShortPressDuration : Config.tinButtonLongPressDuration;
 
 			boolean shouldOutputSignal = !isCurrentPressShort;
 			level.setBlock(pos, state.setValue(POWERED, shouldOutputSignal), 3);
@@ -47,7 +45,6 @@ public class UnreliableButtonBlock extends ButtonBlock {
 	@Override
 	protected void tick(BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random) {
 		if (state.getValue(POWERED) || isCurrentPressShort) {
-
 			boolean wasPowered = state.getValue(POWERED);
 			level.setBlock(pos, state.setValue(POWERED, false), 3);
 
