@@ -61,7 +61,3 @@ body:
       options:
         - label: I have checked that this issue isn't already reported
           required: true
-        - label: I'm using the latest version of the mod
-          required: false
-        - label: I've included all relevant information
-          required: true
