@@ -46,7 +46,7 @@ public class ModBlocks {
 			.strength(2f, 6.0f);
 
 		static final BlockBehaviour.Properties TIN_SOLDIER = BlockBehaviour.Properties.of()
-			.sound(ModSoundType.TIN)
+			.sound(ModSoundType.TIN_SOLDIER)
 			.noOcclusion()
 			.strength(0.1f, 0.1f)
 			.pushReaction(PushReaction.DESTROY);

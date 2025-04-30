@@ -28,6 +28,11 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_PLACE = registerSoundEvent("block.tin_bulb.place");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_HIT = registerSoundEvent("block.tin_bulb.hit");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BULB_FALL = registerSoundEvent("block.tin_bulb.fall");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_SOLDIER_BREAK = registerSoundEvent("block.tin_soldier.break");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_SOLDIER_STEP = registerSoundEvent("block.tin_soldier.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_SOLDIER_PLACE = registerSoundEvent("block.tin_soldier.place");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_SOLDIER_HIT = registerSoundEvent("block.tin_soldier.hit");
+	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_SOLDIER_FALL = registerSoundEvent("block.tin_soldier.fall");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_DOOR_CLOSE = registerSoundEvent("block.tin_door.close");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_DOOR_OPEN = registerSoundEvent("block.tin_door.open");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_CLOSE = registerSoundEvent("block.tin_trapdoor.close");
@@ -46,6 +51,11 @@ public class ModSoundType {
 	public static final DeferredSoundType TIN_BULB = new DeferredSoundType(
 		1.0f, 1.0f,
 		TIN_BULB_BREAK, TIN_BULB_STEP, TIN_BULB_PLACE, TIN_BULB_HIT, TIN_BULB_FALL
+	);
+
+	public static final DeferredSoundType TIN_SOLDIER = new DeferredSoundType(
+		1.0f, 1.0f,
+		TIN_SOLDIER_BREAK, TIN_SOLDIER_STEP, TIN_SOLDIER_PLACE, TIN_SOLDIER_HIT, TIN_SOLDIER_FALL
 	);
 
 	private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name) {
