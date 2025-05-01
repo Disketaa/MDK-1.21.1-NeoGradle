@@ -5,6 +5,7 @@ import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -29,7 +30,7 @@ public class Harmonium {
 		NeoForge.EVENT_BUS.register(this);
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
-		
+
 		ModCreativeTabs.register(modEventBus);
 		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
