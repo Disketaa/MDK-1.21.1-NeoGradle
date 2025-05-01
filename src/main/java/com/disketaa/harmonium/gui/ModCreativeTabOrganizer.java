@@ -69,8 +69,10 @@ public class ModCreativeTabOrganizer {
 					Items.IRON_ORE,
 					Items.DEEPSLATE_IRON_ORE
 				));
-			addAfter(event, Items.RAW_COPPER_BLOCK,
+			removeEntry(event, Items.RAW_COPPER_BLOCK);
+			addBefore(event, Items.RAW_IRON_BLOCK,
 				List.of(
+					Items.RAW_COPPER_BLOCK,
 					ModBlocks.RAW_TIN_BLOCK.get()
 				));
 		}
