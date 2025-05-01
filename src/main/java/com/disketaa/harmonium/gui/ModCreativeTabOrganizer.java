@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.gui;
 
+import com.disketaa.harmonium.Config;
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.item.FarmersDelightModItems;
 import com.disketaa.harmonium.item.FriendsAndFoesModItems;
@@ -17,6 +18,9 @@ public class ModCreativeTabOrganizer {
 
 	@SubscribeEvent
 	public static void onBuildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
+		if (!Config.addHarmoniumItemsToOtherCreativeTabs) {
+			return;
+		}
 		ResourceLocation tabId = event.getTabKey().location();
 
 		if (tabId.equals(CreativeModeTabs.BUILDING_BLOCKS.location())) {
