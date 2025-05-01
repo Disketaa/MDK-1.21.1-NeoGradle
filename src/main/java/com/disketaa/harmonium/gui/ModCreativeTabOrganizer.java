@@ -60,10 +60,14 @@ public class ModCreativeTabOrganizer {
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.NATURAL_BLOCKS.location())) {
+			removeEntry(event, Items.IRON_ORE);
+			removeEntry(event, Items.DEEPSLATE_IRON_ORE);
 			addAfter(event, Items.DEEPSLATE_COPPER_ORE,
 				List.of(
 					ModBlocks.TIN_ORE.get(),
-					ModBlocks.DEEPSLATE_TIN_ORE.get()
+					ModBlocks.DEEPSLATE_TIN_ORE.get(),
+					Items.IRON_ORE,
+					Items.DEEPSLATE_IRON_ORE
 				));
 			addAfter(event, Items.RAW_COPPER_BLOCK,
 				List.of(
@@ -110,18 +114,27 @@ public class ModCreativeTabOrganizer {
 			}
 		}
 		if (tabId.equals(CreativeModeTabs.INGREDIENTS.location())) {
+			removeEntry(event, Items.RAW_IRON);
 			addAfter(event, Items.RAW_COPPER,
 				List.of(
-					ModItems.RAW_TIN.get()
+					ModItems.RAW_TIN.get(),
+					Items.RAW_IRON
+				));
+			removeEntry(event, Items.NETHERITE_SCRAP);
+			addBefore(event, Items.ANCIENT_DEBRIS,
+				List.of(
+					Items.NETHERITE_SCRAP
 				));
 			addBefore(event, Items.IRON_NUGGET,
 				List.of(
 					ModItems.COPPER_NUGGET.get(),
 					ModItems.TIN_NUGGET.get()
 				));
+			removeEntry(event, Items.IRON_INGOT);
 			addAfter(event, Items.COPPER_INGOT,
 				List.of(
-					ModItems.TIN_INGOT.get()
+					ModItems.TIN_INGOT.get(),
+					Items.IRON_INGOT
 				));
 		}
 
