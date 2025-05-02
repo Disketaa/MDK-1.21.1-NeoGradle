@@ -21,9 +21,12 @@ public class ModItems {
 	public static DeferredItem<SwordItem> WOODEN_KNIFE = null;
 	public static DeferredItem<Item> BRONZE_KNIFE = null;
 	public static final DeferredItem<Item> RAW_TIN = registerSimpleItem("raw_tin");
+	public static final DeferredItem<Item> BRONZE_SMELT = registerSimpleItem("bronze_smelt");
 	public static final DeferredItem<Item> COPPER_NUGGET = registerSimpleItem("copper_nugget");
 	public static final DeferredItem<Item> TIN_NUGGET = registerSimpleItem("tin_nugget");
+	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");
 	public static final DeferredItem<Item> TIN_INGOT = registerSimpleItem("tin_ingot");
+	public static final DeferredItem<Item> BRONZE_INGOT = registerSimpleItem("bronze_ingot");
 
 	private static DeferredItem<Item> registerSimpleItem(String name) {
 		DeferredItem<Item> item = ITEMS.register(name, () -> new Item(new Item.Properties()));

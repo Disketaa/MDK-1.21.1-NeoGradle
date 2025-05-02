@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.6,
+  "ingredient": [
+    {
+      "tag": "c:smelts/bronze"
+    }
+  ],
+  "result": {
+    "id": "harmonium:bronze_ingot"
+  }
+}

@@ -120,6 +120,7 @@ public class ModCreativeTabOrganizer {
 			addAfter(event, Items.RAW_COPPER,
 				List.of(
 					ModItems.RAW_TIN.get(),
+					ModItems.BRONZE_SMELT.get(),
 					Items.RAW_IRON
 				));
 			removeEntry(event, Items.NETHERITE_SCRAP);
@@ -130,12 +131,14 @@ public class ModCreativeTabOrganizer {
 			addBefore(event, Items.IRON_NUGGET,
 				List.of(
 					ModItems.COPPER_NUGGET.get(),
-					ModItems.TIN_NUGGET.get()
+					ModItems.TIN_NUGGET.get(),
+					ModItems.BRONZE_NUGGET.get()
 				));
 			removeEntry(event, Items.IRON_INGOT);
 			addAfter(event, Items.COPPER_INGOT,
 				List.of(
 					ModItems.TIN_INGOT.get(),
+					ModItems.BRONZE_INGOT.get(),
 					Items.IRON_INGOT
 				));
 		}

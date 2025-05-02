@@ -30,7 +30,10 @@
   "block.harmonium.white_tin_soldier": "Белый оловянный солдатик",
   "block.harmonium.yellow_tin_soldier": "Жёлтый оловянный солдатик",
   "creativetab.harmonium.harmonium": "Гармониум",
+  "item.harmonium.bronze_ingot": "Бронзовый слиток",
   "item.harmonium.bronze_knife": "Бронзовый нож",
+  "item.harmonium.bronze_nugget": "Кусочек бронзы",
+  "item.harmonium.bronze_smelt": "Бронзовый сплав",
   "item.harmonium.copper_nugget": "Кусочек меди",
   "item.harmonium.raw_tin": "Рудное олово",
   "item.harmonium.tin_ingot": "Оловянный слиток",
@@ -38,5 +41,6 @@
   "item.harmonium.wooden_knife": "Деревянный нож",
   "tag.item.harmonium.tin_ores": "Оловянные руды",
   "tag.item.harmonium.tin_soldiers": "Оловянные солдатики",
+  "trim_material.harmonium.bronze": "Бронзовая",
   "trim_material.harmonium.tin": "Оловянная"
 }

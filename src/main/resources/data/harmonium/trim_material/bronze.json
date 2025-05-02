@@ -1,0 +1,9 @@
+{
+  "asset_name": "bronze",
+  "description": {
+    "color": "#b47a3e",
+    "translate": "trim_material.harmonium.bronze"
+  },
+  "ingredient": "harmonium:bronze_ingot",
+  "item_model_index": 0.55
+}

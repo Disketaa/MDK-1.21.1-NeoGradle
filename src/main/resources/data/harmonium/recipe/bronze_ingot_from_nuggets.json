@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bronze_ingot",
+  "key": {
+    "#": {
+      "tag": "c:nuggets/bronze"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "harmonium:bronze_ingot"
+  }
+}

@@ -10,6 +10,7 @@
     "harmonium:tin_trapdoor",
     "harmonium:tin_bulb",
     {"id": "harmonium:tin_button", "required": false},
-    "#harmonium:tin_soldiers"
+    "#harmonium:tin_soldiers",
+    "#c:smeltables/tin"
   ]
 }

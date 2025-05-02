@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:raw_materials/copper"
+    },
+    {
+      "tag": "c:raw_materials/copper"
+    },
+    {
+      "tag": "c:raw_materials/copper"
+    },
+    {
+      "tag": "c:raw_materials/tin"
+    }
+  ],
+  "result": {
+    "id": "harmonium:bronze_smelt"
+  }
+}
