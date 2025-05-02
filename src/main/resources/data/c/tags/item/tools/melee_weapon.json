@@ -1,6 +1,8 @@
 {
   "values": [
     {"id": "harmonium:wooden_knife", "required": false},
+    "harmonium:bronze_axe",
+    "harmonium:bronze_sword",
     {"id": "harmonium:bronze_knife", "required": false}
   ]
 }

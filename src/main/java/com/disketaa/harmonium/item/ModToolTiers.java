@@ -7,6 +7,6 @@ import net.neoforged.neoforge.common.SimpleTier;
 
 public class ModToolTiers {
 	public static final Tier BRONZE = new SimpleTier(BlockTags.INCORRECT_FOR_STONE_TOOL,
-		1400, 4f, 3f, 28, () -> Ingredient.of(ModItems.BRONZE_INGOT));
+		160, 4f, 1f, 12, () -> Ingredient.of(ModItems.BRONZE_INGOT));
 
 }

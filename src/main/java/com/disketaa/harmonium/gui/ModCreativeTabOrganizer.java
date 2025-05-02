@@ -115,6 +115,25 @@ public class ModCreativeTabOrganizer {
 				}
 			}
 		}
+		if (tabId.equals(CreativeModeTabs.TOOLS_AND_UTILITIES.location())) {
+			addAfter(event, Items.STONE_HOE,
+				List.of(
+					ModItems.BRONZE_SHOVEL.get(),
+					ModItems.BRONZE_PICKAXE.get(),
+					ModItems.BRONZE_AXE.get(),
+					ModItems.BRONZE_HOE.get()
+				));
+		}
+		if (tabId.equals(CreativeModeTabs.COMBAT.location())) {
+			addAfter(event, Items.STONE_SWORD,
+				List.of(
+					ModItems.BRONZE_SWORD.get()
+				));
+			addAfter(event, Items.STONE_AXE,
+				List.of(
+					ModItems.BRONZE_AXE.get()
+				));
+		}
 		if (tabId.equals(CreativeModeTabs.INGREDIENTS.location())) {
 			removeEntry(event, Items.RAW_IRON);
 			addAfter(event, Items.RAW_COPPER,
@@ -149,6 +168,8 @@ public class ModCreativeTabOrganizer {
 			}
 
 			if (FarmersDelightModItems.IRON_KNIFE != Items.AIR) {
+				assert ModItems.BRONZE_KNIFE != null;
+				assert ModItems.WOODEN_KNIFE != null;
 				addBefore(event, FarmersDelightModItems.IRON_KNIFE,
 					List.of(
 						ModItems.WOODEN_KNIFE.get(),
