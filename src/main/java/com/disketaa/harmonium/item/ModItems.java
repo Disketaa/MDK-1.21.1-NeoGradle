@@ -2,10 +2,7 @@ package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Tool;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
@@ -19,6 +16,11 @@ public class ModItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Harmonium.MOD_ID);
 	private static final List<DeferredItem<? extends Item>> REGISTERED_ITEMS = new ArrayList<>();
 	public static DeferredItem<SwordItem> WOODEN_KNIFE = null;
+	public static final DeferredItem<SwordItem> BRONZE_SWORD = ITEMS.register("bronze_sword", () -> new SwordItem(ModToolTiers.BRONZE, new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.BRONZE, 5, -2.4f))));
+	public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = ITEMS.register("bronze_shovel", () -> new ShovelItem(ModToolTiers.BRONZE, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.BRONZE, 1.5F, -3.0f))));
+	public static final DeferredItem<PickaxeItem> BRONZE_PICKAXE = ITEMS.register("bronze_pickaxe", () -> new PickaxeItem(ModToolTiers.BRONZE, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.BRONZE, 1.0F, -2.8f))));
+	public static final DeferredItem<AxeItem> BISMUTH_AXE = ITEMS.register("bronze_axe", () -> new AxeItem(ModToolTiers.BRONZE, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.BRONZE, 6.0F, -3.2f))));
+	public static final DeferredItem<HoeItem> BISMUTH_HOE = ITEMS.register("bronze_hoe", () -> new HoeItem(ModToolTiers.BRONZE, new Item.Properties().attributes(HoeItem.createAttributes(ModToolTiers.BRONZE, 0F, -3.0f))));
 	public static DeferredItem<Item> BRONZE_KNIFE = null;
 	public static final DeferredItem<Item> RAW_TIN = registerSimpleItem("raw_tin");
 	public static final DeferredItem<Item> BRONZE_SMELT = registerSimpleItem("bronze_smelt");
@@ -33,7 +35,6 @@ public class ModItems {
 		REGISTERED_ITEMS.add(item);
 		return item;
 	}
-
 	private static DeferredItem<SwordItem> registerSwordItem(String name, Tier tier, int attackDamageBonus, float attackSpeed, Tool toolProperties) {
 		DeferredItem<SwordItem> item = ITEMS.register(name, () -> new SwordItem(tier,
 			new Item.Properties()

@@ -119,8 +119,8 @@ public class ModCreativeTabOrganizer {
 			removeEntry(event, Items.RAW_IRON);
 			addAfter(event, Items.RAW_COPPER,
 				List.of(
-					ModItems.RAW_TIN.get(),
 					ModItems.BRONZE_SMELT.get(),
+					ModItems.RAW_TIN.get(),
 					Items.RAW_IRON
 				));
 			removeEntry(event, Items.NETHERITE_SCRAP);

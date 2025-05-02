@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bronze_ingot",
+  "ingredients": [
+    {
+      "tag": "c:ingots/copper"
+    },
+    {
+      "tag": "c:ingots/copper"
+    },
+    {
+      "tag": "c:ingots/copper"
+    },
+    {
+      "tag": "c:ingots/tin"
+    }
+  ],
+  "result": {
+    "id": "harmonium:bronze_ingot"
+  }
+}
