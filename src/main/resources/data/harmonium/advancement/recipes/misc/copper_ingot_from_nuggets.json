@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "harmonium:copper_nugget"
+            "items": "#c:nuggets/copper"
           }
         ]
       },
