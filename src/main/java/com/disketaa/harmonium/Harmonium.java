@@ -6,6 +6,12 @@ import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
+import com.disketaa.harmonium.util.ModConditions;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -20,15 +26,18 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
+import java.util.Map;
+
 @Mod(Harmonium.MOD_ID)
 public class Harmonium {
 	public static final String MOD_ID = "harmonium";
 	private static final Logger LOGGER = LogUtils.getLogger();
 
 	public Harmonium(IEventBus modEventBus, ModContainer modContainer) {
-		NeoForge.EVENT_BUS.register(this);
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+		modEventBus.addListener(this::registerConditions);
 
+		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 		modEventBus.addListener(ModCreativeTabItemRemover::onBuildCreativeModeTabContents);
 
@@ -36,6 +45,17 @@ public class Harmonium {
 		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
 		ModSoundType.register(modEventBus);
+
+		ModConditions.register("config", ModConditions.ConfigValueCondition.CODEC);
+	}
+
+	private void registerConditions(RegisterEvent event) {
+		event.register(NeoForgeRegistries.Keys.CONDITION_CODECS, helper -> {
+			for (Map.Entry<String, MapCodec<? extends ICondition>> entry : ModConditions.SERIALIZERS.entrySet()) {
+				ResourceLocation key = ResourceLocation.fromNamespaceAndPath(MOD_ID, entry.getKey());
+				helper.register(key, entry.getValue());
+			}
+		});
 	}
 
 	@SubscribeEvent

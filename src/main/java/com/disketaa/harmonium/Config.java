@@ -37,6 +37,9 @@ public class Config {
 			.comment(" World restart required")
 			.comment(" Default: true")
 			.define("add_harmonium_items_to_other_tabs", true);
+		BUILDER.pop();
+
+		BUILDER.push("items");
 		REMOVE_FLINT_KNIFE = BUILDER
 			.comment(" Whether to remove Farmer's Delight flint knife")
 			.comment(" World restart required")
