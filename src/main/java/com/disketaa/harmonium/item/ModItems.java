@@ -1,6 +1,7 @@
 package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
@@ -33,6 +34,10 @@ public class ModItems {
 	public static final DeferredItem<HoeItem> BRONZE_HOE = registerHoeItem("bronze_hoe", ModToolTiers.BRONZE, -1, -2.0f);
 	public static final DeferredItem<SwordItem> BRONZE_SWORD = registerSwordItem("bronze_sword", ModToolTiers.BRONZE, 3, -2.4f);
 	public static final DeferredItem<SwordItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerSwordItem("bronze_knife", ModToolTiers.BRONZE, 1, -2.0f), "farmersdelight");
+	public static final DeferredItem<ArmorItem> BRONZE_HELMET = registerArmorItem("bronze_helmet", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET);
+	public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerArmorItem("bronze_chestplate", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE);
+	public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerArmorItem("bronze_leggings", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS);
+	public static final DeferredItem<ArmorItem> BRONZE_BOOTS = registerArmorItem("bronze_boots", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS);
 
 	private static DeferredItem<Item> registerSimpleItem(String name) {
 		DeferredItem<Item> item = ITEMS.register(name, () -> new Item(new Item.Properties()));
@@ -118,6 +123,16 @@ public class ModItems {
 					1.0f,
 					tier.getUses()
 				))
+		));
+		REGISTERED_ITEMS.add(item);
+		return item;
+	}
+
+	private static DeferredItem<ArmorItem> registerArmorItem(String name, Holder<ArmorMaterial> material, ArmorItem.Type type) {
+		DeferredItem<ArmorItem> item = ITEMS.register(name, () -> new ArmorItem(
+			material,
+			type,
+			new Item.Properties().durability(type.getDurability(10))
 		));
 		REGISTERED_ITEMS.add(item);
 		return item;

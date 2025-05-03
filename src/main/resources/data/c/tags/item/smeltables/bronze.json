@@ -1,6 +1,10 @@
 {
   "values": [
     "#c:ingots/bronze",
+    "harmonium:bronze_helmet",
+    "harmonium:bronze_chestplate",
+    "harmonium:bronze_leggings",
+    "harmonium:bronze_boots",
     "harmonium:bronze_shovel",
     "harmonium:bronze_pickaxe",
     "harmonium:bronze_axe",

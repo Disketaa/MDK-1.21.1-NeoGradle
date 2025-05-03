@@ -133,6 +133,13 @@ public class ModCreativeTabOrganizer {
 				List.of(
 					ModItems.BRONZE_AXE.get()
 				));
+			addAfter(event, Items.LEATHER_BOOTS,
+				List.of(
+					ModItems.BRONZE_HELMET.get(),
+					ModItems.BRONZE_CHESTPLATE.get(),
+					ModItems.BRONZE_LEGGINGS.get(),
+					ModItems.BRONZE_BOOTS.get()
+				));
 		}
 		if (tabId.equals(CreativeModeTabs.INGREDIENTS.location())) {
 			removeEntry(event, Items.RAW_IRON);
