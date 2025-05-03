@@ -1,6 +1,11 @@
 {
   "values": [
     "#c:ingots/bronze",
+    "harmonium:bronze_shovel",
+    "harmonium:bronze_pickaxe",
+    "harmonium:bronze_axe",
+    "harmonium:bronze_hoe",
+    "harmonium:bronze_sword",
     "harmonium:bronze_knife"
   ]
 }
