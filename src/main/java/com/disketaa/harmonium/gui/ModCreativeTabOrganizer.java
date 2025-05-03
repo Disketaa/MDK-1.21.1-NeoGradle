@@ -163,10 +163,6 @@ public class ModCreativeTabOrganizer {
 		}
 
 		if (tabId.equals(ResourceLocation.parse("farmersdelight:farmersdelight"))) {
-			if (FarmersDelightModItems.FLINT_KNIFE != Items.AIR) {
-				removeEntry(event, FarmersDelightModItems.FLINT_KNIFE);
-			}
-
 			if (FarmersDelightModItems.IRON_KNIFE != Items.AIR) {
 				assert ModItems.BRONZE_KNIFE != null;
 				assert ModItems.WOODEN_KNIFE != null;

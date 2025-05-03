@@ -1,11 +1,11 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.block.ModBlocks;
+import com.disketaa.harmonium.gui.ModCreativeTabItemRemover;
 import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
-import net.neoforged.fml.event.config.ModConfigEvent;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -17,7 +17,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
@@ -29,7 +28,9 @@ public class Harmonium {
 	public Harmonium(IEventBus modEventBus, ModContainer modContainer) {
 		NeoForge.EVENT_BUS.register(this);
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
 		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
+		modEventBus.addListener(ModCreativeTabItemRemover::onBuildCreativeModeTabContents);
 
 		ModCreativeTabs.register(modEventBus);
 		ModBlocks.register(modEventBus);
