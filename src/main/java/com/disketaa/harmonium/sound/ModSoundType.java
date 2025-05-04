@@ -37,6 +37,7 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_DOOR_OPEN = registerSoundEvent("block.tin_door.open");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_CLOSE = registerSoundEvent("block.tin_trapdoor.close");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_OPEN = registerSoundEvent("block.tin_trapdoor.open");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ARMOR_EQUIP_BRONZE = registerSoundEvent("item.armor.equip_bronze");
 
 	public static final DeferredSoundType TIN = new DeferredSoundType(
 		1.0f, 1.0f,

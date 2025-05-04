@@ -1,9 +1,9 @@
 package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
+import com.disketaa.harmonium.sound.ModSoundType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -36,7 +36,7 @@ public class ModArmorMaterials {
 		return new ArmorMaterial(
 			protection,
 			15,
-			SoundEvents.ARMOR_EQUIP_IRON,
+			ModSoundType.ARMOR_EQUIP_BRONZE,
 			() -> Ingredient.of(ModItems.BRONZE_INGOT.get()),
 			List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Harmonium.MOD_ID, "bronze"))),
 			0.0f,

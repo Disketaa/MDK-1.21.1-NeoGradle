@@ -236,5 +236,16 @@
       {"name": "harmonium:block/tin_trapdoor/toggle4", "volume": 0.6, "pitch": 1.2}
     ],
     "subtitle": "subtitles.block.trapdoor.toggle"
+  },
+  "item.armor.equip_bronze": {
+    "sounds": [
+      {"name": "harmonium:item/armor/equip_bronze1", "volume": 1.0, "pitch": 1.0},
+      {"name": "harmonium:item/armor/equip_bronze2", "volume": 1.0, "pitch": 1.0},
+      {"name": "harmonium:item/armor/equip_bronze3", "volume": 1.0, "pitch": 1.0},
+      {"name": "harmonium:item/armor/equip_bronze4", "volume": 1.0, "pitch": 1.0},
+      {"name": "harmonium:item/armor/equip_bronze5", "volume": 1.0, "pitch": 1.0},
+      {"name": "harmonium:item/armor/equip_bronze6", "volume": 1.0, "pitch": 1.0}
+    ],
+    "subtitle": "subtitles.item.armor.equip_bronze"
   }
 }
