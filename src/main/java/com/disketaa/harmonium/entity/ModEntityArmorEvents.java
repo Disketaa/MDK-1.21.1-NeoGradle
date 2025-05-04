@@ -20,6 +20,7 @@ import java.util.function.Supplier;
 
 public class ModEntityArmorEvents {
 	private static final List<ArmorSpawnEntry> ARMOR_ENTRIES = new ArrayList<>();
+	private static final List<ToolSpawnEntry> TOOL_ENTRIES = new ArrayList<>();
 
 	static {
 		registerArmorSet(new ArmorSpawnEntry(
@@ -29,6 +30,12 @@ public class ModEntityArmorEvents {
 			ModItems.BRONZE_BOOTS::get,
 			0.07f, 0.05f, 0.06f, 0.08f
 		));
+
+		registerToolSet(new ToolSpawnEntry(
+			ModItems.BRONZE_SWORD::get,
+			ModItems.BRONZE_SHOVEL::get,
+			0.03f, 0.02f
+		));
 	}
 
 	public static void register() {
@@ -37,6 +44,10 @@ public class ModEntityArmorEvents {
 
 	public static void registerArmorSet(ArmorSpawnEntry entry) {
 		ARMOR_ENTRIES.add(entry);
+	}
+
+	public static void registerToolSet(ToolSpawnEntry entry) {
+		TOOL_ENTRIES.add(entry);
 	}
 
 	private static void onMobSpawn(MobSpawnEvent.PositionCheck event) {
@@ -54,6 +65,10 @@ public class ModEntityArmorEvents {
 		DifficultyInstance difficulty = event.getLevel().getCurrentDifficultyAt(pos);
 
 		tryAddArmor(mob, random, difficulty);
+
+		if (mob instanceof Zombie) {
+			tryAddTools(mob, random, difficulty);
+		}
 	}
 
 	private static void tryAddArmor(LivingEntity mob, RandomSource random, DifficultyInstance difficulty) {
@@ -72,20 +87,44 @@ public class ModEntityArmorEvents {
 		}
 	}
 
+	private static void tryAddTools(LivingEntity mob, RandomSource random, DifficultyInstance difficulty) {
+		float localDifficulty = difficulty.getSpecialMultiplier();
+		float chanceMultiplier = (mob.level().getDifficulty() == Difficulty.HARD ? 1.5f : 1.0f);
+
+		for (ToolSpawnEntry entry : TOOL_ENTRIES) {
+			tryAddTool(mob, random, localDifficulty, chanceMultiplier,
+				entry.sword(), entry.swordChance());
+			tryAddTool(mob, random, localDifficulty, chanceMultiplier,
+				entry.shovel(), entry.shovelChance());
+		}
+	}
+
 	private static void tryAddArmorPiece(LivingEntity mob, RandomSource random,
 	                                     float localDifficulty, float chanceMultiplier,
 	                                     Supplier<Item> armorItem, float baseChance, EquipmentSlot slot) {
-
 		float chance = baseChance * chanceMultiplier * (1 + localDifficulty);
 		if (mob.getItemBySlot(slot).isEmpty() && random.nextFloat() < chance) {
 			mob.setItemSlot(slot, new ItemStack(armorItem.get()));
 		}
 	}
 
+	private static void tryAddTool(LivingEntity mob, RandomSource random,
+	                               float localDifficulty, float chanceMultiplier,
+	                               Supplier<Item> toolItem, float baseChance) {
+		if (mob.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
+			float chance = baseChance * chanceMultiplier * (1 + localDifficulty);
+			if (random.nextFloat() < chance) {
+				mob.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(toolItem.get()));
+			}
+		}
+	}
+
 	public record ArmorSpawnEntry(Supplier<Item> helmet, Supplier<Item> chestplate, Supplier<Item> leggings,
 	                              Supplier<Item> boots, float helmetChance, float chestplateChance,
 	                              float leggingsChance, float bootsChance) {
+	}
 
-
+	public record ToolSpawnEntry(Supplier<Item> sword, Supplier<Item> shovel,
+	                             float swordChance, float shovelChance) {
 	}
 }
