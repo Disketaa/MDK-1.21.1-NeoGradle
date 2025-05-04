@@ -26,7 +26,7 @@ public class UnreliableButtonBlock extends ButtonBlock {
 	@Override
 	public void press(BlockState state, @NotNull Level level, @NotNull BlockPos pos, @Nullable Player player) {
 		if (!state.getValue(POWERED)) {
-			this.isCurrentPressShort = level.getRandom().nextInt(100) < Config.tinButtonTriggerChance;
+			this.isCurrentPressShort = level.getRandom().nextInt(100) < Config.tinButtonFailureChance;
 			int pressDuration = isCurrentPressShort ? Config.tinButtonShortPressDuration : Config.tinButtonLongPressDuration;
 
 			boolean shouldOutputSignal = !isCurrentPressShort;

@@ -15,14 +15,14 @@ public class Config {
 	private static final ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE;
 	private static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION;
 	private static final ModConfigSpec.IntValue TIN_BUTTON_LONG_PRESS_DURATION;
-	private static final ModConfigSpec.IntValue TIN_BUTTON_TRIGGER_CHANCE;
+	private static final ModConfigSpec.IntValue TIN_BUTTON_FAILURE_CHANCE;
 
 	public static boolean showHarmoniumCreativeTab;
 	public static boolean addHarmoniumItemsToOtherCreativeTabs;
 	public static boolean removeFlintKnife;
 	public static int tinButtonShortPressDuration;
 	public static int tinButtonLongPressDuration;
-	public static int tinButtonTriggerChance;
+	public static int tinButtonFailureChance;
 
 	static {
 		BUILDER.push("creative_tab");
@@ -54,9 +54,9 @@ public class Config {
 		TIN_BUTTON_LONG_PRESS_DURATION = BUILDER
 			.comment(" Duration in ticks for a long press")
 			.defineInRange("long_press_duration", 20, 0, 20);
-		TIN_BUTTON_TRIGGER_CHANCE = BUILDER
-			.comment(" Chance (0-100) for the button to trigger when pressed")
-			.defineInRange("trigger_chance", 25, 0, 100);
+		TIN_BUTTON_FAILURE_CHANCE = BUILDER
+			.comment(" Chance for the button to fail when pressed")
+			.defineInRange("failure_chance", 25, 0, 100);
 		BUILDER.pop();
 
 		SPEC = BUILDER.build();
@@ -70,7 +70,7 @@ public class Config {
 			removeFlintKnife = REMOVE_FLINT_KNIFE.get();
 			tinButtonShortPressDuration = TIN_BUTTON_SHORT_PRESS_DURATION.get();
 			tinButtonLongPressDuration = TIN_BUTTON_LONG_PRESS_DURATION.get();
-			tinButtonTriggerChance = TIN_BUTTON_TRIGGER_CHANCE.get();
+			tinButtonFailureChance = TIN_BUTTON_FAILURE_CHANCE.get();
 		}
 	}
 }
