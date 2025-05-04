@@ -1,11 +1,17 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bronze_ingot": {
+    "has_planks": {
       "conditions": {
         "items": [
           {
-            "items": "#c:ingots/bronze"
+            "items": "#minecraft:planks"
           }
         ]
       },
@@ -13,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "harmonium:bronze_knife"
+        "recipe": "harmonium:wooden_knife"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bronze_ingot"
+      "has_planks"
     ]
   ],
   "rewards": {
     "recipes": [
-      "harmonium:bronze_knife"
+      "harmonium:wooden_knife"
     ]
   }
 }

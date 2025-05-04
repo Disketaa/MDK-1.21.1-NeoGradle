@@ -36,8 +36,7 @@
       {"name": "harmonium:block/tin/step4", "volume": 0.9, "pitch": 1.6},
       {"name": "harmonium:block/tin/step5", "volume": 0.9, "pitch": 1.6},
       {"name": "harmonium:block/tin/step6", "volume": 0.9, "pitch": 1.6}
-    ],
-    "subtitle": "subtitles.block.generic.fall"
+    ]
   },
   "block.tin.step": {
     "sounds": [
@@ -87,8 +86,7 @@
       {"name": "harmonium:block/tin_grate/step4", "volume": 0.9, "pitch": 1.6},
       {"name": "harmonium:block/tin_grate/step5", "volume": 0.9, "pitch": 1.6},
       {"name": "harmonium:block/tin_grate/step6", "volume": 0.9, "pitch": 1.6}
-    ],
-    "subtitle": "subtitles.block.generic.fall"
+    ]
   },
   "block.tin_grate.step": {
     "sounds": [
@@ -138,8 +136,7 @@
       {"name": "harmonium:block/tin_bulb/step4", "volume": 0.9, "pitch": 1.6},
       {"name": "harmonium:block/tin_bulb/step5", "volume": 0.9, "pitch": 1.6},
       {"name": "harmonium:block/tin_bulb/step6", "volume": 0.9, "pitch": 1.6}
-    ],
-    "subtitle": "subtitles.block.generic.fall"
+    ]
   },
   "block.tin_bulb.step": {
     "sounds": [
@@ -190,8 +187,7 @@
       {"name": "harmonium:block/tin_soldier/step3", "volume": 0.9, "pitch": 2.0},
       {"name": "harmonium:block/tin_soldier/step4", "volume": 0.9, "pitch": 2.0},
       {"name": "harmonium:block/tin_soldier/step5", "volume": 0.9, "pitch": 2.0}
-    ],
-    "subtitle": "subtitles.block.generic.fall"
+    ]
   },
   "block.tin_soldier.step": {
     "sounds": [
