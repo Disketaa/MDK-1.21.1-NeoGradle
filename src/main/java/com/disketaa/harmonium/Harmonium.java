@@ -1,6 +1,7 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.block.ModBlocks;
+import com.disketaa.harmonium.entity.ModEntityArmorEvents;
 import com.disketaa.harmonium.gui.ModCreativeTabItemRemover;
 import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
@@ -46,6 +47,7 @@ public class Harmonium {
 		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
 		ModArmorMaterials.register(modEventBus);
+		ModEntityArmorEvents.register();
 		ModSoundType.register(modEventBus);
 
 		ModConditions.register("config", ModConditions.ConfigValueCondition.CODEC);
