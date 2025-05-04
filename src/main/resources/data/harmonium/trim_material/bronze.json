@@ -5,5 +5,8 @@
     "translate": "trim_material.harmonium.bronze"
   },
   "ingredient": "harmonium:bronze_ingot",
-  "item_model_index": 0.55
+  "item_model_index": 0.55,
+  "override_armor_materials": {
+    "harmonium:bronze": "bronze_darker"
+  }
 }
