@@ -43,11 +43,8 @@ public class ModEntityArmorEvents {
 		Mob mob = event.getEntity();
 
 		if (!(mob instanceof Zombie ||
-			mob instanceof ZombieVillager ||
 			mob instanceof Skeleton ||
-			mob instanceof Drowned ||
 			mob instanceof WitherSkeleton ||
-			mob instanceof Husk ||
 			mob instanceof Stray)) {
 			return;
 		}
