@@ -1,13 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "bronze_ingot",
   "ingredients": [
     {
-      "tag": "c:ingots/bronze"
+      "tag": "c:storage_blocks/raw_bronze"
     }
   ],
   "result": {
-    "id": "harmonium:bronze_nugget",
+    "id": "harmonium:bronze_blend",
     "count": 9
   }
 }

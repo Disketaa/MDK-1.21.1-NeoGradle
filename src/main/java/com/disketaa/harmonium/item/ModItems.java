@@ -21,7 +21,7 @@ public class ModItems {
 	private static final List<DeferredItem<? extends Item>> REGISTERED_ITEMS = new ArrayList<>();
 
 	public static final DeferredItem<Item> RAW_TIN = registerSimpleItem("raw_tin");
-	public static final DeferredItem<Item> BRONZE_SMELT = registerSimpleItem("bronze_smelt");
+	public static final DeferredItem<Item> BRONZE_BLEND = registerSimpleItem("bronze_blend");
 	public static final DeferredItem<Item> COPPER_NUGGET = registerSimpleItem("copper_nugget");
 	public static final DeferredItem<Item> TIN_NUGGET = registerSimpleItem("tin_nugget");
 	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");

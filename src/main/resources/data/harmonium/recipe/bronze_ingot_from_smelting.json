@@ -4,7 +4,7 @@
   "experience": 0.9,
   "ingredient": [
     {
-      "tag": "c:smelts/bronze"
+      "tag": "c:blends/bronze"
     }
   ],
   "result": {

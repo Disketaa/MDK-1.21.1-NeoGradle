@@ -80,7 +80,7 @@ public class ModCreativeTabOrganizer {
 				List.of(
 					Items.RAW_COPPER_BLOCK,
 					ModBlocks.RAW_TIN_BLOCK,
-					ModBlocks.BRONZE_SMELT_BLOCK
+					ModBlocks.BRONZE_BLEND_BLOCK
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS.location())) {
@@ -156,7 +156,7 @@ public class ModCreativeTabOrganizer {
 			removeEntry(event, Items.RAW_IRON);
 			addAfter(event, Items.RAW_COPPER,
 				List.of(
-					ModItems.BRONZE_SMELT,
+					ModItems.BRONZE_BLEND,
 					ModItems.RAW_TIN,
 					Items.RAW_IRON
 				));
