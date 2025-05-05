@@ -6,6 +6,8 @@
     "harmonium:cut_bronze",
     "harmonium:cut_bronze_stairs",
     "harmonium:cut_bronze_slab",
+    "harmonium:bronze_door",
+    "harmonium:bronze_trapdoor",
     "#c:smeltables/bronze"
   ]
 }

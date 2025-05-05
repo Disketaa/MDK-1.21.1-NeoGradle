@@ -40,7 +40,9 @@ public class ModCreativeTabOrganizer {
 					ModBlocks.BRONZE_GRATE,
 					ModBlocks.CUT_BRONZE,
 					ModBlocks.CUT_BRONZE_STAIRS,
-					ModBlocks.CUT_BRONZE_SLAB
+					ModBlocks.CUT_BRONZE_SLAB,
+					ModBlocks.BRONZE_DOOR,
+					ModBlocks.BRONZE_TRAPDOOR
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.COLORED_BLOCKS.location())) {
