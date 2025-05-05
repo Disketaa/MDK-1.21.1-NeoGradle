@@ -120,7 +120,10 @@ public class ModCreativeTabOrganizer {
 			if (ModList.get().isLoaded("friendsandfoes")) {
 				if (FriendsAndFoesModItems.WAXED_OXIDIZED_COPPER_BUTTON != Items.AIR) {
 					addAfter(event, FriendsAndFoesModItems.WAXED_OXIDIZED_COPPER_BUTTON,
-						List.of(ModBlocks.TIN_BUTTON.get()));
+						List.of(
+							ModBlocks.TIN_BUTTON,
+							ModBlocks.BRONZE_BUTTON
+						));
 				}
 			}
 		}

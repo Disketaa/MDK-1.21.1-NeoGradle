@@ -21,6 +21,7 @@
     "harmonium:tin_grate",
     "harmonium:tin_ore",
     "harmonium:tin_trapdoor",
+    {"id": "harmonium:bronze_button", "required": false},
     {"id": "harmonium:tin_button", "required": false}
   ]
 }

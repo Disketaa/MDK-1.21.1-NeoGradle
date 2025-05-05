@@ -7,11 +7,11 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_tin_ingot": {
+    "has_bronze_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "#c:ingots/tin"
+            "items": "#c:ingots/bronze"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "harmonium:tin_button"
+        "recipe": "harmonium:bronze_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -27,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_tin_ingot"
+      "has_bronze_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "harmonium:tin_button"
+      "harmonium:bronze_button"
     ]
   }
 }

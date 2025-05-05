@@ -116,6 +116,7 @@ public class ModBlocks {
 	public static final DeferredBlock<TinSoldierBlock> MAGENTA_TIN_SOLDIER = registerBlock("magenta_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_MAGENTA)));
 	public static final DeferredBlock<TinSoldierBlock> PINK_TIN_SOLDIER = registerBlock("pink_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_PINK)));
 	public static DeferredBlock<ButtonBlock> TIN_BUTTON = null;
+	public static DeferredBlock<ButtonBlock> BRONZE_BUTTON = null;
 
 	private static DeferredBlock<Block> registerMetalBlock(String name, BlockBehaviour.Properties properties) {
 		return registerBlock(name, () -> new Block(properties));
@@ -168,6 +169,17 @@ public class ModBlocks {
 					ModBlockSetType.TIN,
 					BlockBehaviour.Properties.of()
 						.mapColor(MapColor.TERRACOTTA_WHITE)
+						.sound(ModSoundType.TIN)
+						.strength(0.5f, 0.5f)
+						.noCollission()
+				));
+
+			BRONZE_BUTTON = registerBlock("bronze_button",
+				() -> new ButtonBlock(
+					ModBlockSetType.TIN,
+					40,
+					BlockBehaviour.Properties.of()
+						.mapColor(MapColor.TERRACOTTA_YELLOW)
 						.sound(ModSoundType.TIN)
 						.strength(0.5f, 0.5f)
 						.noCollission()
