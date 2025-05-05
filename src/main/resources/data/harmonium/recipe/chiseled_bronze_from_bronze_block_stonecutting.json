@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "c:storage_blocks/bronze"
+  },
+  "result": {
+    "id": "harmonium:chiseled_bronze",
+    "count": 4
+  }
+}

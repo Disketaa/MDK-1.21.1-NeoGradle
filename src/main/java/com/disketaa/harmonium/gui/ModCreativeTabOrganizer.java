@@ -35,7 +35,12 @@ public class ModCreativeTabOrganizer {
 					ModBlocks.TIN_DOOR,
 					ModBlocks.TIN_TRAPDOOR,
 					ModBlocks.TIN_BULB,
-					ModBlocks.BRONZE_BLOCK
+					ModBlocks.BRONZE_BLOCK,
+					ModBlocks.CHISELED_BRONZE,
+					ModBlocks.BRONZE_GRATE,
+					ModBlocks.CUT_BRONZE,
+					ModBlocks.CUT_BRONZE_STAIRS,
+					ModBlocks.CUT_BRONZE_SLAB
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.COLORED_BLOCKS.location())) {

@@ -51,7 +51,7 @@ public class ModBlocks {
 			.pushReaction(PushReaction.DESTROY);
 
 		static final BlockBehaviour.Properties GENERIC_BRONZE = BlockBehaviour.Properties.of()
-			.mapColor(MapColor.TERRACOTTA_BROWN)
+			.mapColor(MapColor.TERRACOTTA_ORANGE)
 			.sound(ModSoundType.TIN)
 			.requiresCorrectToolForDrops()
 			.strength(4.0f, 6.0f);
@@ -85,6 +85,13 @@ public class ModBlocks {
 	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.TIN, createTrapdoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerBlock("tin_bulb", () -> new TinBulbBlock(Properties.TIN_BULB));
 	public static final DeferredBlock<Block> BRONZE_BLOCK = registerBronzeBlock("bronze_block");
+	public static final DeferredBlock<Block> CHISELED_BRONZE = registerBronzeBlock("chiseled_bronze");
+	public static final DeferredBlock<WaterloggedTransparentBlock> BRONZE_GRATE = registerBlock("bronze_grate", ModBlocks::createTinGrate);
+	public static final DeferredBlock<Block> CUT_BRONZE = registerTinBlock("cut_bronze");
+	public static final DeferredBlock<StairBlock> CUT_BRONZE_STAIRS = registerBlock("cut_bronze_stairs", () -> new StairBlock(CUT_BRONZE.get().defaultBlockState(), Properties.GENERIC_BRONZE));
+	public static final DeferredBlock<SlabBlock> CUT_BRONZE_SLAB = registerBlock("cut_bronze_slab", () -> new SlabBlock(Properties.GENERIC_BRONZE));
+	public static final DeferredBlock<DoorBlock> BRONZE_DOOR = registerBlock("bronze_door", () -> new DoorBlock(ModBlockSetType.TIN, createDoorProperties(BRONZE_BLOCK.get())));
+	public static final DeferredBlock<TrapDoorBlock> BRONZE_TRAPDOOR = registerBlock("bronze_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.TIN, createTrapdoorProperties(BRONZE_BLOCK.get())));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
@@ -118,6 +125,18 @@ public class ModBlocks {
 	private static WaterloggedTransparentBlock createTinGrate() {
 		return new WaterloggedTransparentBlock(
 			BlockBehaviour.Properties.ofFullCopy(TIN_BLOCK.get())
+				.sound(ModSoundType.TIN_GRATE)
+				.noOcclusion()
+				.isRedstoneConductor((state, level, pos) -> false)
+				.isSuffocating((state, level, pos) -> false)
+				.isViewBlocking((state, level, pos) -> false)
+				.isValidSpawn((state, level, pos, type) -> false)
+		);
+	}
+
+	private static WaterloggedTransparentBlock createBronzeGrate() {
+		return new WaterloggedTransparentBlock(
+			BlockBehaviour.Properties.ofFullCopy(BRONZE_BLOCK.get())
 				.sound(ModSoundType.TIN_GRATE)
 				.noOcclusion()
 				.isRedstoneConductor((state, level, pos) -> false)

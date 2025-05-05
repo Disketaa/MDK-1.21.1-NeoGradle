@@ -12,6 +12,11 @@
     "harmonium:tin_door",
     "harmonium:tin_grate",
     "harmonium:bronze_block",
+    "harmonium:chiseled_bronze",
+    "harmonium:bronze_grate",
+    "harmonium:cut_bronze",
+    "harmonium:cut_bronze_stairs",
+    "harmonium:cut_bronze_slab",
     "harmonium:tin_ore",
     "harmonium:tin_trapdoor"
   ]

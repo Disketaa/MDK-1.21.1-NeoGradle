@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "harmonium:cut_bronze"
+  },
+  "result": {
+    "id": "harmonium:cut_bronze_slab",
+    "count": 2
+  }
+}

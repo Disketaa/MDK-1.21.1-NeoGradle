@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "harmonium:cut_bronze"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "id": "harmonium:cut_bronze_slab",
+    "count": 6
+  }
+}
