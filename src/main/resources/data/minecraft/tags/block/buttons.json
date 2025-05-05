@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "harmonium:tin_button",
-      "required": false
-    }
+    {"id": "harmonium:tin_button", "required": false}
   ]
 }
