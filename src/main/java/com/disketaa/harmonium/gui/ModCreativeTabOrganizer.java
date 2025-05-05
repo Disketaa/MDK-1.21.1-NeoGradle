@@ -26,37 +26,38 @@ public class ModCreativeTabOrganizer {
 		if (tabId.equals(CreativeModeTabs.BUILDING_BLOCKS.location())) {
 			addAfter(event, Items.WAXED_OXIDIZED_COPPER_BULB,
 				List.of(
-					ModBlocks.TIN_BLOCK.get(),
-					ModBlocks.CHISELED_TIN.get(),
-					ModBlocks.TIN_GRATE.get(),
-					ModBlocks.CUT_TIN.get(),
-					ModBlocks.CUT_TIN_STAIRS.get(),
-					ModBlocks.CUT_TIN_SLAB.get(),
-					ModBlocks.TIN_DOOR.get(),
-					ModBlocks.TIN_TRAPDOOR.get(),
-					ModBlocks.TIN_BULB.get()
+					ModBlocks.TIN_BLOCK,
+					ModBlocks.CHISELED_TIN,
+					ModBlocks.TIN_GRATE,
+					ModBlocks.CUT_TIN,
+					ModBlocks.CUT_TIN_STAIRS,
+					ModBlocks.CUT_TIN_SLAB,
+					ModBlocks.TIN_DOOR,
+					ModBlocks.TIN_TRAPDOOR,
+					ModBlocks.TIN_BULB,
+					ModBlocks.BRONZE_BLOCK
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.COLORED_BLOCKS.location())) {
 			addAfter(event, Items.PINK_CANDLE,
 				List.of(
-					ModBlocks.TIN_SOLDIER.get(),
-					ModBlocks.WHITE_TIN_SOLDIER.get(),
-					ModBlocks.LIGHT_GRAY_TIN_SOLDIER.get(),
-					ModBlocks.GRAY_TIN_SOLDIER.get(),
-					ModBlocks.BLACK_TIN_SOLDIER.get(),
-					ModBlocks.BROWN_TIN_SOLDIER.get(),
-					ModBlocks.RED_TIN_SOLDIER.get(),
-					ModBlocks.ORANGE_TIN_SOLDIER.get(),
-					ModBlocks.YELLOW_TIN_SOLDIER.get(),
-					ModBlocks.LIME_TIN_SOLDIER.get(),
-					ModBlocks.GREEN_TIN_SOLDIER.get(),
-					ModBlocks.CYAN_TIN_SOLDIER.get(),
-					ModBlocks.LIGHT_BLUE_TIN_SOLDIER.get(),
-					ModBlocks.BLUE_TIN_SOLDIER.get(),
-					ModBlocks.PURPLE_TIN_SOLDIER.get(),
-					ModBlocks.MAGENTA_TIN_SOLDIER.get(),
-					ModBlocks.PINK_TIN_SOLDIER.get()
+					ModBlocks.TIN_SOLDIER,
+					ModBlocks.WHITE_TIN_SOLDIER,
+					ModBlocks.LIGHT_GRAY_TIN_SOLDIER,
+					ModBlocks.GRAY_TIN_SOLDIER,
+					ModBlocks.BLACK_TIN_SOLDIER,
+					ModBlocks.BROWN_TIN_SOLDIER,
+					ModBlocks.RED_TIN_SOLDIER,
+					ModBlocks.ORANGE_TIN_SOLDIER,
+					ModBlocks.YELLOW_TIN_SOLDIER,
+					ModBlocks.LIME_TIN_SOLDIER,
+					ModBlocks.GREEN_TIN_SOLDIER,
+					ModBlocks.CYAN_TIN_SOLDIER,
+					ModBlocks.LIGHT_BLUE_TIN_SOLDIER,
+					ModBlocks.BLUE_TIN_SOLDIER,
+					ModBlocks.PURPLE_TIN_SOLDIER,
+					ModBlocks.MAGENTA_TIN_SOLDIER,
+					ModBlocks.PINK_TIN_SOLDIER
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.NATURAL_BLOCKS.location())) {
@@ -64,8 +65,8 @@ public class ModCreativeTabOrganizer {
 			removeEntry(event, Items.DEEPSLATE_IRON_ORE);
 			addAfter(event, Items.DEEPSLATE_COPPER_ORE,
 				List.of(
-					ModBlocks.TIN_ORE.get(),
-					ModBlocks.DEEPSLATE_TIN_ORE.get(),
+					ModBlocks.TIN_ORE,
+					ModBlocks.DEEPSLATE_TIN_ORE,
 					Items.IRON_ORE,
 					Items.DEEPSLATE_IRON_ORE
 				));
@@ -73,39 +74,39 @@ public class ModCreativeTabOrganizer {
 			addBefore(event, Items.RAW_IRON_BLOCK,
 				List.of(
 					Items.RAW_COPPER_BLOCK,
-					ModBlocks.RAW_TIN_BLOCK.get()
+					ModBlocks.RAW_TIN_BLOCK
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS.location())) {
 			addAfter(event, Items.WAXED_OXIDIZED_COPPER_BULB,
 				List.of(
-					ModBlocks.TIN_BULB.get()
+					ModBlocks.TIN_BULB
 				));
 			addAfter(event, Items.PINK_CANDLE,
 				List.of(
-					ModBlocks.TIN_SOLDIER.get(),
-					ModBlocks.WHITE_TIN_SOLDIER.get(),
-					ModBlocks.LIGHT_GRAY_TIN_SOLDIER.get(),
-					ModBlocks.GRAY_TIN_SOLDIER.get(),
-					ModBlocks.BLACK_TIN_SOLDIER.get(),
-					ModBlocks.BROWN_TIN_SOLDIER.get(),
-					ModBlocks.RED_TIN_SOLDIER.get(),
-					ModBlocks.ORANGE_TIN_SOLDIER.get(),
-					ModBlocks.YELLOW_TIN_SOLDIER.get(),
-					ModBlocks.LIME_TIN_SOLDIER.get(),
-					ModBlocks.GREEN_TIN_SOLDIER.get(),
-					ModBlocks.CYAN_TIN_SOLDIER.get(),
-					ModBlocks.LIGHT_BLUE_TIN_SOLDIER.get(),
-					ModBlocks.BLUE_TIN_SOLDIER.get(),
-					ModBlocks.PURPLE_TIN_SOLDIER.get(),
-					ModBlocks.MAGENTA_TIN_SOLDIER.get(),
-					ModBlocks.PINK_TIN_SOLDIER.get()
+					ModBlocks.TIN_SOLDIER,
+					ModBlocks.WHITE_TIN_SOLDIER,
+					ModBlocks.LIGHT_GRAY_TIN_SOLDIER,
+					ModBlocks.GRAY_TIN_SOLDIER,
+					ModBlocks.BLACK_TIN_SOLDIER,
+					ModBlocks.BROWN_TIN_SOLDIER,
+					ModBlocks.RED_TIN_SOLDIER,
+					ModBlocks.ORANGE_TIN_SOLDIER,
+					ModBlocks.YELLOW_TIN_SOLDIER,
+					ModBlocks.LIME_TIN_SOLDIER,
+					ModBlocks.GREEN_TIN_SOLDIER,
+					ModBlocks.CYAN_TIN_SOLDIER,
+					ModBlocks.LIGHT_BLUE_TIN_SOLDIER,
+					ModBlocks.BLUE_TIN_SOLDIER,
+					ModBlocks.PURPLE_TIN_SOLDIER,
+					ModBlocks.MAGENTA_TIN_SOLDIER,
+					ModBlocks.PINK_TIN_SOLDIER
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.REDSTONE_BLOCKS.location())) {
 			addAfter(event, Items.WAXED_OXIDIZED_COPPER_BULB,
 				List.of(
-					ModBlocks.TIN_BULB.get()
+					ModBlocks.TIN_BULB
 				));
 
 			if (ModList.get().isLoaded("friendsandfoes")) {
@@ -118,39 +119,39 @@ public class ModCreativeTabOrganizer {
 		if (tabId.equals(CreativeModeTabs.TOOLS_AND_UTILITIES.location())) {
 			addAfter(event, Items.STONE_HOE,
 				List.of(
-					ModItems.BRONZE_SHOVEL.get(),
-					ModItems.BRONZE_PICKAXE.get(),
-					ModItems.BRONZE_AXE.get(),
-					ModItems.BRONZE_HOE.get()
+					ModItems.BRONZE_SHOVEL,
+					ModItems.BRONZE_PICKAXE,
+					ModItems.BRONZE_AXE,
+					ModItems.BRONZE_HOE
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.COMBAT.location())) {
 			addAfter(event, Items.STONE_SWORD,
 				List.of(
-					ModItems.BRONZE_SWORD.get()
+					ModItems.BRONZE_SWORD
 				));
 			addAfter(event, Items.STONE_AXE,
 				List.of(
-					ModItems.BRONZE_AXE.get()
+					ModItems.BRONZE_AXE
 				));
 			addAfter(event, Items.LEATHER_BOOTS,
 				List.of(
-					ModItems.BRONZE_HELMET.get(),
-					ModItems.BRONZE_CHESTPLATE.get(),
-					ModItems.BRONZE_LEGGINGS.get(),
-					ModItems.BRONZE_BOOTS.get()
+					ModItems.BRONZE_HELMET,
+					ModItems.BRONZE_CHESTPLATE,
+					ModItems.BRONZE_LEGGINGS,
+					ModItems.BRONZE_BOOTS
 				));
 			addAfter(event, Items.LEATHER_HORSE_ARMOR,
 				List.of(
-					ModItems.BRONZE_HORSE_ARMOR.get()
+					ModItems.BRONZE_HORSE_ARMOR
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.INGREDIENTS.location())) {
 			removeEntry(event, Items.RAW_IRON);
 			addAfter(event, Items.RAW_COPPER,
 				List.of(
-					ModItems.BRONZE_SMELT.get(),
-					ModItems.RAW_TIN.get(),
+					ModItems.BRONZE_SMELT,
+					ModItems.RAW_TIN,
 					Items.RAW_IRON
 				));
 			removeEntry(event, Items.NETHERITE_SCRAP);
@@ -160,15 +161,15 @@ public class ModCreativeTabOrganizer {
 				));
 			addBefore(event, Items.IRON_NUGGET,
 				List.of(
-					ModItems.COPPER_NUGGET.get(),
-					ModItems.TIN_NUGGET.get(),
-					ModItems.BRONZE_NUGGET.get()
+					ModItems.COPPER_NUGGET,
+					ModItems.TIN_NUGGET,
+					ModItems.BRONZE_NUGGET
 				));
 			removeEntry(event, Items.IRON_INGOT);
 			addAfter(event, Items.COPPER_INGOT,
 				List.of(
-					ModItems.TIN_INGOT.get(),
-					ModItems.BRONZE_INGOT.get(),
+					ModItems.TIN_INGOT,
+					ModItems.BRONZE_INGOT,
 					Items.IRON_INGOT
 				));
 		}
@@ -179,8 +180,8 @@ public class ModCreativeTabOrganizer {
 				assert ModItems.WOODEN_KNIFE != null;
 				addBefore(event, FarmersDelightModItems.IRON_KNIFE,
 					List.of(
-						ModItems.WOODEN_KNIFE.get(),
-						ModItems.BRONZE_KNIFE.get()
+						ModItems.WOODEN_KNIFE,
+						ModItems.BRONZE_KNIFE
 					));
 			}
 		}
