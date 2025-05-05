@@ -51,7 +51,7 @@ public class ModBlocks {
 			.pushReaction(PushReaction.DESTROY);
 
 		static final BlockBehaviour.Properties GENERIC_BRONZE = BlockBehaviour.Properties.of()
-			.mapColor(MapColor.TERRACOTTA_ORANGE)
+			.mapColor(MapColor.TERRACOTTA_YELLOW)
 			.sound(ModSoundType.TIN)
 			.requiresCorrectToolForDrops()
 			.strength(4.0f, 6.0f);
