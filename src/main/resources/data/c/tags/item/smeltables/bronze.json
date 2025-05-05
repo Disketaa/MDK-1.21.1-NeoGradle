@@ -10,6 +10,7 @@
     "harmonium:bronze_axe",
     "harmonium:bronze_hoe",
     "harmonium:bronze_sword",
-    {"id": "farmersdelight:bronze_knife", "required": false}
+    {"id": "farmersdelight:bronze_knife", "required": false},
+    "harmonium:bronze_horse_armor"
   ]
 }

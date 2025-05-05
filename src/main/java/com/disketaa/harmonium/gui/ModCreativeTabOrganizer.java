@@ -140,6 +140,10 @@ public class ModCreativeTabOrganizer {
 					ModItems.BRONZE_LEGGINGS.get(),
 					ModItems.BRONZE_BOOTS.get()
 				));
+			addAfter(event, Items.LEATHER_HORSE_ARMOR,
+				List.of(
+					ModItems.BRONZE_HORSE_ARMOR.get()
+				));
 		}
 		if (tabId.equals(CreativeModeTabs.INGREDIENTS.location())) {
 			removeEntry(event, Items.RAW_IRON);

@@ -38,6 +38,7 @@ public class ModItems {
 	public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerArmorItem("bronze_chestplate", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE);
 	public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerArmorItem("bronze_leggings", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS);
 	public static final DeferredItem<ArmorItem> BRONZE_BOOTS = registerArmorItem("bronze_boots", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS);
+	public static final DeferredItem<Item> BRONZE_HORSE_ARMOR = registerHorseArmorItem("bronze_horse_armor", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN, false);
 
 	private static DeferredItem<Item> registerSimpleItem(String name) {
 		DeferredItem<Item> item = ITEMS.register(name, () -> new Item(new Item.Properties()));
@@ -133,6 +134,17 @@ public class ModItems {
 			material,
 			type,
 			new Item.Properties().durability(type.getDurability(10))
+		));
+		REGISTERED_ITEMS.add(item);
+		return item;
+	}
+
+	private static DeferredItem<Item> registerHorseArmorItem(String name, Holder<ArmorMaterial> material, AnimalArmorItem.BodyType bodyType, boolean isFireResistant) {
+		DeferredItem<Item> item = ITEMS.register(name, () -> new AnimalArmorItem(
+			material,
+			bodyType,
+			isFireResistant,
+			new Item.Properties().stacksTo(1)
 		));
 		REGISTERED_ITEMS.add(item);
 		return item;
