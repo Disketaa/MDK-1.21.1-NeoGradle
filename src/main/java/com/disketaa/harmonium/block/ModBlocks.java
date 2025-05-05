@@ -69,10 +69,15 @@ public class ModBlocks {
 			.requiresCorrectToolForDrops()
 			.strength(4.5f, 3.0f);
 
-		static final BlockBehaviour.Properties ORE_RAW = BlockBehaviour.Properties.of()
+		static final BlockBehaviour.Properties TIN_RAW = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.RAW_IRON)
 			.requiresCorrectToolForDrops()
 			.strength(5.5f, 6.0f);
+
+		static final BlockBehaviour.Properties BRONZE_RAW = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.COLOR_ORANGE)
+			.requiresCorrectToolForDrops()
+			.strength(5.0f, 6.0f);
 	}
 
 	public static final DeferredBlock<Block> TIN_BLOCK = registerTinBlock("tin_block");
@@ -94,8 +99,8 @@ public class ModBlocks {
 	public static final DeferredBlock<TrapDoorBlock> BRONZE_TRAPDOOR = registerBlock("bronze_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.TIN, createTrapdoorProperties(BRONZE_BLOCK.get())));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
-	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.ORE_RAW));
-	public static final DeferredBlock<Block> BRONZE_BLEND_BLOCK = registerBronzeBlock("bronze_blend_block");
+	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.TIN_RAW));
+	public static final DeferredBlock<Block> BRONZE_BLEND_BLOCK = registerBlock("bronze_blend_block", () -> new Block(Properties.BRONZE_RAW));
 	public static final DeferredBlock<TinSoldierBlock> TIN_SOLDIER = registerBlock("tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.TERRACOTTA_WHITE)));
 	public static final DeferredBlock<TinSoldierBlock> WHITE_TIN_SOLDIER = registerBlock("white_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.SNOW)));
 	public static final DeferredBlock<TinSoldierBlock> LIGHT_GRAY_TIN_SOLDIER = registerBlock("light_gray_tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.COLOR_LIGHT_GRAY)));
