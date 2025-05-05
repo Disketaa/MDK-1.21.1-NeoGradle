@@ -79,7 +79,8 @@ public class ModCreativeTabOrganizer {
 			addBefore(event, Items.RAW_IRON_BLOCK,
 				List.of(
 					Items.RAW_COPPER_BLOCK,
-					ModBlocks.RAW_TIN_BLOCK
+					ModBlocks.RAW_TIN_BLOCK,
+					ModBlocks.BRONZE_SMELT_BLOCK
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS.location())) {
