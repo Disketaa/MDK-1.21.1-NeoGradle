@@ -12,6 +12,7 @@ public class Config {
 
 	private static final ModConfigSpec.BooleanValue SHOW_HARMONIUM_CREATIVE_TAB;
 	private static final ModConfigSpec.BooleanValue ADD_HARMONIUM_ITEMS_TO_OTHER_TABS;
+	private static final ModConfigSpec.BooleanValue REMOVE_STONE_TOOLS;
 	private static final ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE;
 	private static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION;
 	private static final ModConfigSpec.IntValue TIN_BUTTON_LONG_PRESS_DURATION;
@@ -19,6 +20,7 @@ public class Config {
 
 	public static boolean showHarmoniumCreativeTab;
 	public static boolean addHarmoniumItemsToOtherCreativeTabs;
+	public static boolean removeStoneTools;
 	public static boolean removeFlintKnife;
 	public static int tinButtonShortPressDuration;
 	public static int tinButtonLongPressDuration;
@@ -40,6 +42,11 @@ public class Config {
 		BUILDER.pop();
 
 		BUILDER.push("items");
+		REMOVE_STONE_TOOLS = BUILDER
+			.comment(" Whether to remove stone tools")
+			.comment(" World restart required")
+			.comment(" Default: true")
+			.define("remove_stone_tools", true);
 		REMOVE_FLINT_KNIFE = BUILDER
 			.comment(" Whether to remove Farmer's Delight flint knife")
 			.comment(" World restart required")
@@ -67,6 +74,7 @@ public class Config {
 		if (event.getConfig().getSpec() == SPEC) {
 			showHarmoniumCreativeTab = SHOW_HARMONIUM_CREATIVE_TAB.get();
 			addHarmoniumItemsToOtherCreativeTabs = ADD_HARMONIUM_ITEMS_TO_OTHER_TABS.get();
+			removeStoneTools = REMOVE_STONE_TOOLS.get();
 			removeFlintKnife = REMOVE_FLINT_KNIFE.get();
 			tinButtonShortPressDuration = TIN_BUTTON_SHORT_PRESS_DURATION.get();
 			tinButtonLongPressDuration = TIN_BUTTON_LONG_PRESS_DURATION.get();

@@ -40,6 +40,10 @@ public class ModConditions {
 
 		@Override
 		public boolean test(@NotNull ICondition.IContext context) {
+			if ("remove_stone_tools".equals(key)) {
+				return inverted != Config.removeStoneTools;
+			}
+
 			if ("remove_flint_knife".equals(key)) {
 				return inverted != Config.removeFlintKnife;
 			}
