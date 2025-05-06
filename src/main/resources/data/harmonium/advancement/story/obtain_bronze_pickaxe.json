@@ -1,0 +1,31 @@
+{
+  "parent": "harmonium:story/obtain_bronze_blend",
+  "display": {
+    "icon": {
+      "id": "harmonium:bronze_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.story.obtain_bronze_pickaxe"
+    },
+    "description": {
+      "translate": "advancements.story.obtain_bronze_pickaxe.description"
+    }
+  },
+  "criteria": {
+    "obtain_bronze_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "harmonium:bronze_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_bronze_pickaxe"
+    ]
+  ]
+}

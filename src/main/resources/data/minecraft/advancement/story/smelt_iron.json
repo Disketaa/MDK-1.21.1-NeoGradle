@@ -1,0 +1,32 @@
+{
+  "parent": "harmonium:story/obtain_bronze_pickaxe",
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_ingot"
+    },
+    "title": {
+      "translate": "advancements.story.smelt_iron.title"
+    },
+    "description": {
+      "translate": "advancements.story.smelt_iron.description"
+    }
+  },
+  "criteria": {
+    "obtain_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_iron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

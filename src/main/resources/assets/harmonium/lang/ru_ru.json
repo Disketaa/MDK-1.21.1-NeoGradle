@@ -1,4 +1,10 @@
 {
+  "advancements.story.obtain_bronze_armor": "Легионер-но",
+  "advancements.story.obtain_bronze_armor.description": "Защитите себя бронзовой бронёй",
+  "advancements.story.obtain_bronze_blend": "Сплавься",
+  "advancements.story.obtain_bronze_blend.description": "Смешайте медь и олово в бронзу",
+  "advancements.story.obtain_bronze_pickaxe": "Бронзовый век",
+  "advancements.story.obtain_bronze_pickaxe.description": "Улучшите свою кирку",
   "block.harmonium.black_tin_soldier": "Чёрный оловянный солдатик",
   "block.harmonium.blue_tin_soldier": "Синий оловянный солдатик",
   "block.harmonium.bronze_block": "Бронзовый блок",

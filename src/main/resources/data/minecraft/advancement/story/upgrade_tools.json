@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "harmonium:config",
+      "value": "remove_stone_tools",
+      "inverted": true
+    }
+  ],
+  "parent": "minecraft:story/mine_stone",
+  "display": {
+    "icon": {
+      "id": "minecraft:stone_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.story.upgrade_tools.title"
+    },
+    "description": {
+      "translate": "advancements.story.upgrade_tools.description"
+    }
+  },
+  "criteria": {
+    "stone_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stone_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "stone_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

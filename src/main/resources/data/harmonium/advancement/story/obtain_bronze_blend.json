@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "id": "harmonium:bronze_blend"
+    },
+    "title": {
+      "translate": "advancements.story.obtain_bronze_blend"
+    },
+    "description": {
+      "translate": "advancements.story.obtain_bronze_blend.description"
+    }
+  },
+  "parent": "minecraft:story/mine_stone",
+  "criteria": {
+    "obtain_bronze_blend": {
+      "conditions": {
+        "items": [
+          {
+            "items": "harmonium:bronze_blend"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_bronze_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "harmonium:bronze_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_bronze_blend",
+      "obtain_bronze_ingot"
+    ]
+  ]
+}

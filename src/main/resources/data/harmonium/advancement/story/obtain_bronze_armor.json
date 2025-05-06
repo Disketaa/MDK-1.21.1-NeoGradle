@@ -1,0 +1,36 @@
+{
+  "parent": "harmonium:story/obtain_bronze_blend",
+  "display": {
+    "icon": {
+      "id": "harmonium:bronze_chestplate"
+    },
+    "title": {
+      "translate": "advancements.story.obtain_bronze_armor"
+    },
+    "description": {
+      "translate": "advancements.story.obtain_bronze_armor.description"
+    }
+  },
+  "criteria": {
+    "obtain_bronze_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "harmonium:bronze_helmet",
+              "harmonium:bronze_chestplate",
+              "harmonium:bronze_leggings",
+              "harmonium:bronze_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_bronze_armor"
+    ]
+  ]
+}

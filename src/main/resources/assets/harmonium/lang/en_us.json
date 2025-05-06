@@ -1,4 +1,10 @@
 {
+  "advancements.story.obtain_bronze_armor": "Legionnaire",
+  "advancements.story.obtain_bronze_armor.description": "Protect yourself with a piece of bronze armor",
+  "advancements.story.obtain_bronze_blend": "Blend It",
+  "advancements.story.obtain_bronze_blend.description": "Mix copper and tin to form a bronze",
+  "advancements.story.obtain_bronze_pickaxe": "Bronze Age",
+  "advancements.story.obtain_bronze_pickaxe.description": "Improve your pickaxe",
   "block.harmonium.black_tin_soldier": "Black Tin Soldier",
   "block.harmonium.blue_tin_soldier": "Blue Tin Soldier",
   "block.harmonium.bronze_block": "Block of Bronze",
