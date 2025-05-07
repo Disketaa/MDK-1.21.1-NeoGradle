@@ -23,4 +23,23 @@ public class ModBlockSetType {
 			SoundEvents.STONE_BUTTON_CLICK_ON
 		)
 	);
+
+	public static final BlockSetType BRONZE = BlockSetType.register(
+		new BlockSetType(
+			"harmonium:bronze",
+			true,
+			true,
+			false,
+			BlockSetType.PressurePlateSensitivity.EVERYTHING,
+			ModSoundType.BRONZE,
+			ModSoundType.BRONZE_DOOR_CLOSE.get(),
+			ModSoundType.BRONZE_DOOR_OPEN.get(),
+			ModSoundType.BRONZE_TRAPDOOR_CLOSE.get(),
+			ModSoundType.BRONZE_TRAPDOOR_OPEN.get(),
+			SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
+			SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
+			SoundEvents.STONE_BUTTON_CLICK_OFF,
+			SoundEvents.STONE_BUTTON_CLICK_ON
+		)
+	);
 }

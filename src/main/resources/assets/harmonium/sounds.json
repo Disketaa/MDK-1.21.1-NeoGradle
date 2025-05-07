@@ -49,6 +49,140 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "block.bronze_bulb.break": {
+    "sounds": [
+      "minecraft:block/copper_bulb/break1",
+      "minecraft:block/copper_bulb/break2",
+      "minecraft:block/copper_bulb/break3",
+      "minecraft:block/copper_bulb/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.bronze_bulb.place": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_bulb/place1", "volume": 0.5, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/place2", "volume": 0.5, "pitch": 0.9},
+      {"name": "harmonium:block/bronze_bulb/place3", "volume": 0.5, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_bulb/place4", "volume": 0.5, "pitch": 1.0}
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.bronze_bulb.hit": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_bulb/step1", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_bulb/step2", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_bulb/step3", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_bulb/step4", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_bulb/step5", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_bulb/step6", "volume": 0.4, "pitch": 1.1}
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.bronze_bulb.fall": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_bulb/step1", "volume": 0.9, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step2", "volume": 0.9, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step3", "volume": 0.9, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step4", "volume": 0.9, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step5", "volume": 0.9, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step6", "volume": 0.9, "pitch": 1.2}
+    ]
+  },
+  "block.bronze_bulb.step": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_bulb/step1", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step2", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step3", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step4", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step5", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_bulb/step6", "volume": 0.6, "pitch": 1.2}
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.bronze_grate.break": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_grate/break1", "volume": 0.4, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/break2", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_grate/break3", "volume": 0.4, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/break4", "volume": 0.4, "pitch": 1.1}
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.bronze_grate.place": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_grate/break1", "volume": 0.4, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/break2", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_grate/break3", "volume": 0.4, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/break4", "volume": 0.4, "pitch": 1.1}
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.bronze_grate.hit": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.4, "pitch": 1.4}
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.bronze_grate.fall": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.9, "pitch": 1.6}
+    ]
+  },
+  "block.bronze_grate.step": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.6, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.6, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.6, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.6, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.6, "pitch": 1.4},
+      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.6, "pitch": 1.4}
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.bronze_door.close": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_door/toggle1", "volume": 0.7, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_door/toggle2", "volume": 0.7, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_door/toggle3", "volume": 0.7, "pitch": 1.0}
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.bronze_door.open": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_door/toggle1", "volume": 0.7, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_door/toggle2", "volume": 0.7, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_door/toggle3", "volume": 0.7, "pitch": 1.0}
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.bronze_trapdoor.close": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_trapdoor/toggle1", "volume": 0.6, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_trapdoor/toggle2", "volume": 0.6, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_trapdoor/toggle3", "volume": 0.6, "pitch": 1.0},
+      {"name": "harmonium:block/bronze_trapdoor/toggle4", "volume": 0.6, "pitch": 1.0}
+    ],
+    "subtitle": "subtitles.block.trapdoor.toggle"
+  },
+  "block.bronze_trapdoor.open": {
+    "sounds": [
+      {"name": "harmonium:block/bronze_trapdoor/toggle1", "volume": 0.6, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_trapdoor/toggle2", "volume": 0.6, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_trapdoor/toggle3", "volume": 0.6, "pitch": 1.1},
+      {"name": "harmonium:block/bronze_trapdoor/toggle4", "volume": 0.6, "pitch": 1.1}
+    ],
+    "subtitle": "subtitles.block.trapdoor.toggle"
+  },
   "block.tin.break": {
     "sounds": [
       {"name": "harmonium:block/tin/break1", "volume": 0.4, "pitch": 1.1},
@@ -99,6 +233,56 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "block.tin_bulb.break": {
+    "sounds": [
+      "minecraft:block/copper_bulb/break1",
+      "minecraft:block/copper_bulb/break2",
+      "minecraft:block/copper_bulb/break3",
+      "minecraft:block/copper_bulb/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.tin_bulb.place": {
+    "sounds": [
+      {"name": "harmonium:block/tin_bulb/place1", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/tin_bulb/place2", "volume": 0.4, "pitch": 1.5},
+      {"name": "harmonium:block/tin_bulb/place3", "volume": 0.4, "pitch": 1.6},
+      {"name": "harmonium:block/tin_bulb/place4", "volume": 0.4, "pitch": 1.7}
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.tin_bulb.hit": {
+    "sounds": [
+      {"name": "harmonium:block/tin_bulb/step1", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/tin_bulb/step2", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/tin_bulb/step3", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/tin_bulb/step4", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/tin_bulb/step5", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/tin_bulb/step6", "volume": 0.4, "pitch": 1.4}
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.tin_bulb.fall": {
+    "sounds": [
+      {"name": "harmonium:block/tin_bulb/step1", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/tin_bulb/step2", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/tin_bulb/step3", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/tin_bulb/step4", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/tin_bulb/step5", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/tin_bulb/step6", "volume": 0.9, "pitch": 1.6}
+    ]
+  },
+  "block.tin_bulb.step": {
+    "sounds": [
+      {"name": "harmonium:block/tin_bulb/step1", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/tin_bulb/step2", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/tin_bulb/step3", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/tin_bulb/step4", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/tin_bulb/step5", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/tin_bulb/step6", "volume": 0.6, "pitch": 1.8}
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "block.tin_grate.break": {
     "sounds": [
       {"name": "harmonium:block/tin_grate/break1", "volume": 0.4, "pitch": 1.1},
@@ -146,57 +330,6 @@
       {"name": "harmonium:block/tin_grate/step4", "volume": 0.6, "pitch": 1.8},
       {"name": "harmonium:block/tin_grate/step5", "volume": 0.6, "pitch": 1.8},
       {"name": "harmonium:block/tin_grate/step6", "volume": 0.6, "pitch": 1.8}
-    ],
-    "subtitle": "subtitles.block.generic.footsteps"
-  },
-  "block.tin_bulb.break": {
-    "sounds": [
-      "minecraft:block/copper_bulb/break1",
-      "minecraft:block/copper_bulb/break2",
-      "minecraft:block/copper_bulb/break3",
-      "minecraft:block/copper_bulb/break4"
-    ],
-    "subtitle": "subtitles.block.generic.break"
-  },
-  "block.tin_bulb.place": {
-    "sounds": [
-      {"name": "harmonium:block/tin_bulb/place1", "volume": 0.4, "pitch": 1.4},
-      {"name": "harmonium:block/tin_bulb/place2", "volume": 0.4, "pitch": 1.5},
-      {"name": "harmonium:block/tin_bulb/place3", "volume": 0.4, "pitch": 1.6},
-      {"name": "harmonium:block/tin_bulb/place4", "volume": 0.4, "pitch": 1.7}
-    ],
-    "subtitle": "subtitles.block.generic.place"
-  },
-  "block.tin_bulb.hit": {
-    "sounds": [
-      {"name": "harmonium:block/tin_bulb/step1", "volume": 0.4, "pitch": 1.4},
-      {"name": "harmonium:block/tin_bulb/step2", "volume": 0.4, "pitch": 1.4},
-      {"name": "harmonium:block/tin_bulb/step3", "volume": 0.4, "pitch": 1.4},
-      {"name": "harmonium:block/tin_bulb/step4", "volume": 0.4, "pitch": 1.4},
-      {"name": "harmonium:block/tin_bulb/step5", "volume": 0.4, "pitch": 1.4},
-      {"name": "harmonium:block/tin_bulb/step6", "volume": 0.4, "pitch": 1.4}
-    ],
-    "subtitle": "subtitles.block.generic.hit"
-  },
-  "block.tin_bulb.fall": {
-    "sounds": [
-      {"name": "harmonium:block/tin_bulb/step1", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/tin_bulb/step2", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/tin_bulb/step3", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/tin_bulb/step4", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/tin_bulb/step5", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/tin_bulb/step6", "volume": 0.9, "pitch": 1.6}
-    ]
-  },
-  "block.tin_bulb.step": {
-    "sounds": [
-      {"name": "harmonium:block/tin_bulb/step1", "volume": 0.6, "pitch": 1.8
-      },
-      {"name": "harmonium:block/tin_bulb/step2", "volume": 0.6, "pitch": 1.8},
-      {"name": "harmonium:block/tin_bulb/step3", "volume": 0.6, "pitch": 1.8},
-      {"name": "harmonium:block/tin_bulb/step4", "volume": 0.6, "pitch": 1.8},
-      {"name": "harmonium:block/tin_bulb/step5", "volume": 0.6, "pitch": 1.8},
-      {"name": "harmonium:block/tin_bulb/step6", "volume": 0.6, "pitch": 1.8}
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },

@@ -1,0 +1,14 @@
+{
+  "block.copper_bulb.turn_off": {
+    "sounds": [
+      {"name": "block/copper_bulb/toggle", "attenuation_distance": 6, "pitch": 0.75}
+    ],
+    "subtitle": "subtitles.block.bulb.turn_off"
+  },
+  "block.copper_bulb.turn_on": {
+    "sounds": [
+      {"name": "block/copper_bulb/toggle", "attenuation_distance": 6}
+    ],
+    "subtitle": "subtitles.block.bulb.turn_on"
+  }
+}
