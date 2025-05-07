@@ -55,15 +55,13 @@ public class BronzeBulbBlock extends Block {
 		boolean hasPower = level.hasNeighborSignal(pos);
 		int redstonePower = level.getBestNeighborSignal(pos);
 		boolean wasPowered = state.getValue(POWERED);
-		boolean isLit = state.getValue(LIT);
-		int currentLight = state.getValue(LIGHT_LEVEL);
 
 		BlockState newState = state;
 
 		if (hasPower != wasPowered) {
 			newState = newState.setValue(POWERED, hasPower);
 
-			if (hasPower && !wasPowered) {
+			if (hasPower) {
 				newState = newState.cycle(LIT);
 				level.playSound(
 					null, pos,
@@ -72,7 +70,7 @@ public class BronzeBulbBlock extends Block {
 				);
 			}
 		}
-		
+
 		if (newState.getValue(LIT)) {
 			if (hasPower) {
 				int newLight = Math.max(1, Math.min(15, redstonePower));
