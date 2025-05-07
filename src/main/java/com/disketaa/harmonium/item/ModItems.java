@@ -1,6 +1,7 @@
 package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
+import com.disketaa.harmonium.item.custom.KnifeItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
@@ -27,13 +28,13 @@ public class ModItems {
 	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");
 	public static final DeferredItem<Item> TIN_INGOT = registerSimpleItem("tin_ingot");
 	public static final DeferredItem<Item> BRONZE_INGOT = registerSimpleItem("bronze_ingot");
-	public static final DeferredItem<SwordItem> WOODEN_KNIFE = registerConditionalTool("wooden_knife", () -> registerSwordItem("wooden_knife", Tiers.WOOD, 1, -2.0f), "farmersdelight");
+	public static final DeferredItem<KnifeItem> WOODEN_KNIFE = registerConditionalTool("wooden_knife", () -> registerKnifeItem("wooden_knife", Tiers.WOOD, 0.5f, -2.0f), "farmersdelight");
+	public static final DeferredItem<KnifeItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerKnifeItem("bronze_knife", ModToolTiers.BRONZE, 0.5f, -2.0f), "farmersdelight");
 	public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = registerShovelItem("bronze_shovel", ModToolTiers.BRONZE, 1.5f, -3.0f);
 	public static final DeferredItem<PickaxeItem> BRONZE_PICKAXE = registerPickaxeItem("bronze_pickaxe", ModToolTiers.BRONZE, 1, -2.8f);
 	public static final DeferredItem<AxeItem> BRONZE_AXE = registerAxeItem("bronze_axe", ModToolTiers.BRONZE, 7.0f, -3.2f);
 	public static final DeferredItem<HoeItem> BRONZE_HOE = registerHoeItem("bronze_hoe", ModToolTiers.BRONZE, -1, -2.0f);
 	public static final DeferredItem<SwordItem> BRONZE_SWORD = registerSwordItem("bronze_sword", ModToolTiers.BRONZE, 3, -2.4f);
-	public static final DeferredItem<SwordItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerSwordItem("bronze_knife", ModToolTiers.BRONZE, 1, -2.0f), "farmersdelight");
 	public static final DeferredItem<ArmorItem> BRONZE_HELMET = registerArmorItem("bronze_helmet", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET);
 	public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerArmorItem("bronze_chestplate", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE);
 	public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerArmorItem("bronze_leggings", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS);
@@ -42,6 +43,17 @@ public class ModItems {
 
 	private static DeferredItem<Item> registerSimpleItem(String name) {
 		DeferredItem<Item> item = ITEMS.register(name, () -> new Item(new Item.Properties()));
+		REGISTERED_ITEMS.add(item);
+		return item;
+	}
+
+	public static DeferredItem<KnifeItem> registerKnifeItem(String name, Tier tier, float attackDamage, float attackSpeed) {
+		DeferredItem<KnifeItem> item = ITEMS.register(name, () -> new KnifeItem(
+			tier,
+			attackDamage,
+			attackSpeed,
+			new Item.Properties()
+		));
 		REGISTERED_ITEMS.add(item);
 		return item;
 	}
