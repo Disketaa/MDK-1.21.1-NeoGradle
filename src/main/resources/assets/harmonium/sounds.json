@@ -143,22 +143,22 @@
   },
   "block.bronze_grate.fall": {
     "sounds": [
-      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.9, "pitch": 1.6},
-      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.9, "pitch": 1.6}
+      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.9, "pitch": 1.3},
+      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.9, "pitch": 1.3},
+      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.9, "pitch": 1.3},
+      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.9, "pitch": 1.3},
+      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.9, "pitch": 1.3},
+      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.9, "pitch": 1.3}
     ]
   },
   "block.bronze_grate.step": {
     "sounds": [
-      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.6, "pitch": 1.4},
-      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.6, "pitch": 1.4},
-      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.6, "pitch": 1.4},
-      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.6, "pitch": 1.4},
-      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.6, "pitch": 1.4},
-      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.6, "pitch": 1.4}
+      {"name": "harmonium:block/bronze_grate/step1", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/step2", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/step3", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/step4", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/step5", "volume": 0.6, "pitch": 1.2},
+      {"name": "harmonium:block/bronze_grate/step6", "volume": 0.6, "pitch": 1.2}
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
