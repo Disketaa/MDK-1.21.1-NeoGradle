@@ -13,6 +13,11 @@ public class ModSoundType {
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
 		DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, Harmonium.MOD_ID);
 
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_BREAK = registerSoundEvent("block.bronze.break");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_STEP = registerSoundEvent("block.bronze.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_PLACE = registerSoundEvent("block.bronze.place");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_HIT = registerSoundEvent("block.bronze.hit");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_FALL = registerSoundEvent("block.bronze.fall");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BREAK = registerSoundEvent("block.tin.break");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_STEP = registerSoundEvent("block.tin.step");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_PLACE = registerSoundEvent("block.tin.place");
@@ -38,6 +43,11 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_CLOSE = registerSoundEvent("block.tin_trapdoor.close");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_OPEN = registerSoundEvent("block.tin_trapdoor.open");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ARMOR_EQUIP_BRONZE = registerSoundEvent("item.armor.equip_bronze");
+
+	public static final DeferredSoundType BRONZE = new DeferredSoundType(
+		1.0f, 1.0f,
+		BRONZE_BREAK, BRONZE_STEP, BRONZE_PLACE, BRONZE_HIT, BRONZE_FALL
+	);
 
 	public static final DeferredSoundType TIN = new DeferredSoundType(
 		1.0f, 1.0f,

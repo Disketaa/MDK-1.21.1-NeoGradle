@@ -35,13 +35,13 @@ public class ModBlocks {
 		}
 
 		static final BlockBehaviour.Properties GENERIC_TIN = createMetalProperties(MapColor.TERRACOTTA_WHITE, ModSoundType.TIN, 2.0f);
-		static final BlockBehaviour.Properties GENERIC_BRONZE = createMetalProperties(MapColor.TERRACOTTA_YELLOW, ModSoundType.TIN, 4.0f);
+		static final BlockBehaviour.Properties GENERIC_BRONZE = createMetalProperties(MapColor.TERRACOTTA_YELLOW, ModSoundType.BRONZE, 4.0f);
 
 		static final BlockBehaviour.Properties TIN_BULB = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.TERRACOTTA_WHITE)
 			.sound(ModSoundType.TIN_BULB)
 			.isRedstoneConductor((state, level, pos) -> false)
-			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))  // Use TinBulbBlock's property
+			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
 			.requiresCorrectToolForDrops()
 			.strength(2f, 6.0f);
 
