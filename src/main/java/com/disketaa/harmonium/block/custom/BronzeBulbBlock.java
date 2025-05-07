@@ -3,8 +3,8 @@ package com.disketaa.harmonium.block.custom;
 import com.disketaa.harmonium.sound.ModSoundType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -34,22 +34,29 @@ public class BronzeBulbBlock extends Block {
 
 	@Override
 	public void onPlace(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull BlockState oldState, boolean movedByPiston) {
-		if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-			this.updateState(state, serverLevel, pos);
+		if (!level.isClientSide()) {
+			level.scheduleTick(pos, this, 1);
 		}
 	}
 
 	@Override
 	public void neighborChanged(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Block neighborBlock, @NotNull BlockPos neighborPos, boolean movedByPiston) {
-		if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-			this.updateState(state, serverLevel, pos);
+		if (!level.isClientSide()) {
+			level.scheduleTick(pos, this, 1);
 		}
 	}
 
-	private void updateState(BlockState state, ServerLevel level, BlockPos pos) {
+	@Override
+	public void tick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random) {
+		updateLightState(state, level, pos);
+	}
+
+	private void updateLightState(BlockState state, Level level, BlockPos pos) {
 		boolean hasPower = level.hasNeighborSignal(pos);
+		int redstonePower = level.getBestNeighborSignal(pos);
 		boolean wasPowered = state.getValue(POWERED);
 		boolean isLit = state.getValue(LIT);
+		int currentLight = state.getValue(LIGHT_LEVEL);
 
 		BlockState newState = state;
 
@@ -65,18 +72,18 @@ public class BronzeBulbBlock extends Block {
 				);
 			}
 		}
-
+		
 		if (newState.getValue(LIT)) {
 			if (hasPower) {
-				int redstonePower = level.getBestNeighborSignal(pos);
-				newState = newState.setValue(LIGHT_LEVEL, redstonePower);
+				int newLight = Math.max(1, Math.min(15, redstonePower));
+				newState = newState.setValue(LIGHT_LEVEL, newLight);
 			}
 		} else {
 			newState = newState.setValue(LIGHT_LEVEL, 0);
 		}
 
-		if (state != newState) {
-			level.setBlock(pos, newState, 3);
+		if (!state.equals(newState)) {
+			level.setBlock(pos, newState, Block.UPDATE_CLIENTS);
 		}
 	}
 
@@ -86,7 +93,7 @@ public class BronzeBulbBlock extends Block {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
 		return state.getValue(LIT) ? state.getValue(LIGHT_LEVEL) : 0;
 	}
 
