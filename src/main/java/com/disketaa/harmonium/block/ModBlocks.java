@@ -9,6 +9,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -21,6 +22,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class ModBlocks {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Harmonium.MOD_ID);
@@ -34,24 +36,37 @@ public class ModBlocks {
 				.strength(strength, 6.0f);
 		}
 
+		private static BlockBehaviour.Properties createBulbProperties(
+			MapColor color,
+			SoundType sound,
+			ToIntFunction<BlockState> lightLevel,
+			float strength
+		) {
+			return BlockBehaviour.Properties.of()
+				.mapColor(color)
+				.sound(sound)
+				.isRedstoneConductor((state, level, pos) -> false)
+				.lightLevel(lightLevel)
+				.requiresCorrectToolForDrops()
+				.strength(strength, 6.0f);
+		}
+
 		static final BlockBehaviour.Properties GENERIC_TIN = createMetalProperties(MapColor.TERRACOTTA_WHITE, ModSoundType.TIN, 2.0f);
 		static final BlockBehaviour.Properties GENERIC_BRONZE = createMetalProperties(MapColor.TERRACOTTA_YELLOW, ModSoundType.BRONZE, 4.0f);
 
-		static final BlockBehaviour.Properties TIN_BULB = BlockBehaviour.Properties.of()
-			.mapColor(MapColor.TERRACOTTA_WHITE)
-			.sound(ModSoundType.TIN_BULB)
-			.isRedstoneConductor((state, level, pos) -> false)
-			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
-			.requiresCorrectToolForDrops()
-			.strength(2f, 6.0f);
+		static final BlockBehaviour.Properties TIN_BULB = createBulbProperties(
+			MapColor.TERRACOTTA_WHITE,
+			ModSoundType.TIN_BULB,
+			state -> state.getValue(TinBulbBlock.LIGHT_LEVEL),
+			2.0f
+		);
 
-		static final BlockBehaviour.Properties BRONZE_BULB = BlockBehaviour.Properties.of()
-			.mapColor(MapColor.TERRACOTTA_ORANGE)
-			.sound(ModSoundType.BRONZE_BULB)
-			.isRedstoneConductor((state, level, pos) -> false)
-			.lightLevel(state -> state.getValue(BronzeBulbBlock.LIT) ? state.getValue(BronzeBulbBlock.LIGHT_LEVEL) : 0)
-			.requiresCorrectToolForDrops()
-			.strength(4f, 6.0f);
+		static final BlockBehaviour.Properties BRONZE_BULB = createBulbProperties(
+			MapColor.TERRACOTTA_ORANGE,
+			ModSoundType.BRONZE_BULB,
+			state -> state.getValue(BronzeBulbBlock.LIT) ? state.getValue(BronzeBulbBlock.LIGHT_LEVEL) : 0,
+			4.0f
+		);
 
 		static final BlockBehaviour.Properties TIN_SOLDIER = BlockBehaviour.Properties.of()
 			.sound(ModSoundType.TIN_SOLDIER)
@@ -91,7 +106,7 @@ public class ModBlocks {
 	public static final DeferredBlock<SlabBlock> CUT_TIN_SLAB = registerBlock("cut_tin_slab", () -> new SlabBlock(Properties.GENERIC_TIN));
 	public static final DeferredBlock<DoorBlock> TIN_DOOR = registerBlock("tin_door", () -> new DoorBlock(ModBlockSetType.TIN, createDoorProperties(TIN_BLOCK.get())));
 	public static final DeferredBlock<TrapDoorBlock> TIN_TRAPDOOR = registerBlock("tin_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.TIN, createTrapdoorProperties(TIN_BLOCK.get())));
-	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerBlock("tin_bulb", () -> new TinBulbBlock(Properties.TIN_BULB));
+	public static final DeferredBlock<TinBulbBlock> TIN_BULB = registerMetalBulbBlock("tin_bulb", () -> new TinBulbBlock(Properties.TIN_BULB));
 	public static final DeferredBlock<Block> BRONZE_BLOCK = registerMetalBlock("bronze_block", Properties.GENERIC_BRONZE);
 	public static final DeferredBlock<Block> CHISELED_BRONZE = registerMetalBlock("chiseled_bronze", Properties.GENERIC_BRONZE);
 	public static final DeferredBlock<WaterloggedTransparentBlock> BRONZE_GRATE = registerBlock("bronze_grate", () -> createGrate(BRONZE_BLOCK.get(), ModSoundType.BRONZE_GRATE));
@@ -100,7 +115,7 @@ public class ModBlocks {
 	public static final DeferredBlock<SlabBlock> CUT_BRONZE_SLAB = registerBlock("cut_bronze_slab", () -> new SlabBlock(Properties.GENERIC_BRONZE));
 	public static final DeferredBlock<DoorBlock> BRONZE_DOOR = registerBlock("bronze_door", () -> new DoorBlock(ModBlockSetType.BRONZE, createDoorProperties(BRONZE_BLOCK.get())));
 	public static final DeferredBlock<TrapDoorBlock> BRONZE_TRAPDOOR = registerBlock("bronze_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.BRONZE, createTrapdoorProperties(BRONZE_BLOCK.get())));
-	public static final DeferredBlock<BronzeBulbBlock> BRONZE_BULB = registerBlock("bronze_bulb", () -> new BronzeBulbBlock(Properties.BRONZE_BULB));
+	public static final DeferredBlock<BronzeBulbBlock> BRONZE_BULB = registerMetalBulbBlock("bronze_bulb", () -> new BronzeBulbBlock(Properties.BRONZE_BULB));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.TIN_RAW));
@@ -127,6 +142,10 @@ public class ModBlocks {
 
 	private static DeferredBlock<Block> registerMetalBlock(String name, BlockBehaviour.Properties properties) {
 		return registerBlock(name, () -> new Block(properties));
+	}
+
+	private static <T extends Block> DeferredBlock<T> registerMetalBulbBlock(String name, Supplier<T> blockSupplier) {
+		return registerBlock(name, blockSupplier);
 	}
 
 	private static WaterloggedTransparentBlock createGrate(Block baseBlock, SoundType sound) {
