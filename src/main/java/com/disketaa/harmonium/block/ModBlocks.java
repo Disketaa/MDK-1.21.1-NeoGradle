@@ -1,9 +1,7 @@
 package com.disketaa.harmonium.block;
 
 import com.disketaa.harmonium.Harmonium;
-import com.disketaa.harmonium.block.custom.TinSoldierBlock;
-import com.disketaa.harmonium.block.custom.UnreliableButtonBlock;
-import com.disketaa.harmonium.block.custom.TinBulbBlock;
+import com.disketaa.harmonium.block.custom.*;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModBlockSetType;
 import com.disketaa.harmonium.sound.ModSoundType;
@@ -43,9 +41,17 @@ public class ModBlocks {
 			.mapColor(MapColor.TERRACOTTA_WHITE)
 			.sound(ModSoundType.TIN_BULB)
 			.isRedstoneConductor((state, level, pos) -> false)
-			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))
+			.lightLevel(state -> state.getValue(TinBulbBlock.LIGHT_LEVEL))  // Use TinBulbBlock's property
 			.requiresCorrectToolForDrops()
 			.strength(2f, 6.0f);
+
+		static final BlockBehaviour.Properties BRONZE_BULB = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.TERRACOTTA_ORANGE)
+			.sound(ModSoundType.TIN_BULB)
+			.isRedstoneConductor((state, level, pos) -> false)
+			.lightLevel(state -> state.getValue(BronzeBulbBlock.LIT) ? state.getValue(BronzeBulbBlock.LIGHT_LEVEL) : 0)
+			.requiresCorrectToolForDrops()
+			.strength(4f, 6.0f);
 
 		static final BlockBehaviour.Properties TIN_SOLDIER = BlockBehaviour.Properties.of()
 			.sound(ModSoundType.TIN_SOLDIER)
@@ -94,6 +100,7 @@ public class ModBlocks {
 	public static final DeferredBlock<SlabBlock> CUT_BRONZE_SLAB = registerBlock("cut_bronze_slab", () -> new SlabBlock(Properties.GENERIC_BRONZE));
 	public static final DeferredBlock<DoorBlock> BRONZE_DOOR = registerBlock("bronze_door", () -> new DoorBlock(ModBlockSetType.TIN, createDoorProperties(BRONZE_BLOCK.get())));
 	public static final DeferredBlock<TrapDoorBlock> BRONZE_TRAPDOOR = registerBlock("bronze_trapdoor", () -> new TrapDoorBlock(ModBlockSetType.TIN, createTrapdoorProperties(BRONZE_BLOCK.get())));
+	public static final DeferredBlock<BronzeBulbBlock> BRONZE_BULB = registerBlock("bronze_bulb", () -> new BronzeBulbBlock(Properties.BRONZE_BULB));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.TIN_RAW));

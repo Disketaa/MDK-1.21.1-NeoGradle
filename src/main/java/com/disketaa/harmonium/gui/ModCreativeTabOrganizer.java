@@ -42,7 +42,8 @@ public class ModCreativeTabOrganizer {
 					ModBlocks.CUT_BRONZE_STAIRS,
 					ModBlocks.CUT_BRONZE_SLAB,
 					ModBlocks.BRONZE_DOOR,
-					ModBlocks.BRONZE_TRAPDOOR
+					ModBlocks.BRONZE_TRAPDOOR,
+					ModBlocks.BRONZE_BULB
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.COLORED_BLOCKS.location())) {
@@ -88,7 +89,8 @@ public class ModCreativeTabOrganizer {
 		if (tabId.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS.location())) {
 			addAfter(event, Items.WAXED_OXIDIZED_COPPER_BULB,
 				List.of(
-					ModBlocks.TIN_BULB
+					ModBlocks.TIN_BULB,
+					ModBlocks.BRONZE_BULB
 				));
 			addAfter(event, Items.PINK_CANDLE,
 				List.of(
@@ -114,7 +116,8 @@ public class ModCreativeTabOrganizer {
 		if (tabId.equals(CreativeModeTabs.REDSTONE_BLOCKS.location())) {
 			addAfter(event, Items.WAXED_OXIDIZED_COPPER_BULB,
 				List.of(
-					ModBlocks.TIN_BULB
+					ModBlocks.TIN_BULB,
+					ModBlocks.BRONZE_BULB
 				));
 
 			if (ModList.get().isLoaded("friendsandfoes")) {

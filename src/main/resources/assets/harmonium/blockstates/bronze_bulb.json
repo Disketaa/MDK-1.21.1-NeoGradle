@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "light_level=0,powered=false": {
+      "model": "harmonium:block/bronze_bulb"
+    },
+    "light_level=0,powered=true": {
+      "model": "harmonium:block/bronze_bulb_powered"
+    },
+    "light_level=1,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit1"
+    },
+    "light_level=1,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit1_powered"
+    },
+    "light_level=2,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit2"
+    },
+    "light_level=2,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit2_powered"
+    },
+    "light_level=3,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit3"
+    },
+    "light_level=3,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit3_powered"
+    },
+    "light_level=4,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit4"
+    },
+    "light_level=4,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit4_powered"
+    },
+    "light_level=5,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit5"
+    },
+    "light_level=5,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit5_powered"
+    },
+    "light_level=6,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit6"
+    },
+    "light_level=6,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit6_powered"
+    },
+    "light_level=7,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit7"
+    },
+    "light_level=7,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit7_powered"
+    },
+    "light_level=8,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit8"
+    },
+    "light_level=8,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit8_powered"
+    },
+    "light_level=9,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit9"
+    },
+    "light_level=9,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit9_powered"
+    },
+    "light_level=10,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit10"
+    },
+    "light_level=10,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit10_powered"
+    },
+    "light_level=11,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit11"
+    },
+    "light_level=11,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit11_powered"
+    },
+    "light_level=12,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit12"
+    },
+    "light_level=12,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit12_powered"
+    },
+    "light_level=13,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit13"
+    },
+    "light_level=13,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit13_powered"
+    },
+    "light_level=14,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit14"
+    },
+    "light_level=14,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit14_powered"
+    },
+    "light_level=15,powered=false": {
+      "model": "harmonium:block/bronze_bulb_lit15"
+    },
+    "light_level=15,powered=true": {
+      "model": "harmonium:block/bronze_bulb_lit15_powered"
+    }
+  }
+}

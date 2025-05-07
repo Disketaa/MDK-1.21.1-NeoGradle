@@ -8,6 +8,7 @@
     "harmonium:cut_bronze_slab",
     "harmonium:bronze_door",
     "harmonium:bronze_trapdoor",
+    "harmonium:bronze_bulb",
     {"id": "harmonium:bronze_button", "required": false},
     "#c:smeltables/bronze"
   ]

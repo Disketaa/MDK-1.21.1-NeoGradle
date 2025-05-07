@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "tag": "c:storage_blocks/bronze"
+    },
+    "/": {
+      "item": "minecraft:blaze_rod"
+    },
+    "~": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#/#",
+    " ~ "
+  ],
+  "result": {
+    "id": "harmonium:bronze_bulb",
+    "count": 4
+  }
+}
