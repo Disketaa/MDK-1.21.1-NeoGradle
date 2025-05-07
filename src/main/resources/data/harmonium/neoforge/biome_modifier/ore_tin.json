@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "harmonium:config",
+      "value": "tin_generation"
+    }
+  ],
   "type": "neoforge:add_features",
   "biomes": {
     "type": "neoforge:any"

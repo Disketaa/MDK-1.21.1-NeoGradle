@@ -40,6 +40,10 @@ public class ModConditions {
 
 		@Override
 		public boolean test(@NotNull ICondition.IContext context) {
+			if ("tin_generation".equals(key)) {
+				return Config.tinGeneration;
+			}
+
 			if ("remove_stone_tools".equals(key)) {
 				return inverted != Config.removeStoneTools;
 			}

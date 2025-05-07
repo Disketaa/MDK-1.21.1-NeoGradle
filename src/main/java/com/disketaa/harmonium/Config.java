@@ -12,6 +12,7 @@ public class Config {
 
 	private static final ModConfigSpec.BooleanValue SHOW_HARMONIUM_CREATIVE_TAB;
 	private static final ModConfigSpec.BooleanValue ADD_HARMONIUM_ITEMS_TO_OTHER_TABS;
+	private static final ModConfigSpec.BooleanValue TIN_GENERATION;
 	private static final ModConfigSpec.BooleanValue REMOVE_STONE_TOOLS;
 	private static final ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE;
 	private static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION;
@@ -20,6 +21,7 @@ public class Config {
 
 	public static boolean showHarmoniumCreativeTab;
 	public static boolean addHarmoniumItemsToOtherCreativeTabs;
+	public static boolean tinGeneration;
 	public static boolean removeStoneTools;
 	public static boolean removeFlintKnife;
 	public static int tinButtonShortPressDuration;
@@ -32,13 +34,20 @@ public class Config {
 			.comment(" Whether to show the Harmonium creative tab in the creative menu")
 			.comment(" World restart required")
 			.comment(" Default: true")
-			.worldRestart()
 			.define("show_harmonium_creative_tab", true);
 		ADD_HARMONIUM_ITEMS_TO_OTHER_TABS = BUILDER
 			.comment(" Whether to add Harmonium items to other creative tabs")
 			.comment(" World restart required")
 			.comment(" Default: true")
 			.define("add_harmonium_items_to_other_tabs", true);
+		BUILDER.pop();
+
+		BUILDER.push("generation");
+		TIN_GENERATION = BUILDER
+			.comment(" Whether to generate tin ore in overworld")
+			.comment(" World restart required")
+			.comment(" Default: true")
+			.define("tin_generation", true);
 		BUILDER.pop();
 
 		BUILDER.push("items");
@@ -74,6 +83,7 @@ public class Config {
 		if (event.getConfig().getSpec() == SPEC) {
 			showHarmoniumCreativeTab = SHOW_HARMONIUM_CREATIVE_TAB.get();
 			addHarmoniumItemsToOtherCreativeTabs = ADD_HARMONIUM_ITEMS_TO_OTHER_TABS.get();
+			tinGeneration = TIN_GENERATION.get();
 			removeStoneTools = REMOVE_STONE_TOOLS.get();
 			removeFlintKnife = REMOVE_FLINT_KNIFE.get();
 			tinButtonShortPressDuration = TIN_BUTTON_SHORT_PRESS_DURATION.get();
