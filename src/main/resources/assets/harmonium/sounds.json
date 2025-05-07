@@ -99,6 +99,19 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "block.bronze_bulb.turn_off": {
+    "sounds": [
+      {"attenuation_distance": 6, "name": "block/copper_bulb/toggle", "pitch": 0.6
+      }
+    ],
+    "subtitle": "subtitles.block.bronze_bulb.turn_off"
+  },
+  "block.bronze_bulb.turn_on": {
+    "sounds": [
+      {"attenuation_distance": 6, "name": "block/copper_bulb/toggle"}
+    ],
+    "subtitle": "subtitles.block.bronze_bulb.turn_on"
+  },
   "block.bronze_grate.break": {
     "sounds": [
       {"name": "harmonium:block/bronze_grate/break1", "volume": 0.4, "pitch": 1.2},

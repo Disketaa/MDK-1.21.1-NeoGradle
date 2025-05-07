@@ -28,6 +28,8 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_BULB_PLACE = registerSoundEvent("block.bronze_bulb.place");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_BULB_HIT = registerSoundEvent("block.bronze_bulb.hit");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_BULB_FALL = registerSoundEvent("block.bronze_bulb.fall");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_BULB_TURN_ON = registerSoundEvent("block.bronze_bulb.turn_on");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_BULB_TURN_OFF = registerSoundEvent("block.bronze_bulb.turn_off");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_DOOR_CLOSE = registerSoundEvent("block.bronze_door.close");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_DOOR_OPEN = registerSoundEvent("block.bronze_door.open");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_TRAPDOOR_CLOSE = registerSoundEvent("block.bronze_trapdoor.close");

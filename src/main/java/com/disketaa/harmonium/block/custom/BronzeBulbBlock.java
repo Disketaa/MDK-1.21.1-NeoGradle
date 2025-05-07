@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.block.custom;
 
+import com.disketaa.harmonium.sound.ModSoundType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -59,7 +60,7 @@ public class BronzeBulbBlock extends Block {
 				newState = newState.cycle(LIT);
 				level.playSound(
 					null, pos,
-					newState.getValue(LIT) ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF,
+					newState.getValue(LIT) ? ModSoundType.BRONZE_BULB_TURN_ON.get() : ModSoundType.BRONZE_BULB_TURN_OFF.get(),
 					SoundSource.BLOCKS, 1.0F, 1.0F
 				);
 			}
