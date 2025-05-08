@@ -2,6 +2,7 @@ package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.configuration.ModConfigurationBuilder;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
@@ -17,10 +18,10 @@ public class Config {
 	public static final ModConfigSpec.BooleanValue ADD_HARMONIUM_ITEMS_TO_OTHER_TABS;
 	public static final ModConfigSpec.BooleanValue TIN_GENERATION;
 	public static final ModConfigSpec.BooleanValue REMOVE_STONE_TOOLS;
-	public static final ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE;
-	public static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION;
-	public static final ModConfigSpec.IntValue TIN_BUTTON_LONG_PRESS_DURATION;
-	public static final ModConfigSpec.IntValue TIN_BUTTON_FAILURE_CHANCE;
+	public static ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE = null;
+	public static ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION = null;
+	public static ModConfigSpec.IntValue TIN_BUTTON_LONG_PRESS_DURATION = null;
+	public static ModConfigSpec.IntValue TIN_BUTTON_FAILURE_CHANCE = null;
 
 	public static boolean showHarmoniumCreativeTab;
 	public static boolean addHarmoniumItemsToOtherCreativeTabs;
@@ -44,15 +45,19 @@ public class Config {
 		TIN_GENERATION = defineBoolean("tin_generation", true);
 		popCategory();
 
-		pushCategory("blocks");
-		TIN_BUTTON_SHORT_PRESS_DURATION = defineInt("tin_button_short_press_duration", 5, 0, 20);
-		TIN_BUTTON_LONG_PRESS_DURATION = defineInt("tin_button_long_press_duration", 10, 0, 20);
-		TIN_BUTTON_FAILURE_CHANCE = defineInt("tin_button_failure_chance", 25, 0, 100);
-		popCategory();
+		if (ModList.get().isLoaded("friendsandfoes")) {
+			pushCategory("blocks");
+			TIN_BUTTON_SHORT_PRESS_DURATION = defineInt("tin_button_short_press_duration", 5, 0, 20);
+			TIN_BUTTON_LONG_PRESS_DURATION = defineInt("tin_button_long_press_duration", 10, 0, 20);
+			TIN_BUTTON_FAILURE_CHANCE = defineInt("tin_button_failure_chance", 25, 0, 100);
+			popCategory();
+		}
 
 		pushCategory("items");
 		REMOVE_STONE_TOOLS = defineBoolean("remove_stone_tools", true);
-		REMOVE_FLINT_KNIFE = defineBoolean("remove_flint_knife", true);
+		if (ModList.get().isLoaded("farmersdelight")) {
+			REMOVE_FLINT_KNIFE = defineBoolean("remove_flint_knife", true);
+		}
 		popCategory();
 
 		SPEC = BUILDER.build();
@@ -89,9 +94,18 @@ public class Config {
 
 	public static void buildConfigScreen(ModConfigurationBuilder builder) {
 		CONFIG_ENTRIES.forEach((category, entries) -> {
+			if (category.equals("blocks") && !ModList.get().isLoaded("friendsandfoes")) {
+				return;
+			}
+
 			builder.addCategory("config.harmonium." + category);
 
 			entries.forEach(entry -> {
+				if (entry.translationKey.equals("config.harmonium.remove_flint_knife") &&
+					!ModList.get().isLoaded("farmersdelight")) {
+					return;
+				}
+
 				if (entry.value instanceof ModConfigSpec.BooleanValue booleanValue) {
 					builder.addBooleanConfig(booleanValue, entry.translationKey);
 				}
@@ -111,10 +125,16 @@ public class Config {
 			addHarmoniumItemsToOtherCreativeTabs = ADD_HARMONIUM_ITEMS_TO_OTHER_TABS.get();
 			tinGeneration = TIN_GENERATION.get();
 			removeStoneTools = REMOVE_STONE_TOOLS.get();
-			removeFlintKnife = REMOVE_FLINT_KNIFE.get();
-			tinButtonShortPressDuration = TIN_BUTTON_SHORT_PRESS_DURATION.get();
-			tinButtonLongPressDuration = TIN_BUTTON_LONG_PRESS_DURATION.get();
-			tinButtonFailureChance = TIN_BUTTON_FAILURE_CHANCE.get();
+
+			if (ModList.get().isLoaded("farmersdelight")) {
+				removeFlintKnife = REMOVE_FLINT_KNIFE.get();
+			}
+
+			if (ModList.get().isLoaded("friendsandfoes")) {
+				tinButtonShortPressDuration = TIN_BUTTON_SHORT_PRESS_DURATION.get();
+				tinButtonLongPressDuration = TIN_BUTTON_LONG_PRESS_DURATION.get();
+				tinButtonFailureChance = TIN_BUTTON_FAILURE_CHANCE.get();
+			}
 		}
 	}
 

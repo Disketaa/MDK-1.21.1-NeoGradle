@@ -67,6 +67,9 @@ public class ModConfigurationScreens extends Screen {
 			for (Field field : Config.class.getDeclaredFields()) {
 				if (ModConfigSpec.ConfigValue.class.isAssignableFrom(field.getType())) {
 					ModConfigSpec.ConfigValue<?> configValue = (ModConfigSpec.ConfigValue<?>) field.get(null);
+					if (configValue == null) {
+						continue;
+					}
 					if (configValue.getDefault() instanceof Boolean) {
 						((ModConfigSpec.BooleanValue)configValue).set((Boolean)configValue.getDefault());
 					} else if (configValue.getDefault() instanceof Integer) {
