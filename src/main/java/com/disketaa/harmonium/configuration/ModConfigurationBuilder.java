@@ -53,14 +53,12 @@ public class ModConfigurationBuilder {
 	}
 
 	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey) {
-		Component baseTooltip = Component.translatable(translationKey + ".tooltip");
-		Component defaultLine = Component.translatable("config.default")
-			.append(": ")
-			.append(Component.literal(String.valueOf(configValue.getDefault())))
-			.withStyle(ChatFormatting.GRAY);
+		String configId = translationKey.substring("config.harmonium.".length());
 
-		Component fullTooltip = baseTooltip.copy().append("\n").append(defaultLine);
-
+		Component idLine = Component.literal(configId).withStyle(ChatFormatting.YELLOW);
+		Component description = Component.translatable(translationKey + ".tooltip").withStyle(ChatFormatting.WHITE);
+		Component defaultLine = Component.translatable("config.default").append(": ").append(Component.literal(String.valueOf(configValue.getDefault()))).withStyle(ChatFormatting.GRAY);
+		Component fullTooltip = idLine.copy().append("\n").append(description).append("\n").append(defaultLine);
 		Component labelText = Component.translatable(translationKey);
 
 		ModLabelWidgets label = new ModLabelWidgets(screen, leftX, currentY, textWidth, buttonHeight, labelText, false);
@@ -68,10 +66,7 @@ public class ModConfigurationBuilder {
 		widgets.add(label);
 
 		CycleButton<Boolean> button = CycleButton.booleanBuilder(Component.translatable("options.on"),
-				Component.translatable("options.off"))
-			.withInitialValue(configValue.get())
-			.displayOnlyValue()
-			.create(leftX + textWidth + buttonSpacing, currentY, buttonWidth, buttonHeight,
+				Component.translatable("options.off")).withInitialValue(configValue.get()).displayOnlyValue().create(leftX + textWidth + buttonSpacing, currentY, buttonWidth, buttonHeight,
 				Component.empty(),
 				(btn, value) -> configValue.set(value));
 		button.setTooltip(Tooltip.create(fullTooltip));
@@ -81,15 +76,12 @@ public class ModConfigurationBuilder {
 	}
 
 	public void addIntConfig(ModConfigSpec.IntValue configValue, String translationKey, int min, int max) {
-		Component baseTooltip = Component.translatable(translationKey + ".tooltip");
+		String configId = translationKey.substring("config.harmonium.".length());
 
-		Component defaultLine = Component.translatable("config.default")
-			.append(": ")
-			.append(Component.literal(String.valueOf(configValue.getDefault())))
-			.withStyle(ChatFormatting.GRAY);
-
-		Component fullTooltip = baseTooltip.copy().append("\n").append(defaultLine);
-
+		Component idLine = Component.literal(configId).withStyle(ChatFormatting.YELLOW);
+		Component description = Component.translatable(translationKey + ".tooltip").withStyle(ChatFormatting.WHITE);
+		Component defaultLine = Component.translatable("config.default").append(": ").append(Component.literal(String.valueOf(configValue.getDefault()))).withStyle(ChatFormatting.GRAY);
+		Component fullTooltip = idLine.copy().append("\n").append(description).append("\n").append(defaultLine);
 		Component labelText = Component.translatable(translationKey);
 
 		ModLabelWidgets label = new ModLabelWidgets(screen, leftX, currentY, textWidth, buttonHeight, labelText, false);
