@@ -45,8 +45,8 @@ public class Config {
 		popCategory();
 
 		pushCategory("blocks");
-		TIN_BUTTON_SHORT_PRESS_DURATION = defineInt("tin_button_short_press_duration", 2, 0, 20);
-		TIN_BUTTON_LONG_PRESS_DURATION = defineInt("tin_button_long_press_duration", 20, 0, 20);
+		TIN_BUTTON_SHORT_PRESS_DURATION = defineInt("tin_button_short_press_duration", 5, 0, 20);
+		TIN_BUTTON_LONG_PRESS_DURATION = defineInt("tin_button_long_press_duration", 10, 0, 20);
 		TIN_BUTTON_FAILURE_CHANCE = defineInt("tin_button_failure_chance", 25, 0, 100);
 		popCategory();
 
