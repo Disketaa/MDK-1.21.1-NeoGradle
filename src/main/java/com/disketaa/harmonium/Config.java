@@ -1,9 +1,12 @@
 package com.disketaa.harmonium;
 
+import com.disketaa.harmonium.configuration.ModConfigurationBuilder;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.*;
 
 @EventBusSubscriber(modid = Harmonium.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class Config {
@@ -28,54 +31,77 @@ public class Config {
 	public static int tinButtonLongPressDuration;
 	public static int tinButtonFailureChance;
 
+	private static final Map<String, List<ConfigEntry>> CONFIG_ENTRIES = new LinkedHashMap<>();
+	private static String currentCategory = "";
+
 	static {
-		BUILDER.push("creative_tab");
-		SHOW_HARMONIUM_CREATIVE_TAB = BUILDER
-			.comment(" Whether to show the Harmonium creative tab in the creative menu")
-			.comment(" World restart required")
-			.comment(" Default: true")
-			.define("show_harmonium_creative_tab", true);
-		ADD_HARMONIUM_ITEMS_TO_OTHER_TABS = BUILDER
-			.comment(" Whether to add Harmonium items to other creative tabs")
-			.comment(" World restart required")
-			.comment(" Default: true")
-			.define("add_harmonium_items_to_other_tabs", true);
-		BUILDER.pop();
+		pushCategory("creative_tab");
+		SHOW_HARMONIUM_CREATIVE_TAB = defineBoolean("show_harmonium_creative_tab", true);
+		ADD_HARMONIUM_ITEMS_TO_OTHER_TABS = defineBoolean("add_harmonium_items_to_other_tabs", true);
+		popCategory();
 
-		BUILDER.push("generation");
-		TIN_GENERATION = BUILDER
-			.comment(" Whether to generate tin ore in overworld")
-			.comment(" World restart required")
-			.comment(" Default: true")
-			.define("tin_generation", true);
-		BUILDER.pop();
+		pushCategory("generation");
+		TIN_GENERATION = defineBoolean("tin_generation", true);
+		popCategory();
 
-		BUILDER.push("items");
-		REMOVE_STONE_TOOLS = BUILDER
-			.comment(" Whether to remove stone tools")
-			.comment(" World restart required")
-			.comment(" Default: true")
-			.define("remove_stone_tools", true);
-		REMOVE_FLINT_KNIFE = BUILDER
-			.comment(" Whether to remove Farmer's Delight flint knife")
-			.comment(" World restart required")
-			.comment(" Default: true")
-			.define("remove_flint_knife", true);
-		BUILDER.pop();
+		pushCategory("blocks");
+		TIN_BUTTON_SHORT_PRESS_DURATION = defineInt("tin_button_short_press_duration", 2, 0, 20);
+		TIN_BUTTON_LONG_PRESS_DURATION = defineInt("tin_button_long_press_duration", 20, 0, 20);
+		TIN_BUTTON_FAILURE_CHANCE = defineInt("tin_button_failure_chance", 25, 0, 100);
+		popCategory();
 
-		BUILDER.push("tin_button");
-		TIN_BUTTON_SHORT_PRESS_DURATION = BUILDER
-			.comment(" Duration in ticks for a short press")
-			.defineInRange("short_press_duration", 2, 0, 20);
-		TIN_BUTTON_LONG_PRESS_DURATION = BUILDER
-			.comment(" Duration in ticks for a long press")
-			.defineInRange("long_press_duration", 20, 0, 20);
-		TIN_BUTTON_FAILURE_CHANCE = BUILDER
-			.comment(" Chance for the button to fail when pressed")
-			.defineInRange("failure_chance", 25, 0, 100);
-		BUILDER.pop();
+		pushCategory("items");
+		REMOVE_STONE_TOOLS = defineBoolean("remove_stone_tools", true);
+		REMOVE_FLINT_KNIFE = defineBoolean("remove_flint_knife", true);
+		popCategory();
 
 		SPEC = BUILDER.build();
+	}
+
+	private static void pushCategory(String path) {
+		BUILDER.push(path);
+		currentCategory = path;
+		CONFIG_ENTRIES.putIfAbsent(path, new ArrayList<>());
+	}
+
+	private static void popCategory() {
+		BUILDER.pop();
+		currentCategory = "";
+	}
+
+	private static ModConfigSpec.BooleanValue defineBoolean(String path, boolean defaultValue) {
+		String translationKey = "config.harmonium." + path;
+		ModConfigSpec.BooleanValue value = BUILDER
+			.translation(translationKey + ".tooltip")
+			.define(path, defaultValue);
+		CONFIG_ENTRIES.get(currentCategory).add(new ConfigEntry(value, translationKey));
+		return value;
+	}
+
+	private static ModConfigSpec.IntValue defineInt(String path, int defaultValue, int min, int max) {
+		String translationKey = "config.harmonium." + path;
+		ModConfigSpec.IntValue value = BUILDER
+			.translation(translationKey + ".tooltip")
+			.defineInRange(path, defaultValue, min, max);
+		CONFIG_ENTRIES.get(currentCategory).add(new ConfigEntry(value, translationKey, min, max));
+		return value;
+	}
+
+	public static void buildConfigScreen(ModConfigurationBuilder builder) {
+		CONFIG_ENTRIES.forEach((category, entries) -> {
+			builder.addCategory("config.harmonium." + category);
+
+			entries.forEach(entry -> {
+				if (entry.value instanceof ModConfigSpec.BooleanValue booleanValue) {
+					builder.addBooleanConfig(booleanValue, entry.translationKey);
+				}
+				else if (entry.value instanceof ModConfigSpec.IntValue intValue) {
+					builder.addIntConfig(intValue, entry.translationKey, entry.min, entry.max);
+				}
+			});
+
+			builder.addSpacing(16);
+		});
 	}
 
 	@SubscribeEvent
@@ -89,6 +115,24 @@ public class Config {
 			tinButtonShortPressDuration = TIN_BUTTON_SHORT_PRESS_DURATION.get();
 			tinButtonLongPressDuration = TIN_BUTTON_LONG_PRESS_DURATION.get();
 			tinButtonFailureChance = TIN_BUTTON_FAILURE_CHANCE.get();
+		}
+	}
+
+	private static class ConfigEntry {
+		final ModConfigSpec.ConfigValue<?> value;
+		final String translationKey;
+		final int min;
+		final int max;
+
+		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey) {
+			this(value, translationKey, 0, 0);
+		}
+
+		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey, int min, int max) {
+			this.value = value;
+			this.translationKey = translationKey;
+			this.min = min;
+			this.max = max;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.configuration;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -29,10 +30,26 @@ public class ModConfigurationBuilder {
 		this.currentY = 40;
 	}
 
+	public void addSpacing(int pixels) {
+		currentY += pixels;
+	}
+
 	public void addCategory(String translationKey) {
-		widgets.add(new ModLabelWidgets(screen, leftX, currentY - 10, textWidth + buttonWidth + buttonSpacing, buttonHeight,
-			Component.translatable(translationKey), true));
-		currentY += buttonSpacing;
+		Component categoryTitle = Component.translatable(translationKey)
+			.withStyle(ChatFormatting.YELLOW, ChatFormatting.BOLD);
+
+		int fullWidth = textWidth + buttonWidth + buttonSpacing;
+
+		widgets.add(new ModLabelWidgets(
+			screen,
+			leftX,
+			currentY - 10,
+			fullWidth,
+			buttonHeight,
+			categoryTitle,
+			true
+		));
+		currentY += buttonSpacing * 2;
 	}
 
 	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey) {

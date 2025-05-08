@@ -16,27 +16,45 @@ import java.util.List;
 public class ModLabelWidgets extends AbstractWidget {
 	private final Minecraft minecraft;
 	private Tooltip tooltip;
+	private final boolean centered;
 
 	public ModLabelWidgets(Screen screen, int x, int y, int width, int height, Component message, boolean centered) {
 		super(x, y, width, height, message);
 		this.minecraft = screen.getMinecraft();
-		if (centered) {
-			this.setX(x - this.getWidth() / 2);
-		}
+		this.centered = centered;
 		this.active = false;
 	}
 
 	@Override
-	public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+	public void renderWidget(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
 		int textY = this.getY() + (this.height - minecraft.font.lineHeight) / 2 + 1;
-		guiGraphics.drawString(
-			minecraft.font,
-			this.getMessage(),
-			this.getX(),
-			textY,
-			0xFFFFFF,
-			true
-		);
+		Component renderedText = this.getMessage();
+
+		if (minecraft.font.width(renderedText) > this.width) {
+			renderedText = Component.literal(minecraft.font.ellipsize(renderedText, this.width).getString());
+		}
+
+		if (centered) {
+			int textWidth = minecraft.font.width(renderedText);
+			int centeredX = this.getX() + (this.width - textWidth) / 2;
+			guiGraphics.drawString(
+				minecraft.font,
+				renderedText,
+				centeredX,
+				textY,
+				0xFFFFFF,
+				true
+			);
+		} else {
+			guiGraphics.drawString(
+				minecraft.font,
+				renderedText,
+				this.getX(),
+				textY,
+				0xFFFFFF,
+				true
+			);
+		}
 
 		if (this.tooltip != null && this.isHovered()) {
 			List<FormattedCharSequence> tooltipLines = this.tooltip.toCharSequence(minecraft);
