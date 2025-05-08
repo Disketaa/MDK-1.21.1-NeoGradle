@@ -1,12 +1,9 @@
 package com.disketaa.harmonium.configuration;
 
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,39 +14,58 @@ public class ModConfigurationBuilder {
 	private final List<AbstractWidget> widgets = new ArrayList<>();
 	private int currentY;
 	private final int leftX;
+	private final int textWidth;
 	private final int buttonWidth;
 	private final int buttonHeight;
 	private final int buttonSpacing;
 
-	public ModConfigurationBuilder(Screen screen, int leftX, int buttonWidth, int buttonHeight, int buttonSpacing) {
+	public ModConfigurationBuilder(Screen screen, int leftX, int textWidth, int buttonWidth, int buttonHeight, int buttonSpacing) {
 		this.screen = screen;
 		this.leftX = leftX;
+		this.textWidth = textWidth;
 		this.buttonWidth = buttonWidth;
 		this.buttonHeight = buttonHeight;
 		this.buttonSpacing = buttonSpacing;
-		this.currentY = screen.height / 6;
+		this.currentY = 40;
 	}
 
 	public void addCategory(String translationKey) {
-		widgets.add(new Label(screen, leftX, currentY - 10, buttonWidth * 2, buttonHeight,
+		widgets.add(new ModLabelWidgets(screen, leftX, currentY - 10, textWidth + buttonWidth + buttonSpacing, buttonHeight,
 			Component.translatable(translationKey), true));
 		currentY += buttonSpacing;
 	}
 
 	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey) {
+		Component tooltip = Component.translatable(translationKey + ".tooltip");
+		Component labelText = Component.translatable(translationKey);
+
+		ModLabelWidgets label = new ModLabelWidgets(screen, leftX, currentY, textWidth, buttonHeight, labelText, false);
+		label.setTooltip(Tooltip.create(tooltip));
+		widgets.add(label);
+
 		CycleButton<Boolean> button = CycleButton.booleanBuilder(Component.translatable("options.on"),
 				Component.translatable("options.off"))
 			.withInitialValue(configValue.get())
-			.create(leftX, currentY, buttonWidth, buttonHeight,
-				Component.translatable(translationKey),
+			.displayOnlyValue()
+			.create(leftX + textWidth + buttonSpacing, currentY, buttonWidth, buttonHeight,
+				Component.empty(),
 				(btn, value) -> configValue.set(value));
+		button.setTooltip(Tooltip.create(tooltip));
 		widgets.add(button);
-		currentY += buttonSpacing;
+
+		currentY += buttonHeight + buttonSpacing;
 	}
 
 	public void addIntConfig(ModConfigSpec.IntValue configValue, String translationKey, int min, int max) {
-		EditBox field = new EditBox(screen.getMinecraft().font, leftX, currentY, buttonWidth, buttonHeight,
-			Component.translatable(translationKey));
+		Component tooltip = Component.translatable(translationKey + ".tooltip");
+		Component labelText = Component.translatable(translationKey);
+
+		ModLabelWidgets label = new ModLabelWidgets(screen, leftX, currentY, textWidth, buttonHeight, labelText, false);
+		label.setTooltip(Tooltip.create(tooltip));
+		widgets.add(label);
+
+		EditBox field = new EditBox(screen.getMinecraft().font, leftX + textWidth + buttonSpacing, currentY, buttonWidth, buttonHeight,
+			Component.empty());
 		field.setValue(String.valueOf(configValue.get()));
 		field.setResponder(text -> {
 			try {
@@ -59,40 +75,13 @@ public class ModConfigurationBuilder {
 				}
 			} catch (NumberFormatException ignored) {}
 		});
+		field.setTooltip(Tooltip.create(tooltip));
 		widgets.add(field);
-		currentY += buttonSpacing;
+
+		currentY += buttonHeight + buttonSpacing;
 	}
 
 	public void addToScreen(Consumer<AbstractWidget> addWidget) {
 		widgets.forEach(addWidget);
-	}
-
-	private static class Label extends AbstractWidget {
-		private final Screen screen;
-
-		public Label(Screen screen, int x, int y, int width, int height, Component message, boolean centered) {
-			super(x, y, width, height, message);
-			this.screen = screen;
-			if (centered) {
-				this.setX(x - this.getWidth() / 2);
-			}
-			this.active = false;
-		}
-
-		@Override
-		public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-			guiGraphics.drawString(
-				screen.getMinecraft().font,
-				this.getMessage(),
-				this.getX(),
-				this.getY(),
-				0xFFFFFF,
-				true
-			);
-		}
-
-		@Override
-		protected void updateWidgetNarration(@NotNull NarrationElementOutput narrationElementOutput) {
-		}
 	}
 }
