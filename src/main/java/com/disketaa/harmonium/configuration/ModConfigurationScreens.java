@@ -90,6 +90,7 @@ public class ModConfigurationScreens extends Screen {
 				Component.translatable("options.on"),
 				Component.translatable("options.off"))
 			.withInitialValue(configValue.get())
+			.displayOnlyValue()
 			.create(buttonX, y, BUTTON_WIDTH, BUTTON_HEIGHT,
 				Component.empty(),
 				(btn, value) -> configValue.set(value)));
