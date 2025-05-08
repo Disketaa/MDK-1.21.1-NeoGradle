@@ -53,11 +53,18 @@ public class ModConfigurationBuilder {
 	}
 
 	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey) {
-		Component tooltip = Component.translatable(translationKey + ".tooltip");
+		Component baseTooltip = Component.translatable(translationKey + ".tooltip");
+		Component defaultLine = Component.translatable("config.default")
+			.append(": ")
+			.append(Component.literal(String.valueOf(configValue.getDefault())))
+			.withStyle(ChatFormatting.GRAY);
+
+		Component fullTooltip = baseTooltip.copy().append("\n").append(defaultLine);
+
 		Component labelText = Component.translatable(translationKey);
 
 		ModLabelWidgets label = new ModLabelWidgets(screen, leftX, currentY, textWidth, buttonHeight, labelText, false);
-		label.setTooltip(Tooltip.create(tooltip));
+		label.setTooltip(Tooltip.create(fullTooltip));
 		widgets.add(label);
 
 		CycleButton<Boolean> button = CycleButton.booleanBuilder(Component.translatable("options.on"),
@@ -67,18 +74,26 @@ public class ModConfigurationBuilder {
 			.create(leftX + textWidth + buttonSpacing, currentY, buttonWidth, buttonHeight,
 				Component.empty(),
 				(btn, value) -> configValue.set(value));
-		button.setTooltip(Tooltip.create(tooltip));
+		button.setTooltip(Tooltip.create(fullTooltip));
 		widgets.add(button);
 
 		currentY += buttonHeight + buttonSpacing;
 	}
 
 	public void addIntConfig(ModConfigSpec.IntValue configValue, String translationKey, int min, int max) {
-		Component tooltip = Component.translatable(translationKey + ".tooltip");
+		Component baseTooltip = Component.translatable(translationKey + ".tooltip");
+
+		Component defaultLine = Component.translatable("config.default")
+			.append(": ")
+			.append(Component.literal(String.valueOf(configValue.getDefault())))
+			.withStyle(ChatFormatting.GRAY);
+
+		Component fullTooltip = baseTooltip.copy().append("\n").append(defaultLine);
+
 		Component labelText = Component.translatable(translationKey);
 
 		ModLabelWidgets label = new ModLabelWidgets(screen, leftX, currentY, textWidth, buttonHeight, labelText, false);
-		label.setTooltip(Tooltip.create(tooltip));
+		label.setTooltip(Tooltip.create(fullTooltip));
 		widgets.add(label);
 
 		EditBox field = new EditBox(screen.getMinecraft().font, leftX + textWidth + buttonSpacing, currentY, buttonWidth, buttonHeight,
@@ -92,7 +107,7 @@ public class ModConfigurationBuilder {
 				}
 			} catch (NumberFormatException ignored) {}
 		});
-		field.setTooltip(Tooltip.create(tooltip));
+		field.setTooltip(Tooltip.create(fullTooltip));
 		widgets.add(field);
 
 		currentY += buttonHeight + buttonSpacing;

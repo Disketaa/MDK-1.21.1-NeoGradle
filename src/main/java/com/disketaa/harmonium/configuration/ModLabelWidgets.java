@@ -31,7 +31,11 @@ public class ModLabelWidgets extends AbstractWidget {
 		Component renderedText = this.getMessage();
 
 		if (minecraft.font.width(renderedText) > this.width) {
-			renderedText = Component.literal(minecraft.font.ellipsize(renderedText, this.width).getString());
+			String ellipsized = minecraft.font.ellipsize(renderedText, this.width).getString();
+			if (ellipsized.endsWith(" ...")) {
+				ellipsized = ellipsized.substring(0, ellipsized.length() - 4) + "...";
+			}
+			renderedText = Component.literal(ellipsized);
 		}
 
 		if (centered) {
@@ -56,6 +60,7 @@ public class ModLabelWidgets extends AbstractWidget {
 			);
 		}
 
+		// Tooltip rendering unchanged
 		if (this.tooltip != null && this.isHovered()) {
 			List<FormattedCharSequence> tooltipLines = this.tooltip.toCharSequence(minecraft);
 			guiGraphics.renderTooltip(minecraft.font, tooltipLines, mouseX, mouseY);

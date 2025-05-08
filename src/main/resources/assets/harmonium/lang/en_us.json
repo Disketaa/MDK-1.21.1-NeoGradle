@@ -46,14 +46,13 @@
   "block.harmonium.tin_trapdoor": "Tin Trapdoor",
   "block.harmonium.white_tin_soldier": "White Tin Soldier",
   "block.harmonium.yellow_tin_soldier": "Yellow Tin Soldier",
-
+  "config.default": "Default",
+  "config.harmonium.add_harmonium_items_to_other_tabs": "Add Harmonium items in other tabs",
+  "config.harmonium.add_harmonium_items_to_other_tabs.tooltip": "Whether to add Harmonium items to other creative tabs.",
+  "config.harmonium.blocks": "Blocks",
   "config.harmonium.creative_tab": "Creative Tabs",
   "config.harmonium.generation": "World Generation",
   "config.harmonium.items": "Items",
-  "config.harmonium.blocks": "Blocks",
-
-  "config.harmonium.add_harmonium_items_to_other_tabs": "Add Harmonium items in other tabs",
-  "config.harmonium.add_harmonium_items_to_other_tabs.tooltip": "Whether to add Harmonium items to other creative tabs.",
   "config.harmonium.remove_flint_knife": "Remove flint knife",
   "config.harmonium.remove_flint_knife.tooltip": "Whether to remove Farmer's Delight flint knife.",
   "config.harmonium.remove_stone_tools": "Remove stone tools",
