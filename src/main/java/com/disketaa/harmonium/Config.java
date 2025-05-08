@@ -10,14 +10,14 @@ public class Config {
 	public static final ModConfigSpec SPEC;
 	private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-	private static final ModConfigSpec.BooleanValue SHOW_HARMONIUM_CREATIVE_TAB;
-	private static final ModConfigSpec.BooleanValue ADD_HARMONIUM_ITEMS_TO_OTHER_TABS;
-	private static final ModConfigSpec.BooleanValue TIN_GENERATION;
-	private static final ModConfigSpec.BooleanValue REMOVE_STONE_TOOLS;
-	private static final ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE;
-	private static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION;
-	private static final ModConfigSpec.IntValue TIN_BUTTON_LONG_PRESS_DURATION;
-	private static final ModConfigSpec.IntValue TIN_BUTTON_FAILURE_CHANCE;
+	public static final ModConfigSpec.BooleanValue SHOW_HARMONIUM_CREATIVE_TAB;
+	public static final ModConfigSpec.BooleanValue ADD_HARMONIUM_ITEMS_TO_OTHER_TABS;
+	public static final ModConfigSpec.BooleanValue TIN_GENERATION;
+	public static final ModConfigSpec.BooleanValue REMOVE_STONE_TOOLS;
+	public static final ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE;
+	public static final ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION;
+	public static final ModConfigSpec.IntValue TIN_BUTTON_LONG_PRESS_DURATION;
+	public static final ModConfigSpec.IntValue TIN_BUTTON_FAILURE_CHANCE;
 
 	public static boolean showHarmoniumCreativeTab;
 	public static boolean addHarmoniumItemsToOtherCreativeTabs;

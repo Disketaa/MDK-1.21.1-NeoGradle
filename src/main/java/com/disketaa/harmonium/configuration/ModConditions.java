@@ -1,4 +1,4 @@
-package com.disketaa.harmonium.util;
+package com.disketaa.harmonium.configuration;
 
 import com.disketaa.harmonium.Config;
 import com.google.common.collect.Maps;

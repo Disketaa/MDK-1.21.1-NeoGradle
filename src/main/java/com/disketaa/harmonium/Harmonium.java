@@ -1,6 +1,7 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.block.ModBlocks;
+import com.disketaa.harmonium.configuration.ModConfigurationScreens;
 import com.disketaa.harmonium.entity.ModEntityArmorEvents;
 import com.disketaa.harmonium.gui.ModCreativeTabItemRemover;
 import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
@@ -8,9 +9,12 @@ import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModArmorMaterials;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
-import com.disketaa.harmonium.util.ModConditions;
+import com.disketaa.harmonium.configuration.ModConditions;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -70,6 +74,12 @@ public class Harmonium {
 	public static class ClientModEvents {
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
+			event.enqueueWork(() -> {
+				ModLoadingContext.get().registerExtensionPoint(
+					IConfigScreenFactory.class,
+					() -> (container, parent) -> new ModConfigurationScreens(parent)
+				);
+			});
 		}
 	}
 }
