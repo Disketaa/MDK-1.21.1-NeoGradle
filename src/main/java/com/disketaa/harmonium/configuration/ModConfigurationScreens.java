@@ -2,18 +2,23 @@ package com.disketaa.harmonium.configuration;
 
 import com.disketaa.harmonium.Config;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.*;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.jetbrains.annotations.NotNull;
 
 public class ModConfigurationScreens extends Screen {
 	private final Screen parent;
+	private static final int TEXT_WIDTH = 200;
+	private static final int BUTTON_WIDTH = 100;
+	private static final int ROW_HEIGHT = 20;
+	private static final int PADDING = 5;
 
 	public ModConfigurationScreens(Screen parent) {
-		super(Component.translatable("harmonium.config.title"));
+		super(Component.translatable("config.harmonium.title"));
 		this.parent = parent;
 	}
 
@@ -21,45 +26,97 @@ public class ModConfigurationScreens extends Screen {
 	protected void init() {
 		super.init();
 
-		int buttonWidth = Math.min(200, width / 2 - 20);
-		int buttonHeight = 20;
-		int leftX = width / 4;
-		int buttonSpacing = 24;
+		int totalRowWidth = TEXT_WIDTH + BUTTON_WIDTH + PADDING;
+		int startX = (this.width - totalRowWidth) / 2;
+		int currentY = 40;
 
-		ModConfigurationBuilder builder = new ModConfigurationBuilder(this, leftX, buttonWidth, buttonHeight, buttonSpacing);
+		addConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.show_harmonium_creative_tab"),
+			Config.SHOW_HARMONIUM_CREATIVE_TAB);
+		currentY += ROW_HEIGHT + PADDING;
 
-		builder.addCategory("harmonium.config.creative_tab");
-		builder.addBooleanConfig(Config.SHOW_HARMONIUM_CREATIVE_TAB, "harmonium.config.show_harmonium_creative_tab");
-		builder.addBooleanConfig(Config.ADD_HARMONIUM_ITEMS_TO_OTHER_TABS, "harmonium.config.add_harmonium_items_to_other_tabs");
+		addConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.add_harmonium_items_to_other_tabs"),
+			Config.ADD_HARMONIUM_ITEMS_TO_OTHER_TABS);
+		currentY += ROW_HEIGHT + PADDING;
 
-		builder.addCategory("harmonium.config.generation");
-		builder.addBooleanConfig(Config.TIN_GENERATION, "harmonium.config.tin_generation");
+		addConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.tin_generation"),
+			Config.TIN_GENERATION);
+		currentY += ROW_HEIGHT + PADDING;
 
-		builder.addCategory("harmonium.config.items");
-		builder.addBooleanConfig(Config.REMOVE_STONE_TOOLS, "harmonium.config.remove_stone_tools");
-		builder.addBooleanConfig(Config.REMOVE_FLINT_KNIFE, "harmonium.config.remove_flint_knife");
+		addConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.remove_stone_tools"),
+			Config.REMOVE_STONE_TOOLS);
+		currentY += ROW_HEIGHT + PADDING;
 
-		builder.addCategory("harmonium.config.tin_button");
-		builder.addIntConfig(Config.TIN_BUTTON_SHORT_PRESS_DURATION, "harmonium.config.tin_button.short_press_duration", 0, 20);
-		builder.addIntConfig(Config.TIN_BUTTON_LONG_PRESS_DURATION, "harmonium.config.tin_button.long_press_duration", 0, 20);
-		builder.addIntConfig(Config.TIN_BUTTON_FAILURE_CHANCE, "harmonium.config.tin_button.failure_chance", 0, 100);
+		addConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.remove_flint_knife"),
+			Config.REMOVE_FLINT_KNIFE);
+		currentY += ROW_HEIGHT + PADDING;
 
-		builder.addToScreen(this::addRenderableWidget);
+		addIntConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.tin_button.short_press_duration"),
+			Config.TIN_BUTTON_SHORT_PRESS_DURATION, 20);
+		currentY += ROW_HEIGHT + PADDING;
+
+		addIntConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.tin_button.long_press_duration"),
+			Config.TIN_BUTTON_LONG_PRESS_DURATION, 20);
+		currentY += ROW_HEIGHT + PADDING;
+
+		addIntConfigRow(startX, currentY,
+			Component.translatable("config.harmonium.tin_button.failure_chance"),
+			Config.TIN_BUTTON_FAILURE_CHANCE, 100);
+		currentY += ROW_HEIGHT + PADDING;
 
 		addRenderableWidget(Button.builder(CommonComponents.GUI_DONE,
 				button -> {
 					Config.SPEC.save();
 					onClose();
 				})
-			.bounds(width / 2 - 100, height - 28, 200, 20)
+			.bounds((width - 200) / 2, height - 26, 200, 20)
 			.build());
+	}
+
+	private void addConfigRow(int startX, int y, Component label, ModConfigSpec.BooleanValue configValue) {
+		Component labelWithColon = Component.translatable(label.getString() + ":");
+		addRenderableWidget(new Label(startX, y, TEXT_WIDTH, ROW_HEIGHT, labelWithColon));
+
+		int buttonX = startX + TEXT_WIDTH + PADDING;
+
+		addRenderableWidget(CycleButton.booleanBuilder(
+				Component.translatable("options.on"),
+				Component.translatable("options.off"))
+			.withInitialValue(configValue.get())
+			.create(buttonX, y, BUTTON_WIDTH, ROW_HEIGHT,
+				Component.empty(),
+				(btn, value) -> configValue.set(value)));
+	}
+
+	private void addIntConfigRow(int startX, int y, Component label, ModConfigSpec.IntValue configValue, int max) {
+		addRenderableWidget(new Label(startX, y, TEXT_WIDTH, ROW_HEIGHT, label));
+
+		int fieldX = startX + TEXT_WIDTH + PADDING;
+
+		EditBox field = new EditBox(this.font, fieldX, y, BUTTON_WIDTH, ROW_HEIGHT, Component.empty());
+		field.setValue(String.valueOf(configValue.get()));
+		field.setResponder(text -> {
+			try {
+				int value = Integer.parseInt(text);
+				if (value >= 0 && value <= max) {
+					configValue.set(value);
+				}
+			} catch (NumberFormatException ignored) {}
+		});
+		addRenderableWidget(field);
 	}
 
 	@Override
 	public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
 		renderBackground(guiGraphics, mouseX, mouseY, partialTick);
-		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 15, 0xFFFFFF);
 		super.render(guiGraphics, mouseX, mouseY, partialTick);
+		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 12, 0xFFFFFF);
 	}
 
 	@Override
@@ -69,18 +126,26 @@ public class ModConfigurationScreens extends Screen {
 		this.minecraft.setScreen(this.parent);
 	}
 
-	private abstract class Label extends AbstractWidget {
-		public Label(int x, int y, int width, int height, Component message, boolean centered) {
+	private class Label extends AbstractWidget {
+		public Label(int x, int y, int width, int height, Component message) {
 			super(x, y, width, height, message);
-			if (centered) {
-				this.setX(x - this.getWidth() / 2);
-			}
 			this.active = false;
 		}
 
 		@Override
 		public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-			guiGraphics.drawString(ModConfigurationScreens.this.font, this.getMessage(), this.getX(), this.getY(), 0xFFFFFF, true);
+			guiGraphics.drawString(
+				ModConfigurationScreens.this.font,
+				this.getMessage(),
+				this.getX(),
+				this.getY(),
+				0xFFFFFF,
+				true
+			);
+		}
+
+		@Override
+		protected void updateWidgetNarration(@NotNull NarrationElementOutput narrationElementOutput) {
 		}
 	}
 }
