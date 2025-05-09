@@ -18,6 +18,7 @@ public class ModConfigurationScreens extends Screen {
 	private ModConfigurationScrollableList modConfigurationScrollableList;
 
 	private static final int FOOTER_PADDING = 6;
+	private static final int BUTTON_WIDTH = 150;
 	private static final int BUTTON_HEIGHT = 20;
 	private static final int BUTTON_SPACING = 8;
 	private static final int HEADER_HEIGHT = 32;
@@ -53,12 +54,12 @@ public class ModConfigurationScreens extends Screen {
 
 		LinearLayout buttonLayout = LinearLayout.horizontal().spacing(BUTTON_SPACING);
 		buttonLayout.addChild(Button.builder(Component.translatable("controls.reset"), button -> resetAllConfigs())
-			.width(150)
+			.width(BUTTON_WIDTH)
 			.build());
 		buttonLayout.addChild(Button.builder(CommonComponents.GUI_DONE, button -> {
 			Config.SPEC.save();
 			onClose();
-		}).width(150).build());
+		}).width(BUTTON_WIDTH).build());
 
 		buttonLayout.arrangeElements();
 		buttonLayout.setX((this.width - buttonLayout.getWidth()) / 2);

@@ -15,7 +15,11 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModConfigurationScrollableList extends ContainerObjectSelectionList<ModConfigurationScrollableList.Entry> {
+	private static final int TEXT_PADDING = 5;
 	private static final int ITEM_HEIGHT = 24;
+	private static final int BUTTON_WIDTH = 44;
+	private static final int BUTTON_HEIGHT = 20;
+	private static final int COLOR_WHITE = 0xFFFFFF;
 
 	public ModConfigurationScrollableList(Minecraft minecraft, int width, int height, int y0, int y1) {
 		super(minecraft, width, height, y0, ITEM_HEIGHT);
@@ -56,9 +60,9 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 			int textY = top + (height - Minecraft.getInstance().font.lineHeight) / 2;
 			if (centered) {
 				int textWidth = Minecraft.getInstance().font.width(label);
-				guiGraphics.drawString(Minecraft.getInstance().font, label, left + (width - textWidth) / 2, textY, 0xFFFFFF);
+				guiGraphics.drawString(Minecraft.getInstance().font, label, left + (width - textWidth) / 2, textY, COLOR_WHITE);
 			} else {
-				guiGraphics.drawString(Minecraft.getInstance().font, label, left, textY, 0xFFFFFF);
+				guiGraphics.drawString(Minecraft.getInstance().font, label, left, textY, COLOR_WHITE);
 			}
 		}
 
@@ -90,7 +94,7 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 					Component.translatable("options.off"))
 				.withInitialValue(initialValue)
 				.displayOnlyValue()
-				.create(0, 0, 44, 20, Component.empty(), (btn, value) -> onChanged.accept(value));
+				.create(0, 0, BUTTON_WIDTH, BUTTON_HEIGHT, Component.empty(), (btn, value) -> onChanged.accept(value));
 			this.button.setTooltip(Tooltip.create(tooltip));
 			this.tooltip = Tooltip.create(tooltip);
 		}
@@ -98,9 +102,9 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		@Override
 		public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-			guiGraphics.drawString(Minecraft.getInstance().font, label, left, top + 5, 0xFFFFFF);
+			guiGraphics.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
 
-			button.setX(left + width - 44);
+			button.setX(left + width - BUTTON_WIDTH);
 			button.setY(top);
 			button.render(guiGraphics, mouseX, mouseY, partialTick);
 
@@ -132,7 +136,7 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 
 		public IntEntry(Component label, Component tooltip, int initialValue, Consumer<String> onChanged) {
 			this.label = label;
-			this.editBox = new EditBox(Minecraft.getInstance().font, 0, 0, 44, 20, Component.empty());
+			this.editBox = new EditBox(Minecraft.getInstance().font, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT, Component.empty());
 			this.editBox.setValue(String.valueOf(initialValue));
 			this.editBox.setResponder(onChanged);
 			this.editBox.setTooltip(Tooltip.create(tooltip));
@@ -142,9 +146,9 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		@Override
 		public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-			guiGraphics.drawString(Minecraft.getInstance().font, label, left, top + 5, 0xFFFFFF);
+			guiGraphics.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
 
-			editBox.setX(left + width - 44);
+			editBox.setX(left + width - BUTTON_WIDTH);
 			editBox.setY(top);
 			editBox.render(guiGraphics, mouseX, mouseY, partialTick);
 

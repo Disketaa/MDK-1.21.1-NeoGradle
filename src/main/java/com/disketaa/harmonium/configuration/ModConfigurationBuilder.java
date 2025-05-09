@@ -16,10 +16,6 @@ public class ModConfigurationBuilder {
 		this.modConfigurationScrollableList = modConfigurationScrollableList;
 	}
 
-	public void addSpacing(int pixels) {
-		this.modConfigurationScrollableList.children().add(new ModConfigurationScrollableList.EmptyEntry(pixels));
-	}
-
 	public void addCategory(String translationKey) {
 		Component categoryTitle = Component.translatable(translationKey).withStyle(ChatFormatting.YELLOW, ChatFormatting.BOLD);
 		this.modConfigurationScrollableList.children().add(new ModConfigurationScrollableList.LabelEntry(categoryTitle, true) {
@@ -33,7 +29,6 @@ public class ModConfigurationBuilder {
 				return List.of();
 			}
 		});
-		addSpacing(10);
 	}
 
 	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey) {

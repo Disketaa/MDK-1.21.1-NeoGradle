@@ -98,7 +98,6 @@ public class Config {
 					builder.addIntConfig(intValue, entry.translationKey, entry.min, entry.max);
 				}
 			});
-			builder.addSpacing(16);
 		});
 	}
 
