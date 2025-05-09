@@ -8,7 +8,6 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 
 public class ModConfigurationScreens extends Screen {
@@ -26,40 +25,27 @@ public class ModConfigurationScreens extends Screen {
 
 	@Override
 	protected void init() {
-		this.clearWidgets();
+		clearWidgets();
 		super.init();
 
 		int totalRowWidth = TEXT_WIDTH + BUTTON_WIDTH + PADDING;
-		int startX = (this.width - totalRowWidth) / 2;
+		int startX = (width - totalRowWidth) / 2;
 
-		ModConfigurationBuilder builder = new ModConfigurationBuilder(
-			this,
-			startX,
-			TEXT_WIDTH,
-			BUTTON_WIDTH,
-			BUTTON_HEIGHT,
-			PADDING
-		);
-
+		ModConfigurationBuilder builder = new ModConfigurationBuilder(this, startX, TEXT_WIDTH, BUTTON_WIDTH, BUTTON_HEIGHT, PADDING);
 		Config.buildConfigScreen(builder);
 		builder.addToScreen(this::addRenderableWidget);
 
-		final int buttonY = this.height - 26;
-		final int totalButtonsWidth = BOTTOM_BUTTON_WIDTH * 2 + PADDING;
-		final int buttonsStartX = (this.width - totalButtonsWidth) / 2;
+		int buttonY = height - 26;
+		int totalButtonsWidth = BOTTOM_BUTTON_WIDTH * 2 + PADDING;
+		int buttonsStartX = (width - totalButtonsWidth) / 2;
 
-		addRenderableWidget(Button.builder(Component.translatable("controls.reset"),
-				button -> resetAllConfigs())
-			.bounds(buttonsStartX, buttonY, BOTTOM_BUTTON_WIDTH, 20)
-			.build());
+		addRenderableWidget(Button.builder(Component.translatable("controls.reset"), button -> resetAllConfigs())
+			.bounds(buttonsStartX, buttonY, BOTTOM_BUTTON_WIDTH, 20).build());
 
-		addRenderableWidget(Button.builder(CommonComponents.GUI_DONE,
-				button -> {
-					Config.SPEC.save();
-					onClose();
-				})
-			.bounds(buttonsStartX + BOTTOM_BUTTON_WIDTH + PADDING, buttonY, BOTTOM_BUTTON_WIDTH, 20)
-			.build());
+		addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> {
+			Config.SPEC.save();
+			onClose();
+		}).bounds(buttonsStartX + BOTTOM_BUTTON_WIDTH + PADDING, buttonY, BOTTOM_BUTTON_WIDTH, 20).build());
 	}
 
 	private void resetAllConfigs() {
@@ -67,9 +53,8 @@ public class ModConfigurationScreens extends Screen {
 			for (Field field : Config.class.getDeclaredFields()) {
 				if (ModConfigSpec.ConfigValue.class.isAssignableFrom(field.getType())) {
 					ModConfigSpec.ConfigValue<?> configValue = (ModConfigSpec.ConfigValue<?>) field.get(null);
-					if (configValue == null) {
-						continue;
-					}
+					if (configValue == null) continue;
+
 					if (configValue.getDefault() instanceof Boolean) {
 						((ModConfigSpec.BooleanValue)configValue).set((Boolean)configValue.getDefault());
 					} else if (configValue.getDefault() instanceof Integer) {
@@ -77,9 +62,7 @@ public class ModConfigurationScreens extends Screen {
 					}
 				}
 			}
-			if (this.minecraft != null) {
-				this.minecraft.execute(this::init);
-			}
+			if (minecraft != null) minecraft.execute(this::init);
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException("Failed to reset config values", e);
 		}
@@ -89,13 +72,13 @@ public class ModConfigurationScreens extends Screen {
 	public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
 		renderBackground(guiGraphics, mouseX, mouseY, partialTick);
 		super.render(guiGraphics, mouseX, mouseY, partialTick);
-		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 12, 0xFFFFFF);
+		guiGraphics.drawCenteredString(font, title, width / 2, 12, 0xFFFFFF);
 	}
 
 	@Override
 	public void onClose() {
 		Config.SPEC.save();
-		assert this.minecraft != null;
-		this.minecraft.setScreen(this.parent);
+		assert minecraft != null;
+		minecraft.setScreen(parent);
 	}
 }

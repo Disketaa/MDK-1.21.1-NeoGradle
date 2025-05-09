@@ -8,10 +8,7 @@ import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class ModLabelWidgets extends AbstractWidget {
 	private final Minecraft minecraft;
@@ -27,52 +24,31 @@ public class ModLabelWidgets extends AbstractWidget {
 
 	@Override
 	public void renderWidget(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-		int textY = this.getY() + (this.height - minecraft.font.lineHeight) / 2 + 1;
-		Component renderedText = this.getMessage();
+		int textY = getY() + (height - minecraft.font.lineHeight) / 2 + 1;
+		Component renderedText = getMessage();
 
-		if (minecraft.font.width(renderedText) > this.width) {
-			String ellipsized = minecraft.font.ellipsize(renderedText, this.width).getString();
-			if (ellipsized.endsWith(" ...")) {
-				ellipsized = ellipsized.substring(0, ellipsized.length() - 4) + "...";
-			}
+		if (minecraft.font.width(renderedText) > width) {
+			String ellipsized = minecraft.font.ellipsize(renderedText, width).getString();
+			if (ellipsized.endsWith(" ...")) ellipsized = ellipsized.substring(0, ellipsized.length() - 4) + "...";
 			renderedText = Component.literal(ellipsized);
 		}
 
 		if (centered) {
 			int textWidth = minecraft.font.width(renderedText);
-			int centeredX = this.getX() + (this.width - textWidth) / 2;
-			guiGraphics.drawString(
-				minecraft.font,
-				renderedText,
-				centeredX,
-				textY,
-				0xFFFFFF,
-				true
-			);
+			guiGraphics.drawString(minecraft.font, renderedText, getX() + (width - textWidth) / 2, textY, 0xFFFFFF, true);
 		} else {
-			guiGraphics.drawString(
-				minecraft.font,
-				renderedText,
-				this.getX(),
-				textY,
-				0xFFFFFF,
-				true
-			);
+			guiGraphics.drawString(minecraft.font, renderedText, getX(), textY, 0xFFFFFF, true);
 		}
 
-		// Tooltip rendering unchanged
-		if (this.tooltip != null && this.isHovered()) {
-			List<FormattedCharSequence> tooltipLines = this.tooltip.toCharSequence(minecraft);
-			guiGraphics.renderTooltip(minecraft.font, tooltipLines, mouseX, mouseY);
+		if (tooltip != null && isHovered()) {
+			guiGraphics.renderTooltip(minecraft.font, tooltip.toCharSequence(minecraft), mouseX, mouseY);
 		}
 	}
 
 	@Override
 	protected void updateWidgetNarration(@NotNull NarrationElementOutput narrationElementOutput) {
-		narrationElementOutput.add(NarratedElementType.TITLE, this.getMessage());
-		if (this.tooltip != null) {
-			this.tooltip.updateNarration(narrationElementOutput);
-		}
+		narrationElementOutput.add(NarratedElementType.TITLE, getMessage());
+		if (tooltip != null) tooltip.updateNarration(narrationElementOutput);
 	}
 
 	public void setTooltip(Tooltip tooltip) {
