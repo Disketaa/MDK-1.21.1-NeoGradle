@@ -3,6 +3,9 @@ package com.disketaa.harmonium.configuration;
 import com.disketaa.harmonium.Config;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.StringWidget;
+import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
+import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -12,11 +15,13 @@ import java.lang.reflect.Field;
 
 public class ModConfigurationScreens extends Screen {
 	private final Screen parent;
-	private static final int TEXT_WIDTH = 170;
-	private static final int BUTTON_WIDTH = 44;
+	private ModConfigurationScrollableList modConfigurationScrollableList;
+
+	private static final int FOOTER_PADDING = 6;
 	private static final int BUTTON_HEIGHT = 20;
-	private static final int BOTTOM_BUTTON_WIDTH = 150;
-	private static final int PADDING = 4;
+	private static final int BUTTON_SPACING = 8;
+	private static final int HEADER_HEIGHT = 32;
+	private static final int FOOTER_HEIGHT = BUTTON_HEIGHT + FOOTER_PADDING * 2;
 
 	public ModConfigurationScreens(Screen parent) {
 		super(Component.translatable("config.harmonium.title"));
@@ -25,27 +30,52 @@ public class ModConfigurationScreens extends Screen {
 
 	@Override
 	protected void init() {
-		clearWidgets();
-		super.init();
+		int headerPadding = (HEADER_HEIGHT - this.font.lineHeight) / 2 + 1;
 
-		int totalRowWidth = TEXT_WIDTH + BUTTON_WIDTH + PADDING;
-		int startX = (width - totalRowWidth) / 2;
+		HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 
-		ModConfigurationBuilder builder = new ModConfigurationBuilder(this, startX, TEXT_WIDTH, BUTTON_WIDTH, BUTTON_HEIGHT, PADDING);
-		Config.buildConfigScreen(builder);
-		builder.addToScreen(this::addRenderableWidget);
+		layout.setHeaderHeight(HEADER_HEIGHT);
 
-		int buttonY = height - 26;
-		int totalButtonsWidth = BOTTOM_BUTTON_WIDTH * 2 + PADDING;
-		int buttonsStartX = (width - totalButtonsWidth) / 2;
+		StringWidget titleWidget = new StringWidget(this.width, this.font.lineHeight, this.title, this.font);
+		titleWidget.alignCenter();
+		titleWidget.setY(headerPadding);
+		layout.addToHeader(titleWidget);
+		layout.setFooterHeight(FOOTER_HEIGHT);
 
-		addRenderableWidget(Button.builder(Component.translatable("controls.reset"), button -> resetAllConfigs())
-			.bounds(buttonsStartX, buttonY, BOTTOM_BUTTON_WIDTH, 20).build());
+		this.modConfigurationScrollableList = new ModConfigurationScrollableList(
+			this.minecraft,
+			this.width,
+			layout.getContentHeight(),
+			layout.getHeaderHeight(),
+			this.height - FOOTER_HEIGHT
+		);
+		layout.addToContents(this.modConfigurationScrollableList);
 
-		addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> {
+		LinearLayout buttonLayout = LinearLayout.horizontal().spacing(BUTTON_SPACING);
+		buttonLayout.addChild(Button.builder(Component.translatable("controls.reset"), button -> resetAllConfigs())
+			.width(150)
+			.build());
+		buttonLayout.addChild(Button.builder(CommonComponents.GUI_DONE, button -> {
 			Config.SPEC.save();
 			onClose();
-		}).bounds(buttonsStartX + BOTTOM_BUTTON_WIDTH + PADDING, buttonY, BOTTOM_BUTTON_WIDTH, 20).build());
+		}).width(150).build());
+
+		buttonLayout.arrangeElements();
+		buttonLayout.setX((this.width - buttonLayout.getWidth()) / 2);
+		buttonLayout.setY(this.height - FOOTER_HEIGHT + FOOTER_PADDING);
+
+		layout.addToFooter(buttonLayout);
+		layout.visitWidgets(this::addRenderableWidget);
+
+		buildConfigContent();
+	}
+
+	private void buildConfigContent() {
+		int contentWidth = this.width - 50;
+		int leftX = 25;
+
+		ModConfigurationBuilder builder = new ModConfigurationBuilder(modConfigurationScrollableList, leftX, contentWidth);
+		Config.buildConfigScreen(builder);
 	}
 
 	private void resetAllConfigs() {
@@ -72,7 +102,6 @@ public class ModConfigurationScreens extends Screen {
 	public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
 		renderBackground(guiGraphics, mouseX, mouseY, partialTick);
 		super.render(guiGraphics, mouseX, mouseY, partialTick);
-		guiGraphics.drawCenteredString(font, title, width / 2, 12, 0xFFFFFF);
 	}
 
 	@Override
