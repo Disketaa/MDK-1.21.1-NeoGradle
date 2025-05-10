@@ -15,8 +15,7 @@ import java.lang.reflect.Field;
 
 public class ModConfigurationScreens extends Screen {
 	private final Screen parent;
-	private ModConfigurationScrollableList modConfigurationScrollableList;
-
+	private ModConfigurationScrollableList list;
 	private static final int FOOTER_PADDING = 6;
 	private static final int BUTTON_WIDTH = 150;
 	private static final int BUTTON_HEIGHT = 20;
@@ -32,60 +31,46 @@ public class ModConfigurationScreens extends Screen {
 	@Override
 	protected void init() {
 		int headerPadding = (HEADER_HEIGHT - this.font.lineHeight) / 2 + 1;
-
 		HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
 		layout.setHeaderHeight(HEADER_HEIGHT);
 
-		StringWidget titleWidget = new StringWidget(this.width, this.font.lineHeight, this.title, this.font);
-		titleWidget.alignCenter();
-		titleWidget.setY(headerPadding);
-		layout.addToHeader(titleWidget);
+		StringWidget title = new StringWidget(this.width, this.font.lineHeight, this.title, this.font);
+		title.alignCenter();
+		title.setY(headerPadding);
+		layout.addToHeader(title);
 		layout.setFooterHeight(FOOTER_HEIGHT);
 
-		this.modConfigurationScrollableList = new ModConfigurationScrollableList(
-			this.minecraft,
-			this.width,
-			layout.getContentHeight(),
-			layout.getHeaderHeight(),
-			this.height - FOOTER_HEIGHT
-		);
-		layout.addToContents(this.modConfigurationScrollableList);
+		this.list = new ModConfigurationScrollableList(minecraft, width, layout.getContentHeight(),
+			layout.getHeaderHeight(), height - FOOTER_HEIGHT);
+		layout.addToContents(list);
 
-		LinearLayout buttonLayout = LinearLayout.horizontal().spacing(BUTTON_SPACING);
-		buttonLayout.addChild(Button.builder(Component.translatable("controls.reset"), button -> resetAllConfigs())
-			.width(BUTTON_WIDTH)
-			.build());
-		buttonLayout.addChild(Button.builder(CommonComponents.GUI_DONE, button -> {
+		LinearLayout buttons = LinearLayout.horizontal().spacing(BUTTON_SPACING);
+		buttons.addChild(Button.builder(Component.translatable("controls.reset"), button -> resetConfigs())
+			.width(BUTTON_WIDTH).build());
+		buttons.addChild(Button.builder(CommonComponents.GUI_DONE, button -> {
 			Config.SPEC.save();
 			onClose();
 		}).width(BUTTON_WIDTH).build());
 
-		buttonLayout.arrangeElements();
-		buttonLayout.setX((this.width - buttonLayout.getWidth()) / 2);
-		buttonLayout.setY(this.height - FOOTER_HEIGHT + FOOTER_PADDING);
-
-		layout.addToFooter(buttonLayout);
+		buttons.arrangeElements();
+		buttons.setX((width - buttons.getWidth()) / 2);
+		buttons.setY(height - FOOTER_HEIGHT + FOOTER_PADDING);
+		layout.addToFooter(buttons);
 		layout.visitWidgets(this::addRenderableWidget);
-
 		buildConfigContent();
 	}
 
 	private void buildConfigContent() {
-		int contentWidth = this.width - 50;
-		int leftX = 25;
-
-		ModConfigurationBuilder builder = new ModConfigurationBuilder(modConfigurationScrollableList, leftX, contentWidth);
+		ModConfigurationBuilder builder = new ModConfigurationBuilder(list, 25, width - 50);
 		Config.buildConfigScreen(builder);
 	}
 
-	private void resetAllConfigs() {
+	private void resetConfigs() {
 		try {
 			for (Field field : Config.class.getDeclaredFields()) {
 				if (ModConfigSpec.ConfigValue.class.isAssignableFrom(field.getType())) {
 					ModConfigSpec.ConfigValue<?> configValue = (ModConfigSpec.ConfigValue<?>) field.get(null);
 					if (configValue == null) continue;
-
 					if (configValue.getDefault() instanceof Boolean) {
 						((ModConfigSpec.BooleanValue)configValue).set((Boolean)configValue.getDefault());
 					} else if (configValue.getDefault() instanceof Integer) {

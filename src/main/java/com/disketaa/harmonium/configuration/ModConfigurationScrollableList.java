@@ -10,7 +10,6 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -26,19 +25,14 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 	}
 
 	@Override
-	public void updateWidgetNarration(@NotNull NarrationElementOutput narrationElementOutput) {
-		List<? extends NarratableEntry> narratables = this.children()
-			.stream()
+	public void updateWidgetNarration(@NotNull NarrationElementOutput output) {
+		List<? extends NarratableEntry> narratables = children().stream()
 			.filter(NarratableEntry.class::isInstance)
 			.map(NarratableEntry.class::cast)
 			.toList();
 
-		if (!narratables.isEmpty()) {
-			narratables.getFirst().updateNarration(narrationElementOutput.nest());
-		} else {
-			narrationElementOutput.add(NarratedElementType.USAGE,
-				Component.translatable("narration.component_list.usage"));
-		}
+		if (!narratables.isEmpty()) narratables.getFirst().updateNarration(output.nest());
+		else output.add(NarratedElementType.USAGE, Component.translatable("narration.component_list.usage"));
 	}
 
 	public abstract static class Entry extends ContainerObjectSelectionList.Entry<Entry> {
@@ -55,14 +49,14 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public void render(@NotNull GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
+		public void render(@NotNull GuiGraphics gui, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
 			int textY = top + (height - Minecraft.getInstance().font.lineHeight) / 2;
 			if (centered) {
 				int textWidth = Minecraft.getInstance().font.width(label);
-				guiGraphics.drawString(Minecraft.getInstance().font, label, left + (width - textWidth) / 2, textY, COLOR_WHITE);
+				gui.drawString(Minecraft.getInstance().font, label, left + (width - textWidth) / 2, textY, COLOR_WHITE);
 			} else {
-				guiGraphics.drawString(Minecraft.getInstance().font, label, left, textY, COLOR_WHITE);
+				gui.drawString(Minecraft.getInstance().font, label, left, textY, COLOR_WHITE);
 			}
 		}
 
@@ -100,16 +94,14 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
+		public void render(GuiGraphics gui, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-			guiGraphics.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
-
+			gui.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
 			button.setX(left + width - BUTTON_WIDTH);
 			button.setY(top);
-			button.render(guiGraphics, mouseX, mouseY, partialTick);
-
+			button.render(gui, mouseX, mouseY, partialTick);
 			if (hovering && tooltip != null) {
-				guiGraphics.renderTooltip(Minecraft.getInstance().font, tooltip.toCharSequence(Minecraft.getInstance()), mouseX, mouseY);
+				gui.renderTooltip(Minecraft.getInstance().font, tooltip.toCharSequence(Minecraft.getInstance()), mouseX, mouseY);
 			}
 		}
 
@@ -144,16 +136,14 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
+		public void render(GuiGraphics gui, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-			guiGraphics.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
-
+			gui.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
 			editBox.setX(left + width - BUTTON_WIDTH);
 			editBox.setY(top);
-			editBox.render(guiGraphics, mouseX, mouseY, partialTick);
-
+			editBox.render(gui, mouseX, mouseY, partialTick);
 			if (hovering && tooltip != null) {
-				guiGraphics.renderTooltip(Minecraft.getInstance().font, tooltip.toCharSequence(Minecraft.getInstance()), mouseX, mouseY);
+				gui.renderTooltip(Minecraft.getInstance().font, tooltip.toCharSequence(Minecraft.getInstance()), mouseX, mouseY);
 			}
 		}
 
@@ -181,9 +171,8 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public void render(@NotNull GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
-		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-		}
+		public void render(@NotNull GuiGraphics gui, int index, int top, int left, int width, int height,
+		                   int mouseX, int mouseY, boolean hovering, float partialTick) {}
 
 		@Override
 		public int getHeight() {

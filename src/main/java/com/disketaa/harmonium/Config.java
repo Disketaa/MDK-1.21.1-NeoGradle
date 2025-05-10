@@ -87,11 +87,9 @@ public class Config {
 	public static void buildConfigScreen(ModConfigurationBuilder builder) {
 		CONFIG_ENTRIES.forEach((category, entries) -> {
 			if (category.equals("blocks") && !ModList.get().isLoaded("friendsandfoes")) return;
-
 			builder.addCategory("config.harmonium." + category);
 			entries.forEach(entry -> {
 				if (entry.translationKey.equals("config.harmonium.remove_flint_knife") && !ModList.get().isLoaded("farmersdelight")) return;
-
 				if (entry.value instanceof ModConfigSpec.BooleanValue booleanValue) {
 					builder.addBooleanConfig(booleanValue, entry.translationKey);
 				} else if (entry.value instanceof ModConfigSpec.IntValue intValue) {
