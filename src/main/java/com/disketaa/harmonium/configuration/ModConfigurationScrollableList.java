@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModConfigurationScrollableList extends ContainerObjectSelectionList<ModConfigurationScrollableList.Entry> {
-	public static final int TEXT_WIDTH = 160;
+	public static final int TEXT_WIDTH = 165;
 	private static final int TEXT_PADDING = 5;
 	private static final int ITEM_HEIGHT = 24;
 	private static final int BUTTON_WIDTH = 44;
@@ -93,7 +93,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 	public static class BooleanEntry extends Entry {
 		private final CycleButton<Boolean> button;
 		private final Component label;
-		private final Tooltip tooltip;
 		private final int textWidth;
 
 		public BooleanEntry(Component label, Component tooltip, boolean initialValue, Consumer<Boolean> onChanged) {
@@ -110,7 +109,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 				.displayOnlyValue()
 				.create(0, 0, BUTTON_WIDTH, BUTTON_HEIGHT, Component.empty(), (btn, value) -> onChanged.accept(value));
 			this.button.setTooltip(Tooltip.create(tooltip));
-			this.tooltip = Tooltip.create(tooltip);
 		}
 
 		@Override
@@ -126,9 +124,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 			button.setX(left + width - BUTTON_WIDTH);
 			button.setY(top);
 			button.render(gui, mouseX, mouseY, partialTick);
-			if (hovering && tooltip != null) {
-				gui.renderTooltip(Minecraft.getInstance().font, tooltip.toCharSequence(Minecraft.getInstance()), mouseX, mouseY);
-			}
 		}
 
 		@Override
@@ -150,19 +145,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		public void updateNarration(NarrationElementOutput output) {
 			output.add(NarratedElementType.TITLE, label);
 			output.add(NarratedElementType.USAGE, button.getMessage());
-
-			if (tooltip != null) {
-				List<FormattedCharSequence> tooltipLines = tooltip.toCharSequence(Minecraft.getInstance());
-				MutableComponent narration = Component.empty();
-				for (FormattedCharSequence line : tooltipLines) {
-					narration.append(Component.literal(line.toString()));
-					if (tooltipLines.indexOf(line) < tooltipLines.size() - 1) {
-						narration.append(Component.literal(" "));
-					}
-				}
-				output.add(NarratedElementType.HINT, narration);
-			}
-
 			button.updateNarration(output.nest());
 		}
 	}
@@ -170,7 +152,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 	public static class IntEntry extends Entry {
 		private final EditBox editBox;
 		private final Component label;
-		private final Tooltip tooltip;
 		private final int textWidth;
 
 		public IntEntry(Component label, Component tooltip, int initialValue, Consumer<String> onChanged) {
@@ -184,7 +165,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 			this.editBox.setValue(String.valueOf(initialValue));
 			this.editBox.setResponder(onChanged);
 			this.editBox.setTooltip(Tooltip.create(tooltip));
-			this.tooltip = Tooltip.create(tooltip);
 		}
 
 		@Override
@@ -200,9 +180,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 			editBox.setX(left + width - BUTTON_WIDTH);
 			editBox.setY(top);
 			editBox.render(gui, mouseX, mouseY, partialTick);
-			if (hovering && tooltip != null) {
-				gui.renderTooltip(Minecraft.getInstance().font, tooltip.toCharSequence(Minecraft.getInstance()), mouseX, mouseY);
-			}
 		}
 
 		@Override
@@ -224,19 +201,6 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		public void updateNarration(NarrationElementOutput output) {
 			output.add(NarratedElementType.TITLE, label);
 			output.add(NarratedElementType.USAGE, Component.translatable("narration.edit_box", editBox.getValue()));
-
-			if (tooltip != null) {
-				List<FormattedCharSequence> tooltipLines = tooltip.toCharSequence(Minecraft.getInstance());
-				MutableComponent narration = Component.empty();
-				for (FormattedCharSequence line : tooltipLines) {
-					narration.append(Component.literal(line.toString()));
-					if (tooltipLines.indexOf(line) < tooltipLines.size() - 1) {
-						narration.append(Component.literal(" "));
-					}
-				}
-				output.add(NarratedElementType.HINT, narration);
-			}
-
 			editBox.updateNarration(output.nest());
 		}
 
