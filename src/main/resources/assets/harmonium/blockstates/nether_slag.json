@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "harmonium:block/nether_slag"
+      },
+      {
+        "model": "harmonium:block/nether_slag",
+        "y": 90
+      },
+      {
+        "model": "harmonium:block/nether_slag",
+        "y": 180
+      },
+      {
+        "model": "harmonium:block/nether_slag",
+        "y": 270
+      }
+    ]
+  }
+}

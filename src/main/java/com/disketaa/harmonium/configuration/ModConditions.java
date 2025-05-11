@@ -44,6 +44,10 @@ public class ModConditions {
 				return Config.tinGeneration;
 			}
 
+			if ("nether_slag_generation".equals(key)) {
+				return Config.netherSlagGeneration;
+			}
+
 			if ("remove_stone_tools".equals(key)) {
 				return inverted != Config.removeStoneTools;
 			}

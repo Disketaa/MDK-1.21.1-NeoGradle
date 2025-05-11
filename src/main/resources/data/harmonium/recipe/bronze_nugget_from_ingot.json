@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "bronze_nugget",
   "ingredients": [
     {
       "tag": "c:ingots/bronze"

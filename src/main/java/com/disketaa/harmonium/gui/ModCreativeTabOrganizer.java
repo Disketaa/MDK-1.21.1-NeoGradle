@@ -78,12 +78,18 @@ public class ModCreativeTabOrganizer {
 					Items.IRON_ORE,
 					Items.DEEPSLATE_IRON_ORE
 				));
+			removeEntry(event, Items.NETHER_GOLD_ORE);
+			addAfter(event, Items.DEEPSLATE_DIAMOND_ORE,
+				List.of(
+					ModBlocks.NETHER_SLAG,
+					Items.NETHER_GOLD_ORE
+				));
 			removeEntry(event, Items.RAW_COPPER_BLOCK);
 			addBefore(event, Items.RAW_IRON_BLOCK,
 				List.of(
 					Items.RAW_COPPER_BLOCK,
-					ModBlocks.RAW_TIN_BLOCK,
-					ModBlocks.BRONZE_BLEND_BLOCK
+					ModBlocks.BRONZE_BLEND_BLOCK,
+					ModBlocks.RAW_TIN_BLOCK
 				));
 		}
 		if (tabId.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS.location())) {

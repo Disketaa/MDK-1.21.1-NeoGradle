@@ -19,6 +19,7 @@ public class Config {
 	public static final ModConfigSpec.BooleanValue SHOW_HARMONIUM_CREATIVE_TAB;
 	public static final ModConfigSpec.BooleanValue ADD_HARMONIUM_ITEMS_TO_OTHER_TABS;
 	public static final ModConfigSpec.BooleanValue TIN_GENERATION;
+	public static final ModConfigSpec.BooleanValue NETHER_SLAG_GENERATION;
 	public static final ModConfigSpec.BooleanValue REMOVE_STONE_TOOLS;
 	public static ModConfigSpec.BooleanValue REMOVE_FLINT_KNIFE = null;
 	public static ModConfigSpec.IntValue TIN_BUTTON_SHORT_PRESS_DURATION = null;
@@ -28,6 +29,7 @@ public class Config {
 	public static boolean showHarmoniumCreativeTab;
 	public static boolean addHarmoniumItemsToOtherCreativeTabs;
 	public static boolean tinGeneration;
+	public static boolean netherSlagGeneration;
 	public static boolean removeStoneTools;
 	public static boolean removeFlintKnife;
 	public static int tinButtonShortPressDuration;
@@ -42,6 +44,7 @@ public class Config {
 
 		pushCategory("generation");
 		TIN_GENERATION = defineBoolean("tin_generation", true);
+		NETHER_SLAG_GENERATION = defineBoolean("nether_slag_generation", true);
 		popCategory();
 
 		if (ModList.get().isLoaded("friendsandfoes")) {
@@ -114,6 +117,7 @@ public class Config {
 			showHarmoniumCreativeTab = SHOW_HARMONIUM_CREATIVE_TAB.get();
 			addHarmoniumItemsToOtherCreativeTabs = ADD_HARMONIUM_ITEMS_TO_OTHER_TABS.get();
 			tinGeneration = TIN_GENERATION.get();
+			netherSlagGeneration = NETHER_SLAG_GENERATION.get();
 			removeStoneTools = REMOVE_STONE_TOOLS.get();
 
 			if (ModList.get().isLoaded("farmersdelight")) removeFlintKnife = REMOVE_FLINT_KNIFE.get();

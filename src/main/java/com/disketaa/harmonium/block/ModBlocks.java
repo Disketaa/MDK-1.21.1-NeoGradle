@@ -5,6 +5,7 @@ import com.disketaa.harmonium.block.custom.*;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModBlockSetType;
 import com.disketaa.harmonium.sound.ModSoundType;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.item.Item;
@@ -87,6 +88,13 @@ public class ModBlocks {
 			.requiresCorrectToolForDrops()
 			.strength(4.5f, 3.0f);
 
+		static final BlockBehaviour.Properties ORE_NETHER = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.NETHER)
+			.sound(SoundType.NETHER_GOLD_ORE)
+			.instrument(NoteBlockInstrument.BASEDRUM)
+			.requiresCorrectToolForDrops()
+			.strength(3.0f, 3.0f);
+
 		static final BlockBehaviour.Properties TIN_RAW = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.RAW_IRON)
 			.requiresCorrectToolForDrops()
@@ -118,6 +126,7 @@ public class ModBlocks {
 	public static final DeferredBlock<BronzeBulbBlock> BRONZE_BULB = registerMetalBulbBlock("bronze_bulb", () -> new BronzeBulbBlock(Properties.BRONZE_BULB));
 	public static final DeferredBlock<Block> TIN_ORE = registerBlock("tin_ore", () -> new Block(Properties.ORE_STONE));
 	public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = registerBlock("deepslate_tin_ore", () -> new Block(Properties.ORE_DEEPSLATE));
+	public static final DeferredBlock<Block> NETHER_SLAG = registerBlock("nether_slag", () -> new DropExperienceBlock(UniformInt.of(1, 4), Properties.ORE_NETHER));
 	public static final DeferredBlock<Block> RAW_TIN_BLOCK = registerBlock("raw_tin_block", () -> new Block(Properties.TIN_RAW));
 	public static final DeferredBlock<Block> BRONZE_BLEND_BLOCK = registerBlock("bronze_blend_block", () -> new Block(Properties.BRONZE_RAW));
 	public static final DeferredBlock<TinSoldierBlock> TIN_SOLDIER = registerBlock("tin_soldier", () -> new TinSoldierBlock(Properties.TIN_SOLDIER.mapColor(MapColor.TERRACOTTA_WHITE)));

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "harmonium:bronze_ingot_from_blasting"
+        "recipe": "harmonium:bronze_ingot_from_blasting_bronze_blend"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "harmonium:bronze_ingot_from_blasting"
+      "harmonium:bronze_ingot_from_blasting_bronze_blend"
     ]
   }
 }

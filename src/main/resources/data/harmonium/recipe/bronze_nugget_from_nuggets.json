@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bronze_nugget",
+  "ingredients": [
+    {
+      "tag": "c:nuggets/copper"
+    },
+    {
+      "tag": "c:nuggets/copper"
+    },
+    {
+      "tag": "c:nuggets/copper"
+    },
+    {
+      "tag": "c:nuggets/copper"
+    },
+    {
+      "tag": "c:nuggets/tin"
+    }
+  ],
+  "result": {
+    "id": "harmonium:bronze_nugget"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.9,
+  "ingredient": [
+    {
+      "tag": "c:ores/nether_slag"
+    }
+  ],
+  "result": {
+    "id": "harmonium:bronze_ingot"
+  }
+}
