@@ -66,22 +66,30 @@ public class ModConfigurationScreens extends Screen {
 	}
 
 	private void resetConfigs() {
-		try {
-			for (Field field : Config.class.getDeclaredFields()) {
-				if (ModConfigSpec.ConfigValue.class.isAssignableFrom(field.getType())) {
-					ModConfigSpec.ConfigValue<?> configValue = (ModConfigSpec.ConfigValue<?>) field.get(null);
-					if (configValue == null) continue;
-					if (configValue.getDefault() instanceof Boolean) {
-						((ModConfigSpec.BooleanValue)configValue).set((Boolean)configValue.getDefault());
-					} else if (configValue.getDefault() instanceof Integer) {
-						((ModConfigSpec.IntValue)configValue).set((Integer)configValue.getDefault());
+		if (minecraft == null) return;
+
+		this.clearWidgets();
+		this.renderables.clear();
+		this.children().clear();
+
+		minecraft.execute(() -> {
+			try {
+				for (Field field : Config.class.getDeclaredFields()) {
+					if (ModConfigSpec.ConfigValue.class.isAssignableFrom(field.getType())) {
+						ModConfigSpec.ConfigValue<?> configValue = (ModConfigSpec.ConfigValue<?>) field.get(null);
+						if (configValue == null) continue;
+						if (configValue.getDefault() instanceof Boolean) {
+							((ModConfigSpec.BooleanValue)configValue).set((Boolean)configValue.getDefault());
+						} else if (configValue.getDefault() instanceof Integer) {
+							((ModConfigSpec.IntValue)configValue).set((Integer)configValue.getDefault());
+						}
 					}
 				}
+				minecraft.execute(this::init);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException("Failed to reset config values", e);
 			}
-			if (minecraft != null) minecraft.execute(this::init);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException("Failed to reset config values", e);
-		}
+		});
 	}
 
 	@Override
