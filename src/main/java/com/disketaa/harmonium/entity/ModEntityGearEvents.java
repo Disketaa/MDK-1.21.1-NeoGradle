@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.entity;
 
+import com.disketaa.harmonium.Config;
 import com.disketaa.harmonium.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -11,14 +12,16 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ModEntityArmorEvents {
+public class ModEntityGearEvents {
 	private static final List<ArmorSpawnEntry> ARMOR_ENTRIES = new ArrayList<>();
 	private static final List<ToolSpawnEntry> TOOL_ENTRIES = new ArrayList<>();
 
@@ -39,7 +42,8 @@ public class ModEntityArmorEvents {
 	}
 
 	public static void register() {
-		NeoForge.EVENT_BUS.addListener(ModEntityArmorEvents::onMobSpawn);
+		NeoForge.EVENT_BUS.addListener(ModEntityGearEvents::onMobSpawn);
+		NeoForge.EVENT_BUS.addListener(ModEntityGearEvents::onWitherSkeletonJoinLevel);
 	}
 
 	public static void registerArmorSet(ArmorSpawnEntry entry) {
@@ -68,6 +72,15 @@ public class ModEntityArmorEvents {
 
 		if (mob instanceof Zombie) {
 			tryAddTools(mob, random, difficulty);
+		}
+	}
+
+	private static void onWitherSkeletonJoinLevel(EntityJoinLevelEvent event) {
+		if (Config.removeStoneTools && event.getEntity() instanceof WitherSkeleton witherSkeleton) {
+			ItemStack mainHand = witherSkeleton.getItemBySlot(EquipmentSlot.MAINHAND);
+			if (mainHand.isEmpty() || mainHand.is(Items.STONE_SWORD)) {
+				witherSkeleton.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.BRONZE_SWORD.get()));
+			}
 		}
 	}
 

@@ -2,7 +2,7 @@ package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.configuration.ModConfigurationScreens;
-import com.disketaa.harmonium.entity.ModEntityArmorEvents;
+import com.disketaa.harmonium.entity.ModEntityGearEvents;
 import com.disketaa.harmonium.gui.ModCreativeTabItemRemover;
 import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
@@ -13,7 +13,6 @@ import com.disketaa.harmonium.configuration.ModConditions;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.ModLoadingContext;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -51,7 +50,7 @@ public class Harmonium {
 		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
 		ModArmorMaterials.register(modEventBus);
-		ModEntityArmorEvents.register();
+		ModEntityGearEvents.register();
 		ModSoundType.register(modEventBus);
 
 		ModConditions.register("config", ModConditions.ConfigValueCondition.CODEC);
