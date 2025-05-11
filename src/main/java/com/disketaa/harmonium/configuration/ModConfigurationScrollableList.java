@@ -9,8 +9,11 @@ import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ModConfigurationScrollableList extends ContainerObjectSelectionList<ModConfigurationScrollableList.Entry> {
@@ -20,23 +23,32 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 	private static final int BUTTON_HEIGHT = 20;
 	private static final int COLOR_WHITE = 0xFFFFFF;
 
-	public ModConfigurationScrollableList(Minecraft minecraft, int width, int height, int y0, int y1) {
+	public ModConfigurationScrollableList(Minecraft minecraft, int width, int height, int y0) {
 		super(minecraft, width, height, y0, ITEM_HEIGHT);
 	}
 
 	@Override
 	public void updateWidgetNarration(@NotNull NarrationElementOutput output) {
-		List<? extends NarratableEntry> narratables = children().stream()
-			.filter(NarratableEntry.class::isInstance)
-			.map(NarratableEntry.class::cast)
-			.toList();
+		super.updateWidgetNarration(output);
 
-		if (!narratables.isEmpty()) narratables.getFirst().updateNarration(output.nest());
-		else output.add(NarratedElementType.USAGE, Component.translatable("narration.component_list.usage"));
+		Entry hovered = getHovered();
+		if (hovered != null) {
+			hovered.updateNarration(output.nest());
+		} else {
+			output.add(NarratedElementType.USAGE, Component.translatable("narration.component_list.usage"));
+		}
 	}
 
-	public abstract static class Entry extends ContainerObjectSelectionList.Entry<Entry> {
-		public abstract int getHeight();
+	public abstract static class Entry extends ContainerObjectSelectionList.Entry<Entry> implements NarratableEntry {
+		@Override
+		public @NotNull NarrationPriority narrationPriority() {
+			return NarrationPriority.NONE;
+		}
+
+		@Override
+		public void updateNarration(NarrationElementOutput output) {
+			output.add(NarratedElementType.USAGE, Component.translatable("narration.component_list.usage"));
+		}
 	}
 
 	public static class LabelEntry extends Entry {
@@ -71,9 +83,11 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public int getHeight() {
-			return ITEM_HEIGHT;
+		public void updateNarration(NarrationElementOutput output) {
+			output.add(NarratedElementType.TITLE, label);
+			output.add(NarratedElementType.HINT, Component.translatable("narration.component_list.usage"));
 		}
+
 	}
 
 	public static class BooleanEntry extends Entry {
@@ -116,8 +130,28 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public int getHeight() {
-			return ITEM_HEIGHT;
+		public @NotNull NarrationPriority narrationPriority() {
+			return NarrationPriority.HOVERED;
+		}
+
+		@Override
+		public void updateNarration(NarrationElementOutput output) {
+			output.add(NarratedElementType.TITLE, label);
+			output.add(NarratedElementType.USAGE, button.getMessage());
+
+			if (tooltip != null) {
+				List<FormattedCharSequence> tooltipLines = tooltip.toCharSequence(Minecraft.getInstance());
+				MutableComponent narration = Component.empty();
+				for (FormattedCharSequence line : tooltipLines) {
+					narration.append(Component.literal(line.toString()));
+					if (tooltipLines.indexOf(line) < tooltipLines.size() - 1) {
+						narration.append(Component.literal(" "));
+					}
+				}
+				output.add(NarratedElementType.HINT, narration);
+			}
+
+			button.updateNarration(output.nest());
 		}
 	}
 
@@ -158,35 +192,30 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public int getHeight() {
-			return ITEM_HEIGHT;
+		public @NotNull NarrationPriority narrationPriority() {
+			return NarrationPriority.HOVERED;
 		}
+
+		@Override
+		public void updateNarration(NarrationElementOutput output) {
+			output.add(NarratedElementType.TITLE, label);
+			output.add(NarratedElementType.USAGE, Component.translatable("narration.edit_box", editBox.getValue()));
+
+			if (tooltip != null) {
+				List<FormattedCharSequence> tooltipLines = tooltip.toCharSequence(Minecraft.getInstance());
+				MutableComponent narration = Component.empty();
+				for (FormattedCharSequence line : tooltipLines) {
+					narration.append(Component.literal(line.toString()));
+					if (tooltipLines.indexOf(line) < tooltipLines.size() - 1) {
+						narration.append(Component.literal(" "));
+					}
+				}
+				output.add(NarratedElementType.HINT, narration);
+			}
+
+			editBox.updateNarration(output.nest());
+		}
+
 	}
 
-	public static class EmptyEntry extends Entry {
-		private final int height;
-
-		public EmptyEntry(int height) {
-			this.height = height;
-		}
-
-		@Override
-		public void render(@NotNull GuiGraphics gui, int index, int top, int left, int width, int height,
-		                   int mouseX, int mouseY, boolean hovering, float partialTick) {}
-
-		@Override
-		public int getHeight() {
-			return height;
-		}
-
-		@Override
-		public @NotNull List<? extends GuiEventListener> children() {
-			return ImmutableList.of();
-		}
-
-		@Override
-		public @NotNull List<? extends NarratableEntry> narratables() {
-			return ImmutableList.of();
-		}
-	}
 }

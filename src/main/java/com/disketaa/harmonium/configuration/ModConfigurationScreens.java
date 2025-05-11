@@ -41,7 +41,7 @@ public class ModConfigurationScreens extends Screen {
 		layout.setFooterHeight(FOOTER_HEIGHT);
 
 		this.list = new ModConfigurationScrollableList(minecraft, width, layout.getContentHeight(),
-			layout.getHeaderHeight(), height - FOOTER_HEIGHT);
+			layout.getHeaderHeight());
 		layout.addToContents(list);
 
 		LinearLayout buttons = LinearLayout.horizontal().spacing(BUTTON_SPACING);
@@ -61,7 +61,7 @@ public class ModConfigurationScreens extends Screen {
 	}
 
 	private void buildConfigContent() {
-		ModConfigurationBuilder builder = new ModConfigurationBuilder(list, 25, width - 50);
+		ModConfigurationBuilder builder = new ModConfigurationBuilder(list);
 		Config.buildConfigScreen(builder);
 	}
 

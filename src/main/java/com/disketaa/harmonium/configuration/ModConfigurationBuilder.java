@@ -7,7 +7,7 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class ModConfigurationBuilder {
 	private final ModConfigurationScrollableList list;
 
-	public ModConfigurationBuilder(ModConfigurationScrollableList list, int leftX, int contentWidth) {
+	public ModConfigurationBuilder(ModConfigurationScrollableList list) {
 		this.list = list;
 	}
 
