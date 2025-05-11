@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModConfigurationScrollableList extends ContainerObjectSelectionList<ModConfigurationScrollableList.Entry> {
-	public static final int DEFAULT_TEXT_WIDTH = 175;
+	public static final int TEXT_WIDTH = 160;
 	private static final int TEXT_PADDING = 5;
 	private static final int ITEM_HEIGHT = 24;
 	private static final int BUTTON_WIDTH = 44;
@@ -97,7 +97,7 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		private final int textWidth;
 
 		public BooleanEntry(Component label, Component tooltip, boolean initialValue, Consumer<Boolean> onChanged) {
-			this(label, tooltip, initialValue, onChanged, DEFAULT_TEXT_WIDTH);
+			this(label, tooltip, initialValue, onChanged, TEXT_WIDTH);
 		}
 
 		public BooleanEntry(Component label, Component tooltip, boolean initialValue, Consumer<Boolean> onChanged, int textWidth) {
@@ -174,7 +174,7 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		private final int textWidth;
 
 		public IntEntry(Component label, Component tooltip, int initialValue, Consumer<String> onChanged) {
-			this(label, tooltip, initialValue, onChanged, DEFAULT_TEXT_WIDTH);
+			this(label, tooltip, initialValue, onChanged, TEXT_WIDTH);
 		}
 
 		public IntEntry(Component label, Component tooltip, int initialValue, Consumer<String> onChanged, int textWidth) {

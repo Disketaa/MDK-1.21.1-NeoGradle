@@ -72,7 +72,7 @@ public class Config {
 	}
 
 	private static ModConfigSpec.BooleanValue defineBoolean(String path, boolean defaultValue) {
-		return defineBoolean(path, defaultValue, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+		return defineBoolean(path, defaultValue, ModConfigurationScrollableList.TEXT_WIDTH);
 	}
 
 	private static ModConfigSpec.BooleanValue defineBoolean(String path, boolean defaultValue, int textWidth) {
@@ -83,7 +83,7 @@ public class Config {
 	}
 
 	private static ModConfigSpec.IntValue defineInt(String path, int defaultValue, int min, int max) {
-		return defineInt(path, defaultValue, min, max, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+		return defineInt(path, defaultValue, min, max, ModConfigurationScrollableList.TEXT_WIDTH);
 	}
 
 	private static ModConfigSpec.IntValue defineInt(String path, int defaultValue, int min, int max, int textWidth) {
@@ -133,11 +133,11 @@ public class Config {
 		final int textWidth;
 
 		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey) {
-			this(value, translationKey, 0, 0, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+			this(value, translationKey, 0, 0, ModConfigurationScrollableList.TEXT_WIDTH);
 		}
 
 		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey, int min, int max) {
-			this(value, translationKey, min, max, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+			this(value, translationKey, min, max, ModConfigurationScrollableList.TEXT_WIDTH);
 		}
 
 		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey, int min, int max, int textWidth) {
