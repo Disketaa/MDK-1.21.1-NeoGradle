@@ -1,6 +1,7 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.configuration.ModConfigurationBuilder;
+import com.disketaa.harmonium.configuration.ModConfigurationScrollableList;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -71,16 +72,24 @@ public class Config {
 	}
 
 	private static ModConfigSpec.BooleanValue defineBoolean(String path, boolean defaultValue) {
+		return defineBoolean(path, defaultValue, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+	}
+
+	private static ModConfigSpec.BooleanValue defineBoolean(String path, boolean defaultValue, int textWidth) {
 		String translationKey = "config.harmonium." + path;
 		ModConfigSpec.BooleanValue value = BUILDER.translation(translationKey + ".tooltip").define(path, defaultValue);
-		CONFIG_ENTRIES.get(currentCategory).add(new ConfigEntry(value, translationKey));
+		CONFIG_ENTRIES.get(currentCategory).add(new ConfigEntry(value, translationKey, 0, 0, textWidth));
 		return value;
 	}
 
 	private static ModConfigSpec.IntValue defineInt(String path, int defaultValue, int min, int max) {
+		return defineInt(path, defaultValue, min, max, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+	}
+
+	private static ModConfigSpec.IntValue defineInt(String path, int defaultValue, int min, int max, int textWidth) {
 		String translationKey = "config.harmonium." + path;
 		ModConfigSpec.IntValue value = BUILDER.translation(translationKey + ".tooltip").defineInRange(path, defaultValue, min, max);
-		CONFIG_ENTRIES.get(currentCategory).add(new ConfigEntry(value, translationKey, min, max));
+		CONFIG_ENTRIES.get(currentCategory).add(new ConfigEntry(value, translationKey, min, max, textWidth));
 		return value;
 	}
 
@@ -91,9 +100,9 @@ public class Config {
 			entries.forEach(entry -> {
 				if (entry.translationKey.equals("config.harmonium.remove_flint_knife") && !ModList.get().isLoaded("farmersdelight")) return;
 				if (entry.value instanceof ModConfigSpec.BooleanValue booleanValue) {
-					builder.addBooleanConfig(booleanValue, entry.translationKey);
+					builder.addBooleanConfig(booleanValue, entry.translationKey, entry.textWidth);
 				} else if (entry.value instanceof ModConfigSpec.IntValue intValue) {
-					builder.addIntConfig(intValue, entry.translationKey, entry.min, entry.max);
+					builder.addIntConfig(intValue, entry.translationKey, entry.min, entry.max, entry.textWidth);
 				}
 			});
 		});
@@ -121,16 +130,22 @@ public class Config {
 		final String translationKey;
 		final int min;
 		final int max;
+		final int textWidth;
 
 		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey) {
-			this(value, translationKey, 0, 0);
+			this(value, translationKey, 0, 0, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
 		}
 
 		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey, int min, int max) {
+			this(value, translationKey, min, max, ModConfigurationScrollableList.DEFAULT_TEXT_WIDTH);
+		}
+
+		ConfigEntry(ModConfigSpec.ConfigValue<?> value, String translationKey, int min, int max, int textWidth) {
 			this.value = value;
 			this.translationKey = translationKey;
 			this.min = min;
 			this.max = max;
+			this.textWidth = textWidth;
 		}
 	}
 }

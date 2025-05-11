@@ -16,14 +16,14 @@ public class ModConfigurationBuilder {
 		this.list.children().add(new ModConfigurationScrollableList.LabelEntry(title, true));
 	}
 
-	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey) {
+	public void addBooleanConfig(ModConfigSpec.BooleanValue configValue, String translationKey, int textWidth) {
 		String configId = translationKey.substring("config.harmonium.".length());
 		Component tooltip = createTooltip(configId, translationKey, String.valueOf(configValue.getDefault()));
 		Component label = Component.translatable(translationKey);
-		this.list.children().add(new ModConfigurationScrollableList.BooleanEntry(label, tooltip, configValue.get(), configValue::set));
+		this.list.children().add(new ModConfigurationScrollableList.BooleanEntry(label, tooltip, configValue.get(), configValue::set, textWidth));
 	}
 
-	public void addIntConfig(ModConfigSpec.IntValue configValue, String translationKey, int min, int max) {
+	public void addIntConfig(ModConfigSpec.IntValue configValue, String translationKey, int min, int max, int textWidth) {
 		String configId = translationKey.substring("config.harmonium.".length());
 		Component tooltip = createTooltip(configId, translationKey, String.valueOf(configValue.getDefault()));
 		Component label = Component.translatable(translationKey);
@@ -32,7 +32,7 @@ public class ModConfigurationBuilder {
 				int value = Integer.parseInt(text);
 				if (value >= min && value <= max) configValue.set(value);
 			} catch (NumberFormatException ignored) {}
-		}));
+		}, textWidth));
 	}
 
 	private Component createTooltip(String configId, String translationKey, String defaultValue) {

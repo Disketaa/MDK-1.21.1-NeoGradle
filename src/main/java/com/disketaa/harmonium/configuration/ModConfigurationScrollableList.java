@@ -13,10 +13,10 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ModConfigurationScrollableList extends ContainerObjectSelectionList<ModConfigurationScrollableList.Entry> {
+	public static final int DEFAULT_TEXT_WIDTH = 175;
 	private static final int TEXT_PADDING = 5;
 	private static final int ITEM_HEIGHT = 24;
 	private static final int BUTTON_WIDTH = 44;
@@ -94,9 +94,15 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		private final CycleButton<Boolean> button;
 		private final Component label;
 		private final Tooltip tooltip;
+		private final int textWidth;
 
 		public BooleanEntry(Component label, Component tooltip, boolean initialValue, Consumer<Boolean> onChanged) {
+			this(label, tooltip, initialValue, onChanged, DEFAULT_TEXT_WIDTH);
+		}
+
+		public BooleanEntry(Component label, Component tooltip, boolean initialValue, Consumer<Boolean> onChanged, int textWidth) {
 			this.label = label;
+			this.textWidth = textWidth;
 			this.button = CycleButton.booleanBuilder(
 					Component.translatable("options.on"),
 					Component.translatable("options.off"))
@@ -108,9 +114,15 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public void render(GuiGraphics gui, int index, int top, int left, int width, int height,
+		public void render(@NotNull GuiGraphics gui, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-			gui.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
+			List<FormattedCharSequence> splitText = Minecraft.getInstance().font.split(label, textWidth);
+			if (splitText.size() == 1) {
+				gui.drawString(Minecraft.getInstance().font, splitText.getFirst(), left, top + TEXT_PADDING, COLOR_WHITE);
+			} else if (splitText.size() >= 2) {
+				gui.drawString(Minecraft.getInstance().font, splitText.get(0), left, top, COLOR_WHITE);
+				gui.drawString(Minecraft.getInstance().font, splitText.get(1), left, top + 10, COLOR_WHITE);
+			}
 			button.setX(left + width - BUTTON_WIDTH);
 			button.setY(top);
 			button.render(gui, mouseX, mouseY, partialTick);
@@ -159,9 +171,15 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		private final EditBox editBox;
 		private final Component label;
 		private final Tooltip tooltip;
+		private final int textWidth;
 
 		public IntEntry(Component label, Component tooltip, int initialValue, Consumer<String> onChanged) {
+			this(label, tooltip, initialValue, onChanged, DEFAULT_TEXT_WIDTH);
+		}
+
+		public IntEntry(Component label, Component tooltip, int initialValue, Consumer<String> onChanged, int textWidth) {
 			this.label = label;
+			this.textWidth = textWidth;
 			this.editBox = new EditBox(Minecraft.getInstance().font, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT, Component.empty());
 			this.editBox.setValue(String.valueOf(initialValue));
 			this.editBox.setResponder(onChanged);
@@ -170,9 +188,15 @@ public class ModConfigurationScrollableList extends ContainerObjectSelectionList
 		}
 
 		@Override
-		public void render(GuiGraphics gui, int index, int top, int left, int width, int height,
+		public void render(@NotNull GuiGraphics gui, int index, int top, int left, int width, int height,
 		                   int mouseX, int mouseY, boolean hovering, float partialTick) {
-			gui.drawString(Minecraft.getInstance().font, label, left, top + TEXT_PADDING, COLOR_WHITE);
+			List<FormattedCharSequence> splitText = Minecraft.getInstance().font.split(label, textWidth);
+			if (splitText.size() == 1) {
+				gui.drawString(Minecraft.getInstance().font, splitText.getFirst(), left, top + TEXT_PADDING, COLOR_WHITE);
+			} else if (splitText.size() >= 2) {
+				gui.drawString(Minecraft.getInstance().font, splitText.get(0), left, top, COLOR_WHITE);
+				gui.drawString(Minecraft.getInstance().font, splitText.get(1), left, top + 10, COLOR_WHITE);
+			}
 			editBox.setX(left + width - BUTTON_WIDTH);
 			editBox.setY(top);
 			editBox.render(gui, mouseX, mouseY, partialTick);
