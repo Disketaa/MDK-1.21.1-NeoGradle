@@ -11,6 +11,7 @@ import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
 import com.disketaa.harmonium.configuration.ModConditions;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -78,6 +79,11 @@ public class Harmonium {
 					IConfigScreenFactory.class,
 					() -> (container, parent) -> new ModConfigurationScreens(parent)
 				);
+
+				ItemProperties.register(ModItems.BUCKLER.get(),
+					ResourceLocation.fromNamespaceAndPath(MOD_ID, "blocking"),
+					(stack, level, entity, seed) ->
+						entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 			});
 		}
 	}

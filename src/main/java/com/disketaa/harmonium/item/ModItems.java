@@ -1,6 +1,7 @@
 package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
+import com.disketaa.harmonium.item.custom.ShieldItem;
 import com.disketaa.harmonium.item.custom.KnifeItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -8,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -35,6 +37,7 @@ public class ModItems {
 	public static final DeferredItem<AxeItem> BRONZE_AXE = registerAxeItem("bronze_axe", ModToolTiers.BRONZE, 7.0f, -3.2f);
 	public static final DeferredItem<HoeItem> BRONZE_HOE = registerHoeItem("bronze_hoe", ModToolTiers.BRONZE, -1, -2.0f);
 	public static final DeferredItem<SwordItem> BRONZE_SWORD = registerSwordItem("bronze_sword", ModToolTiers.BRONZE, 3, -2.4f);
+	public static final DeferredItem<ShieldItem> BUCKLER = registerShieldItem("buckler", ModShieldTiers.BRONZE);
 	public static final DeferredItem<ArmorItem> BRONZE_HELMET = registerArmorItem("bronze_helmet", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET);
 	public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerArmorItem("bronze_chestplate", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE);
 	public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerArmorItem("bronze_leggings", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS);
@@ -157,6 +160,16 @@ public class ModItems {
 			bodyType,
 			isFireResistant,
 			new Item.Properties().stacksTo(1)
+		));
+		REGISTERED_ITEMS.add(item);
+		return item;
+	}
+
+	public static DeferredItem<ShieldItem> registerShieldItem(String name, ModShieldTiers material) {
+		DeferredItem<ShieldItem> item = ITEMS.register(name, () -> new ShieldItem(
+			new Item.Properties()
+				.component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY),
+			material.durability()
 		));
 		REGISTERED_ITEMS.add(item);
 		return item;

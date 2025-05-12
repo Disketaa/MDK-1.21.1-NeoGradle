@@ -11,6 +11,7 @@
     "harmonium:bronze_hoe",
     "harmonium:bronze_sword",
     {"id": "farmersdelight:bronze_knife", "required": false},
-    "harmonium:bronze_horse_armor"
+    "harmonium:bronze_horse_armor",
+    "harmonium:buckler"
   ]
 }

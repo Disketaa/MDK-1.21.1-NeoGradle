@@ -1,0 +1,32 @@
+{
+  "parent": "harmonium:item/buckler",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [45, -30, -90],
+      "translation": [1.25, -4, 2]
+    },
+    "firstperson_righthand": {
+      "rotation": [-15, -5, 95],
+      "translation": [-7.5, -6, 1],
+      "scale": [2, 2, 2]
+    },
+    "ground": {
+      "translation": [0, 3, 0],
+      "scale": [0.35, 0.35, 0.35]
+    },
+    "gui": {
+      "rotation": [15, 160, 6],
+      "translation": [1, 2.5, 0],
+      "scale": [0.9, 0.9, 0.9]
+    },
+    "head": {
+      "rotation": [75, 0, 0],
+      "translation": [0, 3, 2],
+      "scale": [1.5, 1.5, 1.5]
+    },
+    "fixed": {
+      "translation": [0, 1, 1],
+      "scale": [0.75, 0.75, 0.75]
+    }
+  }
+}

@@ -7,10 +7,6 @@
   ],
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "pattern": [
-    "#",
-    "/"
-  ],
   "key": {
     "#": {
       "tag": "c:ingots/bronze"
@@ -19,6 +15,10 @@
       "item": "minecraft:stick"
     }
   },
+  "pattern": [
+    "#",
+    "/"
+  ],
   "result": {
     "id": "harmonium:bronze_knife"
   }
