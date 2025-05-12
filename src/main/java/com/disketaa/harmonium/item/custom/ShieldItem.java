@@ -1,7 +1,5 @@
 package com.disketaa.harmonium.item.custom;
 
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -12,15 +10,8 @@ import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
 
 public class ShieldItem extends net.minecraft.world.item.ShieldItem {
-	private final int durability;
-
 	public ShieldItem(Properties properties, int durability) {
 		super(properties.durability(durability));
-		this.durability = durability;
-	}
-
-	public int getDurability() {
-		return durability;
 	}
 
 	@Override

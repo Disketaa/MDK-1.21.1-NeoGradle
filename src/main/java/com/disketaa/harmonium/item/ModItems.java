@@ -37,7 +37,7 @@ public class ModItems {
 	public static final DeferredItem<AxeItem> BRONZE_AXE = registerAxeItem("bronze_axe", ModToolTiers.BRONZE, 7.0f, -3.2f);
 	public static final DeferredItem<HoeItem> BRONZE_HOE = registerHoeItem("bronze_hoe", ModToolTiers.BRONZE, -1, -2.0f);
 	public static final DeferredItem<SwordItem> BRONZE_SWORD = registerSwordItem("bronze_sword", ModToolTiers.BRONZE, 3, -2.4f);
-	public static final DeferredItem<ShieldItem> BUCKLER = registerShieldItem("buckler", ModShieldTiers.BRONZE);
+	public static final DeferredItem<ShieldItem> BUCKLER = registerShieldItem("buckler", ModToolTiers.BRONZE);
 	public static final DeferredItem<ArmorItem> BRONZE_HELMET = registerArmorItem("bronze_helmet", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET);
 	public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerArmorItem("bronze_chestplate", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE);
 	public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerArmorItem("bronze_leggings", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS);
@@ -165,11 +165,11 @@ public class ModItems {
 		return item;
 	}
 
-	public static DeferredItem<ShieldItem> registerShieldItem(String name, ModShieldTiers material) {
+	public static DeferredItem<ShieldItem> registerShieldItem(String name, Tier tier) {
 		DeferredItem<ShieldItem> item = ITEMS.register(name, () -> new ShieldItem(
 			new Item.Properties()
 				.component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY),
-			material.durability()
+			(int)(tier.getUses() * 1.5f)
 		));
 		REGISTERED_ITEMS.add(item);
 		return item;
