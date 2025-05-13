@@ -167,10 +167,9 @@ public class ModItems {
 
 	public static DeferredItem<ShieldItem> registerShieldItem(String name, Tier tier) {
 		DeferredItem<ShieldItem> item = ITEMS.register(name, () -> new ShieldItem(
+			tier,
+			1.5f,
 			new Item.Properties()
-				.component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY),
-			(int)(tier.getUses() * 1.5f),
-			tier
 		));
 		REGISTERED_ITEMS.add(item);
 		return item;

@@ -1,21 +1,24 @@
 package com.disketaa.harmonium.item.custom;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
 
-public class ShieldItem extends net.minecraft.world.item.ShieldItem {
-	private final Tier tier;
+public class ShieldItem extends TieredItem {
 
-	public ShieldItem(Properties properties, int durability, Tier tier) {
-		super(properties.durability(durability));
-		this.tier = tier;
+	public ShieldItem(Tier tier, float durabilityFactor, Properties properties) {
+		super(tier, properties
+			.durability((int)(tier.getUses() * durabilityFactor))
+			.component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY));
 	}
 
 	@Override
@@ -32,6 +35,6 @@ public class ShieldItem extends net.minecraft.world.item.ShieldItem {
 
 	@Override
 	public boolean isValidRepairItem(@NotNull ItemStack toRepair, @NotNull ItemStack repair) {
-		return this.tier.getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
+		return this.getTier().getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
 	}
 }
