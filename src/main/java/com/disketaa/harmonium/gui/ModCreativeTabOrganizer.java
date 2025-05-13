@@ -1,9 +1,9 @@
 package com.disketaa.harmonium.gui;
 
-import com.disketaa.harmonium.Config;
+import com.disketaa.harmonium.config.Config;
 import com.disketaa.harmonium.block.ModBlocks;
-import com.disketaa.harmonium.item.FarmersDelightItems;
-import com.disketaa.harmonium.item.FriendsAndFoesItems;
+import com.disketaa.harmonium.item.compat.FarmersDelightItems;
+import com.disketaa.harmonium.item.compat.FriendsAndFoesItems;
 import com.disketaa.harmonium.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;

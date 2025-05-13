@@ -1,6 +1,6 @@
 package com.disketaa.harmonium.entity;
 
-import com.disketaa.harmonium.Config;
+import com.disketaa.harmonium.config.Config;
 import com.disketaa.harmonium.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;

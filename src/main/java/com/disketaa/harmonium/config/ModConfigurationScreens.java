@@ -1,6 +1,5 @@
-package com.disketaa.harmonium.configuration;
+package com.disketaa.harmonium.config;
 
-import com.disketaa.harmonium.Config;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;

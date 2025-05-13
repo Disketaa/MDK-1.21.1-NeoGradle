@@ -1,7 +1,7 @@
 package com.disketaa.harmonium.gui;
 
-import com.disketaa.harmonium.Config;
-import com.disketaa.harmonium.item.FarmersDelightItems;
+import com.disketaa.harmonium.config.Config;
+import com.disketaa.harmonium.item.compat.FarmersDelightItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;

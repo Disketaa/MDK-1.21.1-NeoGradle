@@ -1,4 +1,4 @@
-package com.disketaa.harmonium.item;
+package com.disketaa.harmonium.item.compat;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.core.registries.BuiltInRegistries;

@@ -1,6 +1,6 @@
 package com.disketaa.harmonium.gui;
 
-import com.disketaa.harmonium.Config;
+import com.disketaa.harmonium.config.Config;
 import com.disketaa.harmonium.Harmonium;
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.item.ModItems;

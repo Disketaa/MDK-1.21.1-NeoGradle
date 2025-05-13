@@ -1,7 +1,8 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.block.ModBlocks;
-import com.disketaa.harmonium.configuration.ModConfigurationScreens;
+import com.disketaa.harmonium.config.Config;
+import com.disketaa.harmonium.config.ModConfigurationScreens;
 import com.disketaa.harmonium.entity.ModEntityGearEvents;
 import com.disketaa.harmonium.event.ModShieldBlockHandler;
 import com.disketaa.harmonium.gui.ModCreativeTabItemRemover;
@@ -10,7 +11,7 @@ import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModArmorMaterials;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.sound.ModSoundType;
-import com.disketaa.harmonium.configuration.ModConditions;
+import com.disketaa.harmonium.config.ModConditions;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;

@@ -1,4 +1,4 @@
-package com.disketaa.harmonium.configuration;
+package com.disketaa.harmonium.config;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

@@ -1,6 +1,6 @@
 package com.disketaa.harmonium.block.custom;
 
-import com.disketaa.harmonium.Config;
+import com.disketaa.harmonium.config.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

@@ -1,6 +1,5 @@
-package com.disketaa.harmonium.configuration;
+package com.disketaa.harmonium.config;
 
-import com.disketaa.harmonium.Config;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

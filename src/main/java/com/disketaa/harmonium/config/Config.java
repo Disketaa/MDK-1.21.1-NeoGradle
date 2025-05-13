@@ -1,7 +1,6 @@
-package com.disketaa.harmonium;
+package com.disketaa.harmonium.config;
 
-import com.disketaa.harmonium.configuration.ModConfigurationBuilder;
-import com.disketaa.harmonium.configuration.ModConfigurationScrollableList;
+import com.disketaa.harmonium.Harmonium;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;

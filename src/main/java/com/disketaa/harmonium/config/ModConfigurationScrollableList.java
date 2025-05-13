@@ -1,4 +1,4 @@
-package com.disketaa.harmonium.configuration;
+package com.disketaa.harmonium.config;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;

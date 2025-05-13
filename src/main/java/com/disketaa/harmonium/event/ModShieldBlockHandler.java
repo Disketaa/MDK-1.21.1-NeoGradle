@@ -21,7 +21,7 @@ public class ModShieldBlockHandler {
 
 		if (shield.is(ModItems.BUCKLER.get())) {
 			entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-				ModSoundType.BRONZE_BULB_TURN_ON.get(), entity.getSoundSource(), 1.0F, 1.0F);
+				ModSoundType.BUCKLER_BLOCK.get(), entity.getSoundSource(), 1.0F, 1.0F);
 		}
 	}
 }
