@@ -449,5 +449,16 @@
       "harmonium:item/buckler/block5"
     ],
     "subtitle": "subtitles.item.shield.block"
+  },
+  "item.buckler.equip": {
+    "sounds": [
+      "harmonium:item/buckler/equip1",
+      "harmonium:item/buckler/equip2",
+      "harmonium:item/buckler/equip3",
+      "harmonium:item/buckler/equip4",
+      "harmonium:item/buckler/equip5",
+      "harmonium:item/buckler/equip6"
+    ],
+    "subtitle": "subtitles.item.buckler.equip"
   }
 }

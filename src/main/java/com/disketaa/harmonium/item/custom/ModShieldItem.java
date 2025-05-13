@@ -30,6 +30,6 @@ public class ModShieldItem extends ShieldItem {
 
 	@Override
 	public @NotNull Holder<SoundEvent> getEquipSound() {
-		return ModSoundType.ARMOR_EQUIP_BRONZE;
+		return ModSoundType.BUCKLER_EQUIP;
 	}
 }

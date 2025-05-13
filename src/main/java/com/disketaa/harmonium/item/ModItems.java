@@ -167,7 +167,7 @@ public class ModItems {
 	public static DeferredItem<ModShieldItem> registerShieldItem(String name, Tier tier) {
 		DeferredItem<ModShieldItem> item = ITEMS.register(name, () -> new ModShieldItem(
 			tier,
-			1.5f,
+			2.0f,
 			new Item.Properties()
 		));
 		REGISTERED_ITEMS.add(item);
