@@ -196,6 +196,53 @@
     ],
     "subtitle": "subtitles.block.trapdoor.toggle"
   },
+  "block.nether_slag.break": {
+    "sounds": [
+      {"name": "harmonium:block/nether_slag/break1", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/nether_slag/break2", "volume": 0.4, "pitch": 1.2},
+      {"name": "harmonium:block/nether_slag/break3", "volume": 0.4, "pitch": 1.3},
+      {"name": "harmonium:block/nether_slag/break4", "volume": 0.4, "pitch": 1.4}
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.nether_slag.place": {
+    "sounds": [
+      {"name": "harmonium:block/nether_slag/break1", "volume": 0.4, "pitch": 1.1},
+      {"name": "harmonium:block/nether_slag/break2", "volume": 0.4, "pitch": 1.2},
+      {"name": "harmonium:block/nether_slag/break3", "volume": 0.4, "pitch": 1.3},
+      {"name": "harmonium:block/nether_slag/break4", "volume": 0.4, "pitch": 1.4}
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.nether_slag.hit": {
+    "sounds": [
+      {"name": "harmonium:block/nether_slag/step1", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/nether_slag/step2", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/nether_slag/step3", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/nether_slag/step4", "volume": 0.4, "pitch": 1.4},
+      {"name": "harmonium:block/nether_slag/step5", "volume": 0.4, "pitch": 1.4}
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.nether_slag.fall": {
+    "sounds": [
+      {"name": "harmonium:block/nether_slag/step1", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/nether_slag/step2", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/nether_slag/step3", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/nether_slag/step4", "volume": 0.9, "pitch": 1.6},
+      {"name": "harmonium:block/nether_slag/step5", "volume": 0.9, "pitch": 1.6}
+    ]
+  },
+  "block.nether_slag.step": {
+    "sounds": [
+      {"name": "harmonium:block/nether_slag/step1", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/nether_slag/step2", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/nether_slag/step3", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/nether_slag/step4", "volume": 0.6, "pitch": 1.8},
+      {"name": "harmonium:block/nether_slag/step5", "volume": 0.6, "pitch": 1.8}
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "block.tin.break": {
     "sounds": [
       {"name": "harmonium:block/tin/break1", "volume": 0.4, "pitch": 1.1},
@@ -348,21 +395,21 @@
   },
   "block.tin_soldier.break": {
     "sounds": [
-      {"name": "harmonium:block/tin_soldier/break1", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break2", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break3", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break4", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break5", "volume": 0.5, "pitch": 2.0}
+      {"name": "harmonium:block/tin_soldier/break1", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break2", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break3", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break4", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break5", "volume": 0.6, "pitch": 1.5}
     ],
     "subtitle": "subtitles.block.generic.break"
   },
   "block.tin_soldier.place": {
     "sounds": [
-      {"name": "harmonium:block/tin_soldier/break1", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break2", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break3", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break4", "volume": 0.5, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/break5", "volume": 0.5, "pitch": 2.0}
+      {"name": "harmonium:block/tin_soldier/break1", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break2", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break3", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break4", "volume": 0.6, "pitch": 1.5},
+      {"name": "harmonium:block/tin_soldier/break5", "volume": 0.6, "pitch": 1.5}
     ],
     "subtitle": "subtitles.block.generic.place"
   },
@@ -378,20 +425,20 @@
   },
   "block.tin_soldier.fall": {
     "sounds": [
-      {"name": "harmonium:block/tin_soldier/step1", "volume": 0.9, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step2", "volume": 0.9, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step3", "volume": 0.9, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step4", "volume": 0.9, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step5", "volume": 0.9, "pitch": 2.0}
+      {"name": "harmonium:block/tin_soldier/step1", "volume": 0.9, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step2", "volume": 0.9, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step3", "volume": 0.9, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step4", "volume": 0.9, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step5", "volume": 0.9, "pitch": 1.8}
     ]
   },
   "block.tin_soldier.step": {
     "sounds": [
-      {"name": "harmonium:block/tin_soldier/step1", "volume": 0.6, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step2", "volume": 0.6, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step3", "volume": 0.6, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step4", "volume": 0.6, "pitch": 2.0},
-      {"name": "harmonium:block/tin_soldier/step5", "volume": 0.6, "pitch": 2.0}
+      {"name": "harmonium:block/tin_soldier/step1", "volume": 0.3, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step2", "volume": 0.3, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step3", "volume": 0.3, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step4", "volume": 0.3, "pitch": 1.8},
+      {"name": "harmonium:block/tin_soldier/step5", "volume": 0.3, "pitch": 1.8}
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
