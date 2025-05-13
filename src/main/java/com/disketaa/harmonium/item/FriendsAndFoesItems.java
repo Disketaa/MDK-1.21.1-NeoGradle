@@ -4,9 +4,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 
-public class FarmersDelightModItems {
-	public static final Item FLINT_KNIFE = getItem("farmersdelight:flint_knife");
-	public static final Item IRON_KNIFE = getItem("farmersdelight:iron_knife");
+public class FriendsAndFoesItems {
+	public static final Item WAXED_OXIDIZED_COPPER_BUTTON = getItem("friendsandfoes:waxed_oxidized_copper_button");
 
 	private static Item getItem(String id) {
 		return BuiltInRegistries.ITEM.get(ResourceLocation.parse(id));

@@ -2,8 +2,8 @@ package com.disketaa.harmonium.gui;
 
 import com.disketaa.harmonium.Config;
 import com.disketaa.harmonium.block.ModBlocks;
-import com.disketaa.harmonium.item.FarmersDelightModItems;
-import com.disketaa.harmonium.item.FriendsAndFoesModItems;
+import com.disketaa.harmonium.item.FarmersDelightItems;
+import com.disketaa.harmonium.item.FriendsAndFoesItems;
 import com.disketaa.harmonium.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
@@ -127,8 +127,8 @@ public class ModCreativeTabOrganizer {
 				));
 
 			if (ModList.get().isLoaded("friendsandfoes")) {
-				if (FriendsAndFoesModItems.WAXED_OXIDIZED_COPPER_BUTTON != Items.AIR) {
-					addAfter(event, FriendsAndFoesModItems.WAXED_OXIDIZED_COPPER_BUTTON,
+				if (FriendsAndFoesItems.WAXED_OXIDIZED_COPPER_BUTTON != Items.AIR) {
+					addAfter(event, FriendsAndFoesItems.WAXED_OXIDIZED_COPPER_BUTTON,
 						List.of(
 							ModBlocks.TIN_BUTTON,
 							ModBlocks.BRONZE_BUTTON
@@ -195,10 +195,10 @@ public class ModCreativeTabOrganizer {
 		}
 
 		if (tabId.equals(ResourceLocation.parse("farmersdelight:farmersdelight"))) {
-			if (FarmersDelightModItems.IRON_KNIFE != Items.AIR) {
+			if (FarmersDelightItems.IRON_KNIFE != Items.AIR) {
 				assert ModItems.BRONZE_KNIFE != null;
 				assert ModItems.WOODEN_KNIFE != null;
-				addBefore(event, FarmersDelightModItems.IRON_KNIFE,
+				addBefore(event, FarmersDelightItems.IRON_KNIFE,
 					List.of(
 						ModItems.WOODEN_KNIFE,
 						ModItems.BRONZE_KNIFE

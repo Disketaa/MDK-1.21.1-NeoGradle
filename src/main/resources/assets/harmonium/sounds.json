@@ -439,5 +439,15 @@
       "harmonium:item/armor/equip_bronze6"
     ],
     "subtitle": "subtitles.item.armor.equip_bronze"
+  },
+  "item.buckler.block": {
+    "sounds": [
+      "harmonium:item/buckler/block1",
+      "harmonium:item/buckler/block2",
+      "harmonium:item/buckler/block3",
+      "harmonium:item/buckler/block4",
+      "harmonium:item/buckler/block5"
+    ],
+    "subtitle": "subtitles.item.shield.block"
   }
 }

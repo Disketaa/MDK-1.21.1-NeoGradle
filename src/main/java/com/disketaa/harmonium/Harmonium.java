@@ -3,6 +3,7 @@ package com.disketaa.harmonium;
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.configuration.ModConfigurationScreens;
 import com.disketaa.harmonium.entity.ModEntityGearEvents;
+import com.disketaa.harmonium.event.ModShieldBlockHandler;
 import com.disketaa.harmonium.gui.ModCreativeTabItemRemover;
 import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
@@ -42,6 +43,7 @@ public class Harmonium {
 	public Harmonium(IEventBus modEventBus, ModContainer modContainer) {
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 		modEventBus.addListener(this::registerConditions);
+		NeoForge.EVENT_BUS.addListener(ModShieldBlockHandler::onShieldBlock);
 
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);

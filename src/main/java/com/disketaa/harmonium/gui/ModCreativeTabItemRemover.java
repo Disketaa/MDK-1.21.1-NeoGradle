@@ -1,7 +1,7 @@
 package com.disketaa.harmonium.gui;
 
 import com.disketaa.harmonium.Config;
-import com.disketaa.harmonium.item.FarmersDelightModItems;
+import com.disketaa.harmonium.item.FarmersDelightItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -21,8 +21,8 @@ public class ModCreativeTabItemRemover {
 			return;
 		}
 
-		if (FarmersDelightModItems.FLINT_KNIFE != Items.AIR) {
-			removeEntry(event, FarmersDelightModItems.FLINT_KNIFE);
+		if (FarmersDelightItems.FLINT_KNIFE != Items.AIR) {
+			removeEntry(event, FarmersDelightItems.FLINT_KNIFE);
 		}
 	}
 

@@ -15,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class KnifeItem extends SwordItem {
+public class ModKnifeItem extends SwordItem {
 	private static final ResourceLocation BASE_ATTACK_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath("minecraft", "base_attack_damage");
 	private static final ResourceLocation BASE_ATTACK_SPEED_ID = ResourceLocation.fromNamespaceAndPath("minecraft", "base_attack_speed");
 
-	public KnifeItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
+	public ModKnifeItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
 		super(tier, properties
 			.component(DataComponents.ATTRIBUTE_MODIFIERS, createAttributes(tier, attackDamage, attackSpeed))
 			.component(DataComponents.TOOL, new Tool(

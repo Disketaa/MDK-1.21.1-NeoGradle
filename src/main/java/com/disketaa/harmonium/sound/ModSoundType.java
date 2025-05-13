@@ -59,6 +59,7 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_CLOSE = registerSoundEvent("block.tin_trapdoor.close");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_TRAPDOOR_OPEN = registerSoundEvent("block.tin_trapdoor.open");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ARMOR_EQUIP_BRONZE = registerSoundEvent("item.armor.equip_bronze");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BUCKLER_BLOCK = registerSoundEvent("item.buckler.block");
 
 	public static final DeferredSoundType BRONZE = new DeferredSoundType(
 		1.0f, 1.0f,

@@ -1,15 +1,14 @@
 package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
-import com.disketaa.harmonium.item.custom.ShieldItem;
-import com.disketaa.harmonium.item.custom.KnifeItem;
+import com.disketaa.harmonium.item.custom.ModShieldItem;
+import com.disketaa.harmonium.item.custom.ModKnifeItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -30,14 +29,14 @@ public class ModItems {
 	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");
 	public static final DeferredItem<Item> TIN_INGOT = registerSimpleItem("tin_ingot");
 	public static final DeferredItem<Item> BRONZE_INGOT = registerSimpleItem("bronze_ingot");
-	public static final DeferredItem<KnifeItem> WOODEN_KNIFE = registerConditionalTool("wooden_knife", () -> registerKnifeItem("wooden_knife", Tiers.WOOD, 0.5f, -2.0f), "farmersdelight");
-	public static final DeferredItem<KnifeItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerKnifeItem("bronze_knife", ModToolTiers.BRONZE, 0.5f, -2.0f), "farmersdelight");
+	public static final DeferredItem<ModKnifeItem> WOODEN_KNIFE = registerConditionalTool("wooden_knife", () -> registerKnifeItem("wooden_knife", Tiers.WOOD, 0.5f, -2.0f), "farmersdelight");
+	public static final DeferredItem<ModKnifeItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerKnifeItem("bronze_knife", ModToolTiers.BRONZE, 0.5f, -2.0f), "farmersdelight");
 	public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = registerShovelItem("bronze_shovel", ModToolTiers.BRONZE, 1.5f, -3.0f);
 	public static final DeferredItem<PickaxeItem> BRONZE_PICKAXE = registerPickaxeItem("bronze_pickaxe", ModToolTiers.BRONZE, 1, -2.8f);
 	public static final DeferredItem<AxeItem> BRONZE_AXE = registerAxeItem("bronze_axe", ModToolTiers.BRONZE, 7.0f, -3.2f);
 	public static final DeferredItem<HoeItem> BRONZE_HOE = registerHoeItem("bronze_hoe", ModToolTiers.BRONZE, -1, -2.0f);
 	public static final DeferredItem<SwordItem> BRONZE_SWORD = registerSwordItem("bronze_sword", ModToolTiers.BRONZE, 3, -2.4f);
-	public static final DeferredItem<ShieldItem> BUCKLER = registerShieldItem("buckler", ModToolTiers.BRONZE);
+	public static final DeferredItem<ModShieldItem> BUCKLER = registerShieldItem("buckler", ModToolTiers.BRONZE);
 	public static final DeferredItem<ArmorItem> BRONZE_HELMET = registerArmorItem("bronze_helmet", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET);
 	public static final DeferredItem<ArmorItem> BRONZE_CHESTPLATE = registerArmorItem("bronze_chestplate", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE);
 	public static final DeferredItem<ArmorItem> BRONZE_LEGGINGS = registerArmorItem("bronze_leggings", ModArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS);
@@ -50,8 +49,8 @@ public class ModItems {
 		return item;
 	}
 
-	public static DeferredItem<KnifeItem> registerKnifeItem(String name, Tier tier, float attackDamage, float attackSpeed) {
-		DeferredItem<KnifeItem> item = ITEMS.register(name, () -> new KnifeItem(
+	public static DeferredItem<ModKnifeItem> registerKnifeItem(String name, Tier tier, float attackDamage, float attackSpeed) {
+		DeferredItem<ModKnifeItem> item = ITEMS.register(name, () -> new ModKnifeItem(
 			tier,
 			attackDamage,
 			attackSpeed,
@@ -165,8 +164,8 @@ public class ModItems {
 		return item;
 	}
 
-	public static DeferredItem<ShieldItem> registerShieldItem(String name, Tier tier) {
-		DeferredItem<ShieldItem> item = ITEMS.register(name, () -> new ShieldItem(
+	public static DeferredItem<ModShieldItem> registerShieldItem(String name, Tier tier) {
+		DeferredItem<ModShieldItem> item = ITEMS.register(name, () -> new ModShieldItem(
 			tier,
 			1.5f,
 			new Item.Properties()
