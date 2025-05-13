@@ -34,6 +34,11 @@ public class ModSoundType {
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_DOOR_OPEN = registerSoundEvent("block.bronze_door.open");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_TRAPDOOR_CLOSE = registerSoundEvent("block.bronze_trapdoor.close");
 	public static final DeferredHolder<SoundEvent, SoundEvent> BRONZE_TRAPDOOR_OPEN = registerSoundEvent("block.bronze_trapdoor.open");
+	public static final DeferredHolder<SoundEvent, SoundEvent> NETHER_SLAG_BREAK = registerSoundEvent("block.nether_slag.break");
+	public static final DeferredHolder<SoundEvent, SoundEvent> NETHER_SLAG_STEP = registerSoundEvent("block.nether_slag.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> NETHER_SLAG_PLACE = registerSoundEvent("block.nether_slag.place");
+	public static final DeferredHolder<SoundEvent, SoundEvent> NETHER_SLAG_HIT = registerSoundEvent("block.nether_slag.hit");
+	public static final DeferredHolder<SoundEvent, SoundEvent> NETHER_SLAG_FALL = registerSoundEvent("block.nether_slag.fall");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_BREAK = registerSoundEvent("block.tin.break");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_STEP = registerSoundEvent("block.tin.step");
 	public static final DeferredHolder<SoundEvent, SoundEvent> TIN_PLACE = registerSoundEvent("block.tin.place");
@@ -75,6 +80,11 @@ public class ModSoundType {
 	public static final DeferredSoundType BRONZE_BULB = new DeferredSoundType(
 		1.0f, 1.0f,
 		BRONZE_BULB_BREAK, BRONZE_BULB_STEP, BRONZE_BULB_PLACE, BRONZE_BULB_HIT, BRONZE_BULB_FALL
+	);
+
+	public static final DeferredSoundType NETHER_SLAG = new DeferredSoundType(
+		1.0f, 1.0f,
+		NETHER_SLAG_BREAK, NETHER_SLAG_STEP, NETHER_SLAG_PLACE, NETHER_SLAG_HIT, NETHER_SLAG_FALL
 	);
 
 	public static final DeferredSoundType TIN = new DeferredSoundType(

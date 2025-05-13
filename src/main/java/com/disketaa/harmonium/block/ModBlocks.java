@@ -52,8 +52,15 @@ public class ModBlocks {
 				.strength(strength, 6.0f);
 		}
 
-		static final BlockBehaviour.Properties GENERIC_TIN = createMetalProperties(MapColor.TERRACOTTA_WHITE, ModSoundType.TIN, 2.0f);
-		static final BlockBehaviour.Properties GENERIC_BRONZE = createMetalProperties(MapColor.TERRACOTTA_YELLOW, ModSoundType.BRONZE, 4.0f);
+		static final BlockBehaviour.Properties GENERIC_TIN = createMetalProperties(
+			MapColor.TERRACOTTA_WHITE,
+			ModSoundType.TIN,
+			2.0f);
+
+		static final BlockBehaviour.Properties GENERIC_BRONZE = createMetalProperties(
+			MapColor.TERRACOTTA_YELLOW,
+			ModSoundType.BRONZE,
+			4.0f);
 
 		static final BlockBehaviour.Properties TIN_BULB = createBulbProperties(
 			MapColor.TERRACOTTA_WHITE,
@@ -90,7 +97,7 @@ public class ModBlocks {
 
 		static final BlockBehaviour.Properties ORE_NETHER = BlockBehaviour.Properties.of()
 			.mapColor(MapColor.NETHER)
-			.sound(SoundType.NETHER_GOLD_ORE)
+			.sound(ModSoundType.NETHER_SLAG)
 			.instrument(NoteBlockInstrument.BASEDRUM)
 			.requiresCorrectToolForDrops()
 			.strength(3.0f, 3.0f);

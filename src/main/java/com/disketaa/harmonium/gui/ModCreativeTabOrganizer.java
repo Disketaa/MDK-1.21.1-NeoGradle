@@ -154,6 +154,10 @@ public class ModCreativeTabOrganizer {
 				List.of(
 					ModItems.BRONZE_AXE
 				));
+			addAfter(event, Items.SHIELD,
+				List.of(
+					ModItems.BUCKLER
+				));
 			addAfter(event, Items.LEATHER_BOOTS,
 				List.of(
 					ModItems.BRONZE_HELMET,
