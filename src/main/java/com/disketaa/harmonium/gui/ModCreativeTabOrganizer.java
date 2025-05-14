@@ -144,6 +144,10 @@ public class ModCreativeTabOrganizer {
 					ModItems.BRONZE_AXE,
 					ModItems.BRONZE_HOE
 				));
+			addBefore(event, Items.GOAT_HORN,
+				List.of(
+					ModItems.FLUTE
+				));
 		}
 		if (tabId.equals(CreativeModeTabs.COMBAT.location())) {
 			addAfter(event, Items.STONE_SWORD,

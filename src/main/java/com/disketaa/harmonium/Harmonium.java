@@ -10,6 +10,9 @@ import com.disketaa.harmonium.gui.ModCreativeTabOrganizer;
 import com.disketaa.harmonium.gui.ModCreativeTabs;
 import com.disketaa.harmonium.item.ModArmorMaterials;
 import com.disketaa.harmonium.item.ModItems;
+import com.disketaa.harmonium.item.custom.ModInstrumentItem;
+import com.disketaa.harmonium.item.custom.ModShieldItem;
+import com.disketaa.harmonium.loot.ModLootModifiers;
 import com.disketaa.harmonium.sound.ModSoundType;
 import com.disketaa.harmonium.config.ModConditions;
 import com.mojang.serialization.MapCodec;
@@ -55,6 +58,7 @@ public class Harmonium {
 		ModItems.register(modEventBus);
 		ModArmorMaterials.register(modEventBus);
 		ModEntityGearEvents.register();
+		ModLootModifiers.register(modEventBus);
 		ModSoundType.register(modEventBus);
 
 		ModConditions.register("config", ModConditions.ConfigValueCondition.CODEC);
@@ -80,13 +84,23 @@ public class Harmonium {
 			event.enqueueWork(() -> {
 				ModLoadingContext.get().registerExtensionPoint(
 					IConfigScreenFactory.class,
-					() -> (container, parent) -> new ModConfigurationScreens(parent)
-				);
+					() -> (container, parent) -> new ModConfigurationScreens(parent));
 
-				ItemProperties.register(ModItems.BUCKLER.get(),
+				ItemProperties.registerGeneric(
 					ResourceLocation.fromNamespaceAndPath(MOD_ID, "blocking"),
 					(stack, level, entity, seed) ->
-						entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+						entity != null &&
+							entity.isUsingItem() &&
+							entity.getUseItem() == stack &&
+							stack.getItem() instanceof ModShieldItem ? 1.0F : 0.0F);
+
+				ItemProperties.registerGeneric(
+					ResourceLocation.fromNamespaceAndPath(MOD_ID, "playing"),
+					(stack, level, entity, seed) ->
+						entity != null &&
+							entity.isUsingItem() &&
+							entity.getUseItem() == stack &&
+							entity.getUseItem().getItem() instanceof ModInstrumentItem ? 1.0F : 0.0F);
 			});
 		}
 	}

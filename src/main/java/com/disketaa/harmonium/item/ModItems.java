@@ -1,10 +1,13 @@
 package com.disketaa.harmonium.item;
 
 import com.disketaa.harmonium.Harmonium;
+import com.disketaa.harmonium.item.custom.ModInstrumentItem;
 import com.disketaa.harmonium.item.custom.ModShieldItem;
 import com.disketaa.harmonium.item.custom.ModKnifeItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Tool;
@@ -26,9 +29,10 @@ public class ModItems {
 	public static final DeferredItem<Item> BRONZE_BLEND = registerSimpleItem("bronze_blend");
 	public static final DeferredItem<Item> COPPER_NUGGET = registerSimpleItem("copper_nugget");
 	public static final DeferredItem<Item> TIN_NUGGET = registerSimpleItem("tin_nugget");
-	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");
 	public static final DeferredItem<Item> TIN_INGOT = registerSimpleItem("tin_ingot");
+	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");
 	public static final DeferredItem<Item> BRONZE_INGOT = registerSimpleItem("bronze_ingot");
+	public static final DeferredItem<ModInstrumentItem> FLUTE = registerInstrumentItem("flute", () -> new ModInstrumentItem(new Item.Properties(), BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.NOTE_BLOCK_FLUTE.value()), 4));
 	public static final DeferredItem<ModKnifeItem> WOODEN_KNIFE = registerConditionalTool("wooden_knife", () -> registerKnifeItem("wooden_knife", Tiers.WOOD, 0.5f, -2.0f), "farmersdelight");
 	public static final DeferredItem<ModKnifeItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerKnifeItem("bronze_knife", ModToolTiers.BRONZE, 0.5f, -2.0f), "farmersdelight");
 	public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = registerShovelItem("bronze_shovel", ModToolTiers.BRONZE, 1.5f, -3.0f);
@@ -45,6 +49,12 @@ public class ModItems {
 
 	private static DeferredItem<Item> registerSimpleItem(String name) {
 		DeferredItem<Item> item = ITEMS.register(name, () -> new Item(new Item.Properties()));
+		REGISTERED_ITEMS.add(item);
+		return item;
+	}
+
+	private static DeferredItem<ModInstrumentItem> registerInstrumentItem(String name, Supplier<ModInstrumentItem> supplier) {
+		DeferredItem<ModInstrumentItem> item = ITEMS.register(name, supplier);
 		REGISTERED_ITEMS.add(item);
 		return item;
 	}
