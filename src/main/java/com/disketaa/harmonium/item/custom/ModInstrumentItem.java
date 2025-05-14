@@ -18,37 +18,54 @@ import org.jetbrains.annotations.NotNull;
 public class ModInstrumentItem extends Item {
 	private final Holder<SoundEvent> soundEvent;
 	private final float volume;
+	private final int soundInterval;
+
+	private static final float MIN_PITCH_ANGLE = -75f;
+	private static final float MAX_PITCH_ANGLE = 75f;
 
 	public ModInstrumentItem(Properties properties, Holder<SoundEvent> soundEvent, float volume) {
+		this(properties, soundEvent, volume, 10);
+	}
+
+	public ModInstrumentItem(Properties properties, Holder<SoundEvent> soundEvent, float volume, int soundInterval) {
 		super(properties.stacksTo(1));
 		this.soundEvent = soundEvent;
 		this.volume = volume;
+		this.soundInterval = soundInterval;
 	}
 
 	@Override
-	public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, @NotNull InteractionHand hand) {
+	public void onUseTick(@NotNull Level level, @NotNull LivingEntity entity, @NotNull ItemStack stack, int remainingUseDuration) {
+		if (!(entity instanceof Player player)) return;
+
+		if (remainingUseDuration % soundInterval == 0) {
+			float pitchDegrees = Mth.clamp(player.getXRot(), MIN_PITCH_ANGLE, MAX_PITCH_ANGLE);
+			int note = (int)Mth.map(pitchDegrees, MIN_PITCH_ANGLE, MAX_PITCH_ANGLE, 24, 0);
+			note = Mth.clamp(note, 0, 24);
+
+			float soundPitch = (float)Math.pow(2.0, (note - 12) / 12.0);
+
+			if (level.isClientSide) {
+				double x = player.getX() + player.getViewVector(1.0F).x * 1.2;
+				double y = player.getEyeY() - 0.2 + player.getViewVector(1.0F).y * 1.2;
+				double z = player.getZ() + player.getViewVector(1.0F).z * 1.2;
+
+				level.addParticle(ParticleTypes.NOTE, x, y, z, note / 24.0, 0.0, 0.0);
+			} else {
+				level.playSound(null,
+					player.getX(), player.getY(), player.getZ(),
+					soundEvent.value(), SoundSource.RECORDS,
+					volume, soundPitch);
+				level.gameEvent(player, GameEvent.INSTRUMENT_PLAY, player.position());
+				player.awardStat(Stats.ITEM_USED.get(this));
+			}
+		}
+	}
+
+	@Override
+	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
 		ItemStack itemStack = player.getItemInHand(hand);
 		player.startUsingItem(hand);
-
-		float normalized = (player.getXRot() + 90f) / 180f;
-		float soundPitch = Mth.lerp(normalized, 2.0f, 0.5f);
-		int note = (int)((soundPitch - 0.5f) * 24f / 1.5f);
-		note = Mth.clamp(note, 0, 24);
-
-		if (level.isClientSide) {
-			level.addParticle(ParticleTypes.NOTE,
-				player.getX(),
-				player.getEyeY() + 0.5,
-				player.getZ(),
-				note / 24.0, 0.0, 0.0);
-		} else {
-			level.playSound(null, player.getX(), player.getY(), player.getZ(),
-				soundEvent.value(), SoundSource.RECORDS,
-				volume, soundPitch);
-			level.gameEvent(player, GameEvent.INSTRUMENT_PLAY, player.position());
-			player.awardStat(Stats.ITEM_USED.get(this));
-		}
-
 		return InteractionResultHolder.consume(itemStack);
 	}
 
@@ -59,6 +76,6 @@ public class ModInstrumentItem extends Item {
 
 	@Override
 	public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
-		return 20;
+		return 72000;
 	}
 }
