@@ -29,22 +29,19 @@ public class ModBlocks {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Harmonium.MOD_ID);
 
 	private static final class Properties {
-		private static BlockBehaviour.Properties createMetalProperties(MapColor color, SoundType sound, float strength) {
+		private static BlockBehaviour.Properties createMetalProperties(MapColor color, NoteBlockInstrument instrument, SoundType sound, float strength) {
 			return BlockBehaviour.Properties.of()
 				.mapColor(color)
+				.instrument(instrument)
 				.sound(sound)
 				.requiresCorrectToolForDrops()
 				.strength(strength, 6.0f);
 		}
 
-		private static BlockBehaviour.Properties createBulbProperties(
-			MapColor color,
-			SoundType sound,
-			ToIntFunction<BlockState> lightLevel,
-			float strength
-		) {
+		private static BlockBehaviour.Properties createBulbProperties(MapColor color, NoteBlockInstrument instrument, SoundType sound, ToIntFunction<BlockState> lightLevel, float strength) {
 			return BlockBehaviour.Properties.of()
 				.mapColor(color)
+				.instrument(instrument)
 				.sound(sound)
 				.isRedstoneConductor((state, level, pos) -> false)
 				.lightLevel(lightLevel)
@@ -54,16 +51,19 @@ public class ModBlocks {
 
 		static final BlockBehaviour.Properties GENERIC_TIN = createMetalProperties(
 			MapColor.TERRACOTTA_WHITE,
+			NoteBlockInstrument.FLUTE,
 			ModSoundType.TIN,
 			2.0f);
 
 		static final BlockBehaviour.Properties GENERIC_BRONZE = createMetalProperties(
 			MapColor.TERRACOTTA_YELLOW,
+			NoteBlockInstrument.BELL,
 			ModSoundType.BRONZE,
 			4.0f);
 
 		static final BlockBehaviour.Properties TIN_BULB = createBulbProperties(
 			MapColor.TERRACOTTA_WHITE,
+			NoteBlockInstrument.FLUTE,
 			ModSoundType.TIN_BULB,
 			state -> state.getValue(TinBulbBlock.LIGHT_LEVEL),
 			2.0f
@@ -71,6 +71,7 @@ public class ModBlocks {
 
 		static final BlockBehaviour.Properties BRONZE_BULB = createBulbProperties(
 			MapColor.TERRACOTTA_ORANGE,
+			NoteBlockInstrument.BELL,
 			ModSoundType.BRONZE_BULB,
 			state -> state.getValue(BronzeBulbBlock.LIT) ? state.getValue(BronzeBulbBlock.LIGHT_LEVEL) : 0,
 			4.0f
