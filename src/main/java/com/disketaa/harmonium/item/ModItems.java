@@ -32,7 +32,7 @@ public class ModItems {
 	public static final DeferredItem<Item> TIN_INGOT = registerSimpleItem("tin_ingot");
 	public static final DeferredItem<Item> BRONZE_NUGGET = registerSimpleItem("bronze_nugget");
 	public static final DeferredItem<Item> BRONZE_INGOT = registerSimpleItem("bronze_ingot");
-	public static final DeferredItem<ModInstrumentItem> FLUTE = registerInstrumentItem("flute", () -> new ModInstrumentItem(new Item.Properties(), BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.NOTE_BLOCK_FLUTE.value()), 4));
+	public static final DeferredItem<ModInstrumentItem> FLUTE = registerInstrumentItem("flute", () -> new ModInstrumentItem(new Item.Properties(), BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.NOTE_BLOCK_FLUTE.value()), 1.0f));
 	public static final DeferredItem<ModKnifeItem> WOODEN_KNIFE = registerConditionalTool("wooden_knife", () -> registerKnifeItem("wooden_knife", Tiers.WOOD, 0.5f, -2.0f), "farmersdelight");
 	public static final DeferredItem<ModKnifeItem> BRONZE_KNIFE = registerConditionalTool("bronze_knife", () -> registerKnifeItem("bronze_knife", ModToolTiers.BRONZE, 0.5f, -2.0f), "farmersdelight");
 	public static final DeferredItem<ShovelItem> BRONZE_SHOVEL = registerShovelItem("bronze_shovel", ModToolTiers.BRONZE, 1.5f, -3.0f);
