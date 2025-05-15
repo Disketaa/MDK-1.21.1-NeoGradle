@@ -31,9 +31,15 @@ public class ModInstrumentItem extends Item {
 
 	private static final float MIN_PITCH_ANGLE = -75f;
 	private static final float MAX_PITCH_ANGLE = 75f;
-	private static final int[] TEMPO_VALUES = {80, 40, 20, 10, 5};
-	private static final String[] TEMPO_NAMES = {"Very Slow", "Slow", "Medium", "Fast", "Very Fast"};
+	private static final int[] TEMPO_VALUES = {40, 20, 15, 10, 5};
 	private static final Holder<SoundEvent> TEMPO_CHANGE_SOUND = BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_BUTTON_CLICK.value());
+	private static final String[] TEMPO_KEYS = {
+		"item.harmonium.instrument.tempo.very_slow",
+		"item.harmonium.instrument.tempo.slow",
+		"item.harmonium.instrument.tempo.medium",
+		"item.harmonium.instrument.tempo.fast",
+		"item.harmonium.instrument.tempo.very_fast"
+	};
 
 	public ModInstrumentItem(Properties properties, Holder<SoundEvent> soundEvent, float volume) {
 		super(properties.stacksTo(1).component(TEMPO_INDEX, 2));
@@ -91,8 +97,9 @@ public class ModInstrumentItem extends Item {
 					TEMPO_CHANGE_SOUND.value(), SoundSource.PLAYERS,
 					0.5f, pitch);
 
-				player.displayClientMessage(Component.translatable("item.harmonium.instrument.tempo_change",
-					TEMPO_NAMES[newIndex]), true);
+				player.displayClientMessage(
+					Component.translatable("item.harmonium.instrument.tempo", Component.translatable(TEMPO_KEYS[newIndex])), true
+				);
 			}
 			return InteractionResultHolder.sidedSuccess(instrument, level.isClientSide());
 		}
@@ -115,7 +122,7 @@ public class ModInstrumentItem extends Item {
 	public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
 		super.appendHoverText(stack, context, tooltip, flag);
 		int index = stack.getOrDefault(TEMPO_INDEX, 2);
-		tooltip.add(Component.translatable("item.harmonium.instrument.tempo", TEMPO_NAMES[index])
-			.withStyle(ChatFormatting.GRAY));
+		tooltip.add(Component.translatable("item.harmonium.instrument.tempo",
+				Component.translatable(TEMPO_KEYS[index])).withStyle(ChatFormatting.GRAY));
 	}
 }
