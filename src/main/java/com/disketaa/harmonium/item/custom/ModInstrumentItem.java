@@ -1,7 +1,9 @@
 package com.disketaa.harmonium.item.custom;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -14,6 +16,8 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class ModInstrumentItem extends Item {
 	private final Holder<SoundEvent> soundEvent;
@@ -77,5 +81,12 @@ public class ModInstrumentItem extends Item {
 	@Override
 	public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
 		return 72000;
+	}
+
+	@Override
+	public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+		super.appendHoverText(stack, context, tooltip, flag);
+		tooltip.add(Component.translatable("item.harmonium.instrument.tempo", this.soundInterval)
+			.withStyle(ChatFormatting.GRAY));
 	}
 }
