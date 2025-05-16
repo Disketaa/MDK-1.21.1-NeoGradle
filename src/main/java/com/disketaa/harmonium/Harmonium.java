@@ -12,7 +12,6 @@ import com.disketaa.harmonium.item.ModArmorMaterials;
 import com.disketaa.harmonium.item.ModItems;
 import com.disketaa.harmonium.item.custom.ModInstrumentItem;
 import com.disketaa.harmonium.item.custom.ModShieldItem;
-import com.disketaa.harmonium.loot.ModLootModifiers;
 import com.disketaa.harmonium.sound.ModSoundType;
 import com.disketaa.harmonium.config.ModConditions;
 import com.disketaa.harmonium.util.ModDataComponents;
@@ -61,7 +60,6 @@ public class Harmonium {
 		ModItems.register(modEventBus);
 		ModArmorMaterials.register(modEventBus);
 		ModEntityGearEvents.register();
-		ModLootModifiers.register(modEventBus);
 		ModSoundType.register(modEventBus);
 
 		ModConditions.register("config", ModConditions.ConfigValueCondition.CODEC);
