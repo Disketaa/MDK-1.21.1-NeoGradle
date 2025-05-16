@@ -1,5 +1,7 @@
 package com.disketaa.harmonium;
 
+import com.disketaa.harmonium.advancement.ModCriteriaTriggers;
+import com.disketaa.harmonium.advancement.trigger.AdjustInstrumentTrigger;
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.config.Config;
 import com.disketaa.harmonium.config.ModConfigurationScreens;
@@ -17,6 +19,7 @@ import com.disketaa.harmonium.config.ModConditions;
 import com.disketaa.harmonium.util.ModDataComponents;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -53,6 +56,7 @@ public class Harmonium {
 
 		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 		modEventBus.addListener(ModCreativeTabItemRemover::onBuildCreativeModeTabContents);
+		modEventBus.addListener(this::registerTriggerType);
 
 		ModDataComponents.register(modEventBus);
 		ModCreativeTabs.register(modEventBus);
@@ -72,6 +76,13 @@ public class Harmonium {
 				helper.register(key, entry.getValue());
 			}
 		});
+	}
+
+	private void registerTriggerType(RegisterEvent event) {
+		event.register(Registries.TRIGGER_TYPE,
+			ResourceLocation.fromNamespaceAndPath(Harmonium.MOD_ID, "adjust_instrument"),
+			() -> ModCriteriaTriggers.ADJUST_INSTRUMENT
+		);
 	}
 
 	@SubscribeEvent

@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.item.custom;
 
+import com.disketaa.harmonium.advancement.ModCriteriaTriggers;
 import com.disketaa.harmonium.util.ModDataComponents;
 import com.mojang.serialization.Codec;
 import net.minecraft.ChatFormatting;
@@ -9,6 +10,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -96,6 +98,10 @@ public class ModInstrumentItem extends Item {
 					player.getX(), player.getY(), player.getZ(),
 					TEMPO_CHANGE_SOUND.value(), SoundSource.PLAYERS,
 					0.5f, pitch);
+
+				if (player instanceof ServerPlayer serverPlayer) {
+					ModCriteriaTriggers.ADJUST_INSTRUMENT.trigger(serverPlayer, instrument);
+				}
 
 				player.displayClientMessage(
 					Component.translatable("item.harmonium.instrument.tempo", Component.translatable(TEMPO_KEYS[newIndex])), true

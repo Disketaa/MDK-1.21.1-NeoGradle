@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "id": "harmonium:flute"
+    },
+    "title": {
+      "translate": "advancements.adventure.adjust_instrument"
+    },
+    "description": {
+      "translate": "advancements.adventure.adjust_instrument.description"
+    }
+  },
+  "criteria": {
+    "adjust_instrument": {
+      "trigger": "harmonium:adjust_instrument",
+      "conditions": {
+        "item": {
+          "items": "#harmonium:musical_instruments"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "adjust_instrument"
+    ]
+  ]
+}

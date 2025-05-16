@@ -1,4 +1,6 @@
 {
+  "advancements.adventure.adjust_instrument": "Metronome",
+  "advancements.adventure.adjust_instrument.description": "Adjust playing speed of musical instrument by holding clock in other hand",
   "advancements.story.obtain_bronze_armor": "Legionnaire",
   "advancements.story.obtain_bronze_armor.description": "Protect yourself with a piece of bronze armor",
   "advancements.story.obtain_bronze_blend": "Blend It",
