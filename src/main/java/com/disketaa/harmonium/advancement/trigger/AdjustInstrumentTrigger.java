@@ -12,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class AdjustInstrumentTrigger extends SimpleCriterionTrigger<AdjustInstrumentTrigger.TriggerInstance> {
-
 	@Override
 	public @NotNull Codec<TriggerInstance> codec() {
 		return TriggerInstance.CODEC;
@@ -24,18 +23,13 @@ public class AdjustInstrumentTrigger extends SimpleCriterionTrigger<AdjustInstru
 
 	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> instrument)
 		implements SimpleCriterionTrigger.SimpleInstance {
+
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
 				ItemPredicate.CODEC.optionalFieldOf("instrument").forGetter(TriggerInstance::instrument)
 			).apply(instance, TriggerInstance::new)
 		);
-
-		public static Criterion<TriggerInstance> adjustedInstrument() {
-			return ModCriteriaTriggers.ADJUST_INSTRUMENT.createCriterion(
-				new TriggerInstance(Optional.empty(), Optional.empty())
-			);
-		}
 
 		public static Criterion<TriggerInstance> adjustedInstrument(ItemPredicate instrument) {
 			return ModCriteriaTriggers.ADJUST_INSTRUMENT.createCriterion(

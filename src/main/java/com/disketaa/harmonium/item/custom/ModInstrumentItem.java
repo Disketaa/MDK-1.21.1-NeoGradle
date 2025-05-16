@@ -2,14 +2,12 @@ package com.disketaa.harmonium.item.custom;
 
 import com.disketaa.harmonium.advancement.ModCriteriaTriggers;
 import com.disketaa.harmonium.util.ModDataComponents;
-import com.mojang.serialization.Codec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -30,7 +28,6 @@ import java.util.List;
 public class ModInstrumentItem extends Item {
 	private final Holder<SoundEvent> soundEvent;
 	private final float volume;
-
 	private static final float MIN_PITCH_ANGLE = -75f;
 	private static final float MAX_PITCH_ANGLE = 75f;
 	private static final int[] TEMPO_VALUES = {40, 20, 15, 10, 5};
@@ -69,7 +66,6 @@ public class ModInstrumentItem extends Item {
 				double x = player.getX() + player.getViewVector(1.0F).x * 1.2;
 				double y = player.getEyeY() - 0.2 + player.getViewVector(1.0F).y * 1.2;
 				double z = player.getZ() + player.getViewVector(1.0F).z * 1.2;
-
 				level.addParticle(ParticleTypes.NOTE, x, y, z, note / 24.0, 0.0, 0.0);
 			} else {
 				level.playSound(null,
@@ -86,25 +82,24 @@ public class ModInstrumentItem extends Item {
 	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
 		ItemStack instrument = player.getItemInHand(hand);
 		ItemStack otherHand = player.getItemInHand(hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND);
+
 		if (otherHand.is(Items.CLOCK)) {
 			if (!level.isClientSide) {
-				int currentIndex = instrument.getOrDefault(TEMPO_INDEX, 2);
-				int newIndex = (currentIndex + 1) % TEMPO_VALUES.length;
+				int newIndex = (instrument.getOrDefault(TEMPO_INDEX, 2) + 1) % TEMPO_VALUES.length;
 				instrument.set(TEMPO_INDEX, newIndex);
-
-				float pitch = Mth.map(newIndex, 0, TEMPO_VALUES.length-1, 1.5f, 2.0f);
 
 				level.playSound(null,
 					player.getX(), player.getY(), player.getZ(),
 					TEMPO_CHANGE_SOUND.value(), SoundSource.PLAYERS,
-					0.5f, pitch);
+					0.5f, Mth.map(newIndex, 0, TEMPO_VALUES.length-1, 1.5f, 2.0f));
 
 				if (player instanceof ServerPlayer serverPlayer) {
 					ModCriteriaTriggers.ADJUST_INSTRUMENT.trigger(serverPlayer, instrument);
 				}
 
 				player.displayClientMessage(
-					Component.translatable("item.harmonium.instrument.tempo", Component.translatable(TEMPO_KEYS[newIndex])), true
+					Component.translatable("item.harmonium.instrument.tempo",
+						Component.translatable(TEMPO_KEYS[newIndex])), true
 				);
 			}
 			return InteractionResultHolder.sidedSuccess(instrument, level.isClientSide());
@@ -125,10 +120,11 @@ public class ModInstrumentItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+	public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context,
+	                            @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
 		super.appendHoverText(stack, context, tooltip, flag);
 		int index = stack.getOrDefault(TEMPO_INDEX, 2);
 		tooltip.add(Component.translatable("item.harmonium.instrument.tempo",
-				Component.translatable(TEMPO_KEYS[index])).withStyle(ChatFormatting.GRAY));
+			Component.translatable(TEMPO_KEYS[index])).withStyle(ChatFormatting.GRAY));
 	}
 }

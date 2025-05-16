@@ -1,7 +1,6 @@
 package com.disketaa.harmonium;
 
 import com.disketaa.harmonium.advancement.ModCriteriaTriggers;
-import com.disketaa.harmonium.advancement.trigger.AdjustInstrumentTrigger;
 import com.disketaa.harmonium.block.ModBlocks;
 import com.disketaa.harmonium.config.Config;
 import com.disketaa.harmonium.config.ModConfigurationScreens;
@@ -24,6 +23,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import org.slf4j.Logger;
@@ -38,7 +38,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 import java.util.Map;
 
@@ -72,15 +71,14 @@ public class Harmonium {
 	private void registerConditions(RegisterEvent event) {
 		event.register(NeoForgeRegistries.Keys.CONDITION_CODECS, helper -> {
 			for (Map.Entry<String, MapCodec<? extends ICondition>> entry : ModConditions.SERIALIZERS.entrySet()) {
-				ResourceLocation key = ResourceLocation.fromNamespaceAndPath(MOD_ID, entry.getKey());
-				helper.register(key, entry.getValue());
+				helper.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, entry.getKey()), entry.getValue());
 			}
 		});
 	}
 
 	private void registerTriggerType(RegisterEvent event) {
 		event.register(Registries.TRIGGER_TYPE,
-			ResourceLocation.fromNamespaceAndPath(Harmonium.MOD_ID, "adjust_instrument"),
+			ResourceLocation.fromNamespaceAndPath(MOD_ID, "adjust_instrument"),
 			() -> ModCriteriaTriggers.ADJUST_INSTRUMENT
 		);
 	}
