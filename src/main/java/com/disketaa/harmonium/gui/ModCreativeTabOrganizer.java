@@ -139,6 +139,7 @@ public class ModCreativeTabOrganizer {
 		if (tabId.equals(CreativeModeTabs.TOOLS_AND_UTILITIES.location())) {
 			addAfter(event, Items.STONE_HOE,
 				List.of(
+					ModItems.BRONZE_CHISEL,
 					ModItems.BRONZE_SHOVEL,
 					ModItems.BRONZE_PICKAXE,
 					ModItems.BRONZE_AXE,

@@ -16,6 +16,7 @@ import com.disketaa.harmonium.item.custom.ModShieldItem;
 import com.disketaa.harmonium.sound.ModSoundType;
 import com.disketaa.harmonium.config.ModConditions;
 import com.disketaa.harmonium.util.ModDataComponents;
+import com.disketaa.harmonium.util.ModRenderEvents;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.Registries;
@@ -50,11 +51,12 @@ public class Harmonium {
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 		modEventBus.addListener(this::registerConditions);
 
+		NeoForge.EVENT_BUS.addListener(ModRenderEvents::onRenderLevelStage);
 		NeoForge.EVENT_BUS.addListener(ModShieldBlockHandler::onShieldBlock);
 		NeoForge.EVENT_BUS.register(this);
 
-		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 		modEventBus.addListener(ModCreativeTabItemRemover::onBuildCreativeModeTabContents);
+		modEventBus.addListener(ModCreativeTabOrganizer::onBuildCreativeModeTabContents);
 		modEventBus.addListener(this::registerTriggerType);
 
 		ModDataComponents.register(modEventBus);
