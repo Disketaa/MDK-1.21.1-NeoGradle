@@ -12,11 +12,15 @@ public class ModRenderEvents {
 	@SubscribeEvent
 	public static void onRenderLevelStage(RenderLevelStageEvent event) {
 		if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_SOLID_BLOCKS) return;
+
+		Minecraft mc = Minecraft.getInstance();
+		mc.gameRenderer.setRenderBlockOutline(true);
+
 		if (!ModChiselItem.shouldRenderCustomOutline()) return;
-		if (!(Minecraft.getInstance().hitResult instanceof BlockHitResult blockHitResult)) return;
+		if (!(mc.hitResult instanceof BlockHitResult blockHitResult)) return;
 
 		PoseStack poseStack = event.getPoseStack();
-		MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
+		MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
 
 		poseStack.pushPose();
 		ModChiselItem.renderCustomOutline(poseStack, bufferSource, blockHitResult);

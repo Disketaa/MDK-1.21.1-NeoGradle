@@ -1,5 +1,6 @@
 package com.disketaa.harmonium.item.custom;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
@@ -27,6 +28,8 @@ public class ModChiselItem {
 	}
 
 	public static void renderCustomOutline(PoseStack poseStack, MultiBufferSource bufferSource, BlockHitResult hitResult) {
+		minecraft.gameRenderer.setRenderBlockOutline(false);
+
 		BlockPos pos = hitResult.getBlockPos();
 		double division = 1.0 / 8.0;
 		Vec3 hitLoc = hitResult.getLocation().subtract(Vec3.atLowerCornerOf(pos));
@@ -49,6 +52,9 @@ public class ModChiselItem {
 			(zCell + 1) * division - padding
 		);
 
+		RenderSystem.disableDepthTest();
+		RenderSystem.lineWidth(3.0f);
+
 		VertexConsumer consumer = bufferSource.getBuffer(RenderType.lines());
 		LevelRenderer.renderVoxelShape(
 			poseStack,
@@ -58,5 +64,8 @@ public class ModChiselItem {
 			1.0F, 0.0F, 0.0F, 1.0F,
 			false
 		);
+
+		RenderSystem.enableDepthTest();
+		RenderSystem.lineWidth(1.0f);
 	}
 }
