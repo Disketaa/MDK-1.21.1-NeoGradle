@@ -19,6 +19,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 
+import java.lang.reflect.Field;
+
+import static net.neoforged.neoforgespi.ILaunchContext.LOGGER;
+
 public class ModChiselItem {
 	public static final Minecraft minecraft = Minecraft.getInstance();
 
@@ -29,6 +33,41 @@ public class ModChiselItem {
 
 		ItemStack mainHandItem = minecraft.player.getMainHandItem();
 		return mainHandItem.is(net.minecraft.tags.ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tools/chisel")));
+	}
+
+	public static void setRenderEffects(boolean enabled) {
+		try {
+			Field outlineField = GameRenderer.class.getDeclaredField("renderBlockOutline");
+			outlineField.setAccessible(true);
+			outlineField.setBoolean(minecraft.gameRenderer, !enabled);
+		} catch (Exception e) {
+			LOGGER.error("Failed to modify render effects", e);
+		}
+	}
+
+	public static void setRenderBlockOutline(boolean enabled) {
+		try {
+			Field field = GameRenderer.class.getDeclaredField("renderBlockOutline");
+			field.setAccessible(true);
+			field.setBoolean(minecraft.gameRenderer, enabled);
+		} catch (NoSuchFieldException e) {
+			LOGGER.error("Failed to find renderBlockOutline field", e);
+		} catch (IllegalAccessException e) {
+			LOGGER.error("Failed to access renderBlockOutline field", e);
+		}
+	}
+
+	public static boolean getRenderBlockOutline() {
+		try {
+			Field field = GameRenderer.class.getDeclaredField("renderBlockOutline");
+			field.setAccessible(true);
+			return field.getBoolean(minecraft.gameRenderer);
+		} catch (NoSuchFieldException e) {
+			LOGGER.error("Failed to find renderBlockOutline field", e);
+		} catch (IllegalAccessException e) {
+			LOGGER.error("Failed to access renderBlockOutline field", e);
+		}
+		return false;
 	}
 
 	public static void renderCustomOutline(PoseStack poseStack, MultiBufferSource bufferSource, BlockHitResult hitResult) {
